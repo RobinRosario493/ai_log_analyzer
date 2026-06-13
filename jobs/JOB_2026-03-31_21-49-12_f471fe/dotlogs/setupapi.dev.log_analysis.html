@@ -1,0 +1,62 @@
+
+    <html>
+    <head>
+        <title>Analysis Report - setupapi.dev.log</title>
+        <style>
+            body {
+                font-family: Arial;
+                background:#0f172a;
+                color:white;
+                padding:30px;
+            }
+            .card {
+                background:#1e293b;
+                padding:15px;
+                margin:15px 0;
+                border-radius:8px;
+            }
+
+        </style>
+    </head>
+    <body>
+
+        <h1>File Analysis Report</h1>
+        <h2>File: setupapi.dev.log</h2>
+        <hr>
+    
+            <div class="card">
+            <b>Type:</b> Code Integrity<br>
+            <b>Occurrences:</b> 1<br><br>
+
+            <b>Cause:</b><br>
+            Certificate chain terminated in a root certificate not trusted by the trust provider.<br><br>
+
+            <b>Fix:</b><br>
+            Update Trusted Root Certificates or disable Code Integrity enforcement for driver packages.
+            </div>
+            
+            <div class="card">
+            <b>Type:</b> Code Integrity<br>
+            <b>Occurrences:</b> 2<br><br>
+
+            <b>Cause:</b><br>
+            Driver package signature validation failure due to missing trusted root certificate<br><br>
+
+            <b>Fix:</b><br>
+            Update the driver package catalog file certificate to a trusted root certificate or disable Code Integrity enforcement for this driver store
+            </div>
+            
+            <div class="card">
+            <b>Type:</b> Driver signature validation failure<br>
+            <b>Occurrences:</b> 1<br><br>
+
+            <b>Cause:</b><br>
+            Code Integrity enforcement failed due to missing trusted root certificate for driver package catalog file<br><br>
+
+            <b>Fix:</b><br>
+            Update Trusted Root Certificates or disable Code Integrity enforcement for driver packages
+            </div>
+            
+    </body>
+    </html>
+    

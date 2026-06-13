@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>AI Log Analyzer</title>
+
+    <style>
+        body{
+            font-family:Arial;
+            background:#0f172a;
+            color:white;
+            padding:40px;
+        }
+
+        h1{
+            margin-bottom:10px;
+        }
+
+        .upload{
+            margin-bottom:20px;
+        }
+
+        button{
+            padding:10px 20px;
+            background:#3b82f6;
+            border:none;
+            color:white;
+            border-radius:6px;
+            cursor:pointer;
+            margin-left:10px;
+        }
+
+        button:hover{
+            background:#2563eb;
+        }
+
+        .summary{
+            background:#020617;
+            padding:20px;
+            margin-top:20px;
+            border-radius:10px;
+            font-size:18px;
+        }
+
+        .section{
+            margin-top:30px;
+        }
+
+        .section h2{
+            margin-bottom:10px;
+        }
+
+        .card{
+            background:#1e293b;
+            padding:20px;
+            margin-top:15px;
+            border-radius:10px;
+            border-left:6px solid #3b82f6;
+        }
+
+        .resolved{
+            border-left:6px solid #10b981;
+        }
+
+        .type{
+            font-size:20px;
+            font-weight:bold;
+            color:#60a5fa;
+        }
+
+        .count{
+            margin:5px 0 10px 0;
+            color:#cbd5e1;
+        }
+
+        .label{
+            font-weight:bold;
+            color:#e2e8f0;
+        }
+
+        pre{
+            background:#020617;
+            padding:10px;
+            border-radius:6px;
+            overflow:auto;
+            font-size:13px;
+        }
+
+        #loading{
+            display:none;
+            margin-top:20px;
+            font-size:18px;
+            color:#93c5fd;
+        }
+
+        .confidence{
+            margin-top:5px;
+            font-size:13px;
+            color:#94a3b8;
+        }
+    </style>
+</head>
+
+<body>
+
+<h1>AI Log Analyzer</h1>
+
+<div class="upload">
+    <input type="file" id="fileInput">
+    <button onclick="upload()">Analyze Logs</button>
+</div>
+
+<div id="loading">Analyzing logs with AI... please wait</div>
+
+<div id="output"></div>
+
+<script>
+
+function upload(){
+
+    let f=document.getElementById("fileInput").files[0];
+
+    if(!f){
+        alert("Select a log file");
+        return;
+    }
+
+    document.getElementById("loading").style.display="block";
+    document.getElementById("output").innerHTML="";
+
+    let fd=new FormData();
+    fd.append("logfile",f);
+
+    fetch("/analyze",{method:"POST",body:fd})
+    .then(r=>r.json())
+    .then(show)
+    .catch(()=>{
+        alert("Server error");
+    });
+}
+
+function show(data){
+
+    document.getElementById("loading").style.display="none";
+
+    let html=`
+    <div class="summary">
+        Total Errors: ${data.total_errors}<br>
+        Active Issues: ${data.active_issues.length}<br>
+        Resolved Issues: ${data.resolved_issues.length}
+    </div>
+    `;
+
+    // ACTIVE
+    html+=`<div class="section"><h2>Active Issues</h2>`;
+
+    if(data.active_issues.length===0){
+        html+=`<div class="card">No active issues</div>`;
+    }
+
+    data.active_issues.forEach(x=>{
+        html+=cardHTML(x,false);
+    });
+
+    html+=`</div>`;
+
+    // RESOLVED
+    html+=`<div class="section"><h2>Resolved Issues</h2>`;
+
+    if(data.resolved_issues.length===0){
+        html+=`<div class="card resolved">No resolved issues</div>`;
+    }
+
+    data.resolved_issues.forEach(x=>{
+        html+=cardHTML(x,true);
+    });
+
+    html+=`</div>`;
+
+    document.getElementById("output").innerHTML=html;
+}
+
+function cardHTML(x,resolved){
+
+    let cls = resolved ? "card resolved" : "card";
+
+    return `
+    <div class="${cls}">
+
+        <div class="type">${escapeHtml(x.type)}</div>
+
+        <div class="count">
+            Occurrences: ${x.count}
+        </div>
+
+        <div class="confidence">
+            Confidence: ${x.confidence || "-"}%
+        </div>
+
+        <br>
+
+        <div class="label">Root Cause:</div>
+        ${escapeHtml(x.cause)}<br><br>
+
+        <div class="label">Recommended Fix:</div>
+        ${escapeHtml(x.fix)}<br><br>
+
+        <div class="label">Sample Log:</div>
+        <pre>${escapeHtml(x.sample)}</pre>
+
+    </div>
+    `;
+}
+
+function escapeHtml(text){
+    if(!text) return "";
+    return text.replace(/</g,"&lt;").replace(/>/g,"&gt;");
+}
+
+</script>
+
+</body>
+</html>

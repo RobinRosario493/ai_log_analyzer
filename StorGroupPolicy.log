@@ -1,0 +1,194 @@
+05/01/2026 10:49:58.00000278:RegEnumKeyExW failed with (259)
+
+05/01/2026 10:49:58.00000278:GP object initialized successfully
+
+05/01/2026 10:49:58.00000301:Deny_All not set for all. Will query other 6 GUIDs
+
+05/01/2026 10:49:58.00000301:Policy for other GUID is not enabled, status:  1008
+
+05/01/2026 10:49:58.00000301:Policy for other GUID is not enabled, status:  1008
+
+05/01/2026 10:49:58.00000307:Policy for other GUID is not enabled, status:  1008
+
+05/01/2026 10:49:58.00000307:Policy for other GUID is not enabled, status:  1008
+
+05/01/2026 10:49:58.00000307:Policy for other GUID is not enabled, status:  1008
+
+05/01/2026 10:49:58.00000307:Policy for other GUID is not enabled, status:  1008
+
+05/01/2026 10:51:58.00000312:Deleted GP object
+
+05/01/2026 10:53: 9.00000060:RegEnumKeyExW failed with (259)
+
+05/01/2026 10:53: 9.00000067:GP object initialized successfully
+
+05/01/2026 10:53: 9.00000072:Deny_All not set for all. Will query other 6 GUIDs
+
+05/01/2026 10:53: 9.00000072:Policy for other GUID is not enabled, status:  1008
+
+05/01/2026 10:53: 9.00000072:Policy for other GUID is not enabled, status:  1008
+
+05/01/2026 10:53: 9.00000072:Policy for other GUID is not enabled, status:  1008
+
+05/01/2026 10:53: 9.00000072:Policy for other GUID is not enabled, status:  1008
+
+05/01/2026 10:53: 9.00000072:Policy for other GUID is not enabled, status:  1008
+
+05/01/2026 10:53: 9.00000072:Policy for other GUID is not enabled, status:  1008
+
+05/01/2026 10:53:46.00000232:RegEnumKeyExW failed with (259)
+
+05/01/2026 10:53:46.00000232:GP object initialized successfully
+
+05/01/2026 10:53:46.00000248:Deny_All not set for all. Will query other 6 GUIDs
+
+05/01/2026 10:53:46.00000248:Policy for other GUID is not enabled, status:  1008
+
+05/01/2026 10:53:46.00000248:Policy for other GUID is not enabled, status:  1008
+
+05/01/2026 10:53:46.00000248:Policy for other GUID is not enabled, status:  1008
+
+05/01/2026 10:53:46.00000248:Policy for other GUID is not enabled, status:  1008
+
+05/01/2026 10:53:46.00000248:Policy for other GUID is not enabled, status:  1008
+
+05/01/2026 10:53:46.00000248:Policy for other GUID is not enabled, status:  1008
+
+05/01/2026 10:54: 5.00000610:Deny_All not set for all. Will query other 6 GUIDs
+
+05/01/2026 10:54: 5.00000612:Policy for other GUID is not enabled, status:  2
+
+05/01/2026 10:54: 5.00000614:Policy for other GUID is not enabled, status:  2
+
+05/01/2026 10:54: 5.00000616:Policy for other GUID is not enabled, status:  2
+
+05/01/2026 10:54: 5.00000618:Policy for other GUID is not enabled, status:  2
+
+05/01/2026 10:54: 5.00000618:Policy for other GUID is not enabled, status:  2
+
+05/01/2026 10:54: 5.00000620:Policy for other GUID is not enabled, status:  2
+
+05/01/2026 10:56: 5.00000617:Deleted GP object
+
+05/01/2026 11:51:59.00000573:RegEnumKeyExW failed with (259)
+
+05/01/2026 11:51:59.00000573:GP object initialized successfully
+
+05/01/2026 11:51:59.00000636:Deny_All not set for all. Will query other 6 GUIDs
+
+05/01/2026 11:51:59.00000639:Policy for other GUID is not enabled, status:  2
+
+05/01/2026 11:51:59.00000639:Policy for other GUID is not enabled, status:  2
+
+05/01/2026 11:51:59.00000641:Policy for other GUID is not enabled, status:  2
+
+05/01/2026 11:51:59.00000642:Policy for other GUID is not enabled, status:  2
+
+05/01/2026 11:51:59.00000645:Policy for other GUID is not enabled, status:  2
+
+05/01/2026 11:51:59.00000645:Policy for other GUID is not enabled, status:  2
+
+05/01/2026 11:52: 4.00000508:Deny_All not set for all. Will query other 6 GUIDs
+
+05/01/2026 11:52: 4.00000511:Policy for other GUID is not enabled, status:  2
+
+05/01/2026 11:52: 4.00000512:Policy for other GUID is not enabled, status:  2
+
+05/01/2026 11:52: 4.00000512:Policy for other GUID is not enabled, status:  2
+
+05/01/2026 11:52: 4.00000519:Policy for other GUID is not enabled, status:  2
+
+05/01/2026 11:52: 4.00000525:Policy for other GUID is not enabled, status:  2
+
+05/01/2026 11:52: 4.00000532:Policy for other GUID is not enabled, status:  2
+
+05/01/2026 11:54: 4.00000600:Deleted GP object
+
+05/01/2026 11:54:10.00000803:RegEnumKeyExW failed with (259)
+
+05/01/2026 11:54:10.00000803:GP object initialized successfully
+
+05/01/2026 11:54:10.00000821:Deny_All not set for all. Will query other 6 GUIDs
+
+05/01/2026 11:54:10.00000822:Policy for other GUID is not enabled, status:  2
+
+05/01/2026 11:54:10.00000823:Policy for other GUID is not enabled, status:  2
+
+05/01/2026 11:54:10.00000824:Policy for other GUID is not enabled, status:  2
+
+05/01/2026 11:54:10.00000825:Policy for other GUID is not enabled, status:  2
+
+05/01/2026 11:54:10.00000827:Policy for other GUID is not enabled, status:  2
+
+05/01/2026 11:54:10.00000828:Policy for other GUID is not enabled, status:  2
+
+05/01/2026 11:56:10.00000823:Deleted GP object
+
+05/08/2026  8:30:38.00000672:RegEnumKeyExW failed with (259)
+
+05/08/2026  8:30:38.00000672:GP object initialized successfully
+
+05/08/2026  8:30:38.00000676:Deny_All not set for all. Will query other 6 GUIDs
+
+05/08/2026  8:30:38.00000676:Policy for other GUID is not enabled, status:  1008
+
+05/08/2026  8:30:38.00000676:Policy for other GUID is not enabled, status:  1008
+
+05/08/2026  8:30:38.00000676:Policy for other GUID is not enabled, status:  1008
+
+05/08/2026  8:30:38.00000676:Policy for other GUID is not enabled, status:  1008
+
+05/08/2026  8:30:38.00000676:Policy for other GUID is not enabled, status:  1008
+
+05/08/2026  8:30:38.00000676:Policy for other GUID is not enabled, status:  1008
+
+05/08/2026  8:30:39.00000819:Deny_All not set for all. Will query other 6 GUIDs
+
+05/08/2026  8:30:39.00000820:Policy for other GUID is not enabled, status:  2
+
+05/08/2026  8:30:39.00000822:Policy for other GUID is not enabled, status:  2
+
+05/08/2026  8:30:39.00000826:Policy for other GUID is not enabled, status:  2
+
+05/08/2026  8:30:39.00000828:Policy for other GUID is not enabled, status:  2
+
+05/08/2026  8:30:39.00000828:Policy for other GUID is not enabled, status:  2
+
+05/08/2026  8:30:39.00000831:Policy for other GUID is not enabled, status:  2
+
+05/08/2026  8:32:39.00000818:Deleted GP object
+
+05/13/2026  9:49:56.00000264:RegEnumKeyExW failed with (259)
+
+05/13/2026  9:49:56.00000264:GP object initialized successfully
+
+05/13/2026  9:49:56.00000270:Deny_All not set for all. Will query other 6 GUIDs
+
+05/13/2026  9:49:56.00000270:Policy for other GUID is not enabled, status:  1008
+
+05/13/2026  9:49:56.00000270:Policy for other GUID is not enabled, status:  1008
+
+05/13/2026  9:49:56.00000270:Policy for other GUID is not enabled, status:  1008
+
+05/13/2026  9:49:56.00000270:Policy for other GUID is not enabled, status:  1008
+
+05/13/2026  9:49:56.00000270:Policy for other GUID is not enabled, status:  1008
+
+05/13/2026  9:49:56.00000270:Policy for other GUID is not enabled, status:  1008
+
+05/13/2026  9:50: 2.00000065:Deny_All not set for all. Will query other 6 GUIDs
+
+05/13/2026  9:50: 2.00000071:Policy for other GUID is not enabled, status:  2
+
+05/13/2026  9:50: 2.00000074:Policy for other GUID is not enabled, status:  2
+
+05/13/2026  9:50: 2.00000078:Policy for other GUID is not enabled, status:  2
+
+05/13/2026  9:50: 2.00000080:Policy for other GUID is not enabled, status:  2
+
+05/13/2026  9:50: 2.00000084:Policy for other GUID is not enabled, status:  2
+
+05/13/2026  9:50: 2.00000084:Policy for other GUID is not enabled, status:  2
+
+05/13/2026  9:52: 2.00000068:Deleted GP object
+

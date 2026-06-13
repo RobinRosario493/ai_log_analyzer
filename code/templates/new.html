@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>AI Log Analyzer</title>
+  <style>
+    body {
+      font-family: Arial;
+      background: #0f172a;
+      color: white;
+      padding: 30px
+    }
+
+    button {
+      padding: 10px 16px;
+      background: #3b82f6;
+      border: none;
+      color: white;
+      border-radius: 6px;
+      margin-top: 10px
+    }
+
+    .card {
+      background: #1e293b;
+      padding: 20px;
+      margin: 15px;
+      border-radius: 10px
+    }
+
+    .summary {
+      background: #020617;
+      padding: 20px;
+      margin-top: 20px
+    }
+
+    #chatIcon {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      width: 60px;
+      height: 60px;
+      background: #3b82f6;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 26px;
+      cursor: pointer;
+    }
+
+    #chatBox {
+      position: fixed;
+      bottom: 90px;
+      right: 20px;
+      width: 320px;
+      height: 420px;
+      background: #020617;
+      border-radius: 10px;
+      display: none;
+      flex-direction: column;
+    }
+
+    #messages {
+      flex: 1;
+      overflow: auto;
+      padding: 10px;
+    }
+  </style>
+</head>
+
+<body>
+
+  <h2>AI Log Analyzer</h2>
+
+  <input type="file" id="fileInput">
+  <button onclick="upload()">Analyze</button>
+
+  <div id="out"></div>
+
+  <div id="chatIcon" onclick="toggleChat()">🤖</div>
+
+  <div id="chatBox">
+    <div id="messages"></div>
+    <input id="chatInput" style="width:100%">
+    <button onclick="sendChat()">Send</button>
+  </div>
+
+  <script>
+
+    function upload() {
+      let f = document.getElementById("fileInput").files[0];
+      if (!f) { alert("Select file"); return; }
+
+      let fd = new FormData();
+      fd.append("logfile", f);
+
+      fetch("/analyze", { method: "POST", body: fd })
+        .then(r => r.json())
+        .then(show);
+    }
+
+    function show(data) {
+
+      let html = `<div class="summary">
+ Total Errors: ${data.total_errors}<br>
+ Active Issues: ${data.active_issues.length}
+ </div>`;
+
+      if (data.active_issues.length === 0) {
+        html += "<div class='card'>No issues detected</div>";
+      }
+
+      data.active_issues.forEach(x => {
+        html += `
+ <div class="card">
+ <b>${x.type}</b><br>
+ Occurrences: ${x.count}<br><br>
+
+ <b>Sample:</b><br>${x.sample || "N/A"}<br><br>
+
+ <b>Cause:</b> ${x.cause}<br>
+ <b>Fix:</b> ${x.fix}<br>
+
+ <button onclick="askAI(\`${x.sample}\`,\`${x.cause}\`)">Ask AI</button>
+ </div>`;
+      });
+
+      document.getElementById("out").innerHTML = html;
+    }
+
+    function askAI(sample, cause) {
+      fetch("/ask_ai", {
+        method: "POST",
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ sample, cause })
+      })
+        .then(r => r.json())
+        .then(d => {
+          toggleChat(true);
+          addMsg("AI: " + d.answer);
+        });
+    }
+
+    function toggleChat(force) {
+      let box = document.getElementById("chatBox");
+      if (force) box.style.display = "flex";
+      else box.style.display = box.style.display == "flex" ? "none" : "flex";
+    }
+
+    function sendChat() {
+      let q = document.getElementById("chatInput").value;
+
+      fetch("/chat", {
+        method: "POST",
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ q })
+      })
+        .then(r => r.json())
+        .then(d => {
+          addMsg("You: " + q);
+          addMsg("AI: " + d.answer);
+        });
+    }
+
+    function addMsg(t) {
+      let m = document.getElementById("messages");
+      m.innerHTML += t + "<br><br>";
+      m.scrollTop = m.scrollHeight;
+    }
+  </script>
+
+</body>
+
+</html>

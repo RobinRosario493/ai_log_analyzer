@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>AI Log Analyzer</title>
+
+<style>
+body{
+ font-family:Arial;
+ background:#0f172a;
+ color:white;
+ padding:30px;
+}
+
+.card{
+ background:#1e293b;
+ padding:20px;
+ margin:15px;
+ border-radius:10px;
+}
+
+.summary{
+ background:#020617;
+ padding:20px;
+ margin-top:20px;
+}
+
+.chatbot-btn{
+ position:fixed;
+ bottom:20px;
+ right:20px;
+ width:60px;
+ height:60px;
+ background:#3b82f6;
+ border-radius:50%;
+ font-size:28px;
+ text-align:center;
+ line-height:60px;
+ cursor:pointer;
+}
+
+.chat-window{
+ position:fixed;
+ bottom:90px;
+ right:20px;
+ width:320px;
+ height:420px;
+ background:#020617;
+ border-radius:10px;
+ display:none;
+ flex-direction:column;
+}
+
+.chat-messages{
+ flex:1;
+ padding:10px;
+ overflow-y:auto;
+}
+
+.chat-input{
+ display:flex;
+}
+</style>
+</head>
+
+<body>
+
+<h2>AI Log Analyzer</h2>
+
+<input type="file" id="fileInput">
+<button onclick="upload()">Analyze</button>
+
+<div id="out"></div>
+
+<!-- chatbot -->
+<div class="chatbot-btn" onclick="toggleChat()">🤖</div>
+
+<div class="chat-window" id="chatWindow">
+ <div class="chat-messages" id="chatMessages"></div>
+ <div class="chat-input">
+   <input id="chatText" style="flex:1">
+   <button onclick="send()">Send</button>
+ </div>
+</div>
+
+<script>
+
+function upload(){
+ let f=document.getElementById("fileInput").files[0];
+ let fd=new FormData();
+ fd.append("logfile",f);
+
+ fetch("/analyze",{method:"POST",body:fd})
+ .then(r=>r.json())
+ .then(show);
+}
+
+function show(data){
+
+ let html=`<div class="summary">
+ Total Errors: ${data.total_errors}<br>
+ Active Issues: ${data.active_issues.length}<br>
+ Resolved: ${data.resolved_issues.length}
+ </div>`;
+
+ data.active_issues.forEach(x=>{
+ html+=`
+ <div class="card">
+ <b>${x.type}</b><br>
+ Occurrences: ${x.count}<br>
+ <b>Sample:</b><br>${x.sample}<br><br>
+ <b>Cause:</b> ${x.cause}<br>
+ <b>Fix:</b> ${x.fix}
+ </div>`;
+ });
+
+ document.getElementById("out").innerHTML=html;
+}
+
+function toggleChat(){
+ let w=document.getElementById("chatWindow");
+ w.style.display = w.style.display==="flex"?"none":"flex";
+}
+
+function send(){
+ let q=document.getElementById("chatText").value;
+
+ fetch("/chat",{
+ method:"POST",
+ headers:{"Content-Type":"application/json"},
+ body:JSON.stringify({q:q})
+ })
+ .then(r=>r.json())
+ .then(d=>{
+   document.getElementById("chatMessages").innerHTML +=
+   "<div><b>You:</b> "+q+"</div>";
+   document.getElementById("chatMessages").innerHTML +=
+   "<div><b>AI:</b> "+d.answer+"</div>";
+ });
+}
+</script>
+
+</body>
+</html>

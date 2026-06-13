@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Dump Analyzer</title>
+    <style>
+        body {
+            background: #0f172a;
+            color: white;
+            font-family: Segoe UI
+        }
+
+        .container {
+            max-width: 800px;
+            margin: auto;
+            padding: 40px
+        }
+
+        button {
+            padding: 10px;
+            background: #2563eb;
+            color: white;
+            border: none
+        }
+
+        .box {
+            background: #1e293b;
+            padding: 20px;
+            margin-top: 20px;
+            border-radius: 10px
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+
+        <h2>Upload Dump File (.dmp)</h2>
+
+        <input type="file" id="file">
+        <button onclick="send()">Analyze Dump</button>
+
+        <div id="out"></div>
+
+    </div>
+
+    <script>
+
+        function send() {
+
+            let f = document.getElementById("file").files[0];
+            if (!f) { alert("Select dump"); return; }
+
+            let fd = new FormData();
+            fd.append("dumpfile", f);
+
+            document.getElementById("out").innerHTML = "Analyzing dump...";
+
+            fetch("/analyze", { method: "POST", body: fd })
+                .then(r => r.json())
+                .then(d => {
+                    document.getElementById("out").innerHTML =
+                        `<div class="box"><b>${d.file}</b><br><pre>${d.analysis}</pre></div>`;
+                });
+
+        }
+    </script>
+
+</body>
+
+</html>

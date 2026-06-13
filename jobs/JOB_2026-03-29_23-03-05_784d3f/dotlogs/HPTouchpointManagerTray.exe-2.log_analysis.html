@@ -1,0 +1,392 @@
+
+    <html>
+    <head>
+        <title>Analysis Report - HPTouchpointManagerTray.exe-2.log</title>
+        <style>
+            body {
+                font-family: Arial;
+                background:#0f172a;
+                color:white;
+                padding:30px;
+            }
+            .card {
+                background:#1e293b;
+                padding:15px;
+                margin:15px 0;
+                border-radius:8px;
+            }
+
+        </style>
+    </head>
+    <body>
+
+        <h1>File Analysis Report</h1>
+        <h2>File: HPTouchpointManagerTray.exe-2.log</h2>
+        <hr>
+    
+            <div class="card">
+            <b>Type:</b> Service Control Manager<br>
+            <b>Occurrences:</b> 1<br><br>
+
+            <b>Cause:</b><br>
+            Incorrect service startup order or dependency issue<br><br>
+
+            <b>Fix:</b><br>
+            Verify the service dependencies and startup order using the SCM database. Check if any services are missing or have incorrect dependencies.
+            </div>
+            
+            <div class="card">
+            <b>Type:</b> Service Control Manager<br>
+            <b>Occurrences:</b> 1<br><br>
+
+            <b>Cause:</b><br>
+            Invalid service startup due to missing dependency<br><br>
+
+            <b>Fix:</b><br>
+            Verify the dependent service is running and restart the problematic service.
+            </div>
+            
+            <div class="card">
+            <b>Type:</b> Service Control Manager<br>
+            <b>Occurrences:</b> 1<br><br>
+
+            <b>Cause:</b><br>
+            Invalid service startup due to missing dependency<br><br>
+
+            <b>Fix:</b><br>
+            Verify the dependent service is running and restart the problematic service.
+            </div>
+            
+            <div class="card">
+            <b>Type:</b> Session & token handling<br>
+            <b>Occurrences:</b> 1<br><br>
+
+            <b>Cause:</b><br>
+            Invalid session mismatch due to concurrent login attempts<br><br>
+
+            <b>Fix:</b><br>
+            Verify user authentication and ensure only one active session is allowed
+            </div>
+            
+            <div class="card">
+            <b>Type:</b> Session & token handling<br>
+            <b>Occurrences:</b> 1<br><br>
+
+            <b>Cause:</b><br>
+            Invalid handle or session mismatch during LocalScriptManager operation<br><br>
+
+            <b>Fix:</b><br>
+            Verify that the script manager has a valid session context and handle, check for any recent changes to user sessions or token impersonation.
+            </div>
+            
+            <div class="card">
+            <b>Type:</b> Audio subsystem<br>
+            <b>Occurrences:</b> 1<br><br>
+
+            <b>Cause:</b><br>
+            Invalid audio handle due to concurrent access by multiple processes<br><br>
+
+            <b>Fix:</b><br>
+            Verify that all audio-related services are properly stopped before restarting the system or updating audio drivers
+            </div>
+            
+            <div class="card">
+            <b>Type:</b> Audio subsystem<br>
+            <b>Occurrences:</b> 1<br><br>
+
+            <b>Cause:</b><br>
+            Invalid audio handle due to concurrent access by multiple processes<br><br>
+
+            <b>Fix:</b><br>
+            Verify that all audio-related applications are properly closed or terminated before attempting to use the audio system again. If issues persist, consider increasing the system's audio buffer size.
+            </div>
+            
+            <div class="card">
+            <b>Type:</b> Service Control Manager<br>
+            <b>Occurrences:</b> 1<br><br>
+
+            <b>Cause:</b><br>
+            Missing or corrupted configuration file (DaaSConfigSigned.json) preventing service startup<br><br>
+
+            <b>Fix:</b><br>
+            Verify the existence and integrity of DaaSConfigSigned.json, recreate if necessary, and restart the service.
+            </div>
+            
+            <div class="card">
+            <b>Type:</b> Service Control Manager<br>
+            <b>Occurrences:</b> 1<br><br>
+
+            <b>Cause:</b><br>
+            Service startup failure due to missing or corrupted configuration data<br><br>
+
+            <b>Fix:</b><br>
+            Verify the service configuration file and ensure it is correctly formatted. If issues persist, try restarting the service or re-registering it.
+            </div>
+            
+            <div class="card">
+            <b>Type:</b> Session & token handling<br>
+            <b>Occurrences:</b> 1<br><br>
+
+            <b>Cause:</b><br>
+            Invalid session handle used for token impersonation<br><br>
+
+            <b>Fix:</b><br>
+            Verify the session handle is valid and properly initialized before attempting token impersonation. Check for any recent changes to the session management code.
+            </div>
+            
+            <div class="card">
+            <b>Type:</b> Service Control Manager<br>
+            <b>Occurrences:</b> 10<br><br>
+
+            <b>Cause:</b><br>
+            Service startup failure due to missing dependency<br><br>
+
+            <b>Fix:</b><br>
+            Verify the service dependencies and ensure all required services are running before attempting to start the HptmTray service.
+            </div>
+            
+            <div class="card">
+            <b>Type:</b> Service Control Manager<br>
+            <b>Occurrences:</b> 1<br><br>
+
+            <b>Cause:</b><br>
+            Service dependencies not satisfied, likely due to missing or corrupted configuration data.<br><br>
+
+            <b>Fix:</b><br>
+            Verify service dependencies and configuration files. Check for any recent changes or updates that may have caused the issue.
+            </div>
+            
+            <div class="card">
+            <b>Type:</b> Service Control Manager<br>
+            <b>Occurrences:</b> 1<br><br>
+
+            <b>Cause:</b><br>
+            Service dependencies not satisfied, likely due to missing or corrupted configuration data.<br><br>
+
+            <b>Fix:</b><br>
+            Verify service dependencies and reconfigure as needed. Check for any recent changes to the system configuration that may have caused this issue.
+            </div>
+            
+            <div class="card">
+            <b>Type:</b> Service Control Manager<br>
+            <b>Occurrences:</b> 1<br><br>
+
+            <b>Cause:</b><br>
+            Service startup failure due to missing dependency<br><br>
+
+            <b>Fix:</b><br>
+            Check if the dependent service is running and start it if necessary. Verify that the service's dependencies are correctly configured.
+            </div>
+            
+            <div class="card">
+            <b>Type:</b> Service Control Manager<br>
+            <b>Occurrences:</b> 1<br><br>
+
+            <b>Cause:</b><br>
+            Service startup failure due to missing dependency<br><br>
+
+            <b>Fix:</b><br>
+            Verify that all required services are running and dependencies are met. Check service logs for any errors or warnings.
+            </div>
+            
+            <div class="card">
+            <b>Type:</b> Service Control Manager<br>
+            <b>Occurrences:</b> 1<br><br>
+
+            <b>Cause:</b><br>
+            Service startup failure due to missing dependency<br><br>
+
+            <b>Fix:</b><br>
+            Verify that all required services are running and dependencies are met. Check service logs for further details.
+            </div>
+            
+            <div class="card">
+            <b>Type:</b> Service Control Manager<br>
+            <b>Occurrences:</b> 1<br><br>
+
+            <b>Cause:</b><br>
+            Service startup failure due to missing dependency<br><br>
+
+            <b>Fix:</b><br>
+            Verify the service dependencies and ensure all required services are running.
+            </div>
+            
+            <div class="card">
+            <b>Type:</b> Service Control Manager<br>
+            <b>Occurrences:</b> 1<br><br>
+
+            <b>Cause:</b><br>
+            Invalid service handle due to incorrect service location or configuration.<br><br>
+
+            <b>Fix:</b><br>
+            Verify the service is registered and configured correctly. Check the service's registry entries and ensure it has a valid executable path.
+            </div>
+            
+            <div class="card">
+            <b>Type:</b> Service Control Manager (SCM) issue<br>
+            <b>Occurrences:</b> 1<br><br>
+
+            <b>Cause:</b><br>
+            Invalid service configuration or dependency missing for HP TechPulse UIUser<br><br>
+
+            <b>Fix:</b><br>
+            Verify the service dependencies and configuration files. Check if the required services are running and configured correctly.
+            </div>
+            
+            <div class="card">
+            <b>Type:</b> Audio Subsystem Failure<br>
+            <b>Occurrences:</b> 1<br><br>
+
+            <b>Cause:</b><br>
+            Invalid handle to audio device, likely due to driver corruption or configuration mismatch.<br><br>
+
+            <b>Fix:</b><br>
+            Run `sfc /scannow` to scan and repair system files, then restart the machine. If issue persists, check audio device drivers for updates and reinstall if necessary.
+            </div>
+            
+            <div class="card">
+            <b>Type:</b> Service Control Manager<br>
+            <b>Occurrences:</b> 1<br><br>
+
+            <b>Cause:</b><br>
+            Invalid service startup due to missing dependency<br><br>
+
+            <b>Fix:</b><br>
+            Verify the dependent service is running and restart the TechPulse UIUser service if necessary.
+            </div>
+            
+            <div class="card">
+            <b>Type:</b> Service Control Manager<br>
+            <b>Occurrences:</b> 1<br><br>
+
+            <b>Cause:</b><br>
+            Invalid service configuration or dependency issue<br><br>
+
+            <b>Fix:</b><br>
+            Verify the service dependencies and configuration files. Check for any recent changes or updates that may have caused the issue.
+            </div>
+            
+            <div class="card">
+            <b>Type:</b> Configuration Corruption<br>
+            <b>Occurrences:</b> 1<br><br>
+
+            <b>Cause:</b><br>
+            Invalid configuration data detected during verification, potentially due to a malformed or incomplete configuration file.<br><br>
+
+            <b>Fix:</b><br>
+            Verify the TechPulseConfigFile and ensure it is correctly formatted. Check for any recent changes to the configuration file or settings.
+            </div>
+            
+            <div class="card">
+            <b>Type:</b> Configuration Corruption<br>
+            <b>Occurrences:</b> 1<br><br>
+
+            <b>Cause:</b><br>
+            Invalid JSON configuration causing missing keys, leading to incomplete analytics job prefix list initialization.<br><br>
+
+            <b>Fix:</b><br>
+            Verify and correct the JSON configuration file for LHCommonLib2::TMConfigSingleton. Check for missing or malformed keys in the 'Pulse JobPrefixes' section.
+            </div>
+            
+            <div class="card">
+            <b>Type:</b> Service Control Manager<br>
+            <b>Occurrences:</b> 1<br><br>
+
+            <b>Cause:</b><br>
+            Named pipe connection failure due to missing or corrupted registry key<br><br>
+
+            <b>Fix:</b><br>
+            Verify the presence and integrity of the DeviceTransfer registry key. If corrupted, restore it from backup or reconfigure the service.
+            </div>
+            
+            <div class="card">
+            <b>Type:</b> Service Control Manager<br>
+            <b>Occurrences:</b> 1<br><br>
+
+            <b>Cause:</b><br>
+            Named pipe connection failure due to invalid handle<br><br>
+
+            <b>Fix:</b><br>
+            Verify the named pipe exists and is properly configured. Check for any recent changes or updates that may have affected the pipe's availability.
+            </div>
+            
+            <div class="card">
+            <b>Type:</b> Service Control Manager<br>
+            <b>Occurrences:</b> 9<br><br>
+
+            <b>Cause:</b><br>
+            Failed connection to named pipe due to invalid handle, likely caused by a service startup failure or dependency missing.<br><br>
+
+            <b>Fix:</b><br>
+            Verify the service dependencies and ensure the LHAgentTrayLink service is running correctly. Check the service configuration and restart it if necessary.
+            </div>
+            
+            <div class="card">
+            <b>Type:</b> Session & token handling<br>
+            <b>Occurrences:</b> 1<br><br>
+
+            <b>Cause:</b><br>
+            Invalid session mismatch due to concurrent login attempts<br><br>
+
+            <b>Fix:</b><br>
+            Verify user authentication and ensure only one active session at a time. Implement session timeout or lockout policies as needed.
+            </div>
+            
+            <div class="card">
+            <b>Type:</b> Authentication<br>
+            <b>Occurrences:</b> 1<br><br>
+
+            <b>Cause:</b><br>
+            Invalid token impersonation due to missing domain membership<br><br>
+
+            <b>Fix:</b><br>
+            Verify the machine's domain membership and ensure it is properly joined to the domain. If necessary, re-run the domain join process.
+            </div>
+            
+            <div class="card">
+            <b>Type:</b> Authentication<br>
+            <b>Occurrences:</b> 4<br><br>
+
+            <b>Cause:</b><br>
+            Invalid token impersonation due to missing domain membership<br><br>
+
+            <b>Fix:</b><br>
+            Verify the machine's domain membership and ensure it is properly joined to the domain.
+            </div>
+            
+            <div class="card">
+            <b>Type:</b> Authentication Failure<br>
+            <b>Occurrences:</b> 1<br><br>
+
+            <b>Cause:</b><br>
+            Invalid handle to domain object, likely due to token impersonation failure or session mismatch.<br><br>
+
+            <b>Fix:</b><br>
+            Verify that the service account has proper permissions and is correctly configured for domain access. Check the event log for related errors and ensure that the LHCommonLib2 library is up-to-date.
+            </div>
+            
+            <div class="card">
+            <b>Type:</b> Authentication<br>
+            <b>Occurrences:</b> 1<br><br>
+
+            <b>Cause:</b><br>
+            Invalid token impersonation due to missing domain information<br><br>
+
+            <b>Fix:</b><br>
+            Verify the machine is joined to a domain and ensure the Domain Name System (DNS) resolution is functioning correctly. If the issue persists, check the Windows Security Settings for any misconfigured authentication settings.
+            </div>
+            
+            <div class="card">
+            <b>Type:</b> Authentication<br>
+            <b>Occurrences:</b> 5<br><br>
+
+            <b>Cause:</b><br>
+            Token impersonation failure due to invalid domain credentials<br><br>
+
+            <b>Fix:</b><br>
+            Verify and update domain credentials; ensure correct username and password combination
+            </div>
+            
+    </body>
+    </html>
+    

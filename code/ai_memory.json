@@ -1,0 +1,261 @@
+{
+  "2025/03/02 22:39:58.360|00001590|Error      |Utils::GetService|Service does not exist. Error 0x00000424": [
+    "error",
+    "Service does not exist.",
+    "Check if the HP Analytics Service is installed and running correctly.",
+    "ai"
+  ],
+  "2025/03/04 03:05:43.979|000013FC|Error      |Utils::GetActiveSessionToken|WTSQueryUserToken failed with error: 1008. Bypassing to other winlogon method": [
+    "Error",
+    "WTSQueryUserToken failed with error: 1008 due to multiple active sessions (Session Count = 2)",
+    "Ensure only one active session is present, possibly by closing unnecessary sessions or adjusting system configuration",
+    "ai"
+  ],
+  "2025/03/04 03:05:43.979|000013FC|Error      |Utils::GetProcessIDInCurrentLogOn|Could not find the correct process id in the given session": [
+    "Windows Error",
+    "Invalid Session ID (SessionId = 0) in WTSQueryUserToken call",
+    "Verify that the session ID is correct and ensure that the system is not experiencing a session ID conflict or issue.",
+    "ai"
+  ],
+  "2025/03/04 03:05:43.979|000013FC|Error      |Utils::GetActiveSessionToken|OpenProcess with Pid 0 failed with error : 87": [
+    "Windows Error",
+    "OpenProcess with Pid 0 failed with error : 87",
+    "Check if the Windows service account has been configured correctly and ensure that the process ID 0 is not being used by another process or service.",
+    "ai"
+  ],
+  "2025/03/04 03:05:43.979|000013FC|Error      |Utils::GetLogonUserSIDFromToken|GetActiveSessionToken failed": [
+    "Error",
+    "OpenProcess with Pid 0 failed with error : 87",
+    "Check that the process ID is not set to 0 in your code, as this can cause issues. Verify that you are correctly retrieving the process ID and ensure it's not being set to a default value like 0.",
+    "ai"
+  ],
+  "2025/03/04 03:05:44.334|00001384|Error      |CMainService::StopAudioAnalytics|Could not get instance of CAudioAnalyticsManager": [
+    "Error",
+    "CAudioAnalyticsManager instance not found",
+    "Check and ensure that CAudioAnalyticsManager is properly registered and initialized before attempting to stop the service.",
+    "ai"
+  ],
+  "2025/03/04 03:05:44.460|00001650|Error      |Utils::GetProcessIDInCurrentLogOn|Could not find the correct process id in the given session": [
+    "error",
+    "Invalid process ID (PID) 0 used in OpenProcess call",
+    "Verify that the correct session and process IDs are being passed to the Utils::GetLogonUserSIDFromToken function.",
+    "ai"
+  ],
+  "2025/03/04 03:05:44.460|00001650|Error      |Utils::GetLogonUserSIDFromToken|OpenProcess with Pid 0 failed with error : 87": [
+    "Error",
+    "OpenProcess with Pid 0 failed with error : 87",
+    "Check if the process ID 0 is valid and exists in the system. If not, it may be due to a system configuration issue or a bug in the code that assumes the existence of this process.",
+    "ai"
+  ],
+  "2025/03/06 23:19:38.311|00001420|Error      |Utils::GetActiveSessionToken|WTSQueryUserToken failed with error: 1008. Bypassing to other winlogon method": [
+    "Win32 Error",
+    "WTSQueryUserToken failed with error 1008 due to multiple active sessions (Session Count = 2)",
+    "Ensure only one active session is present, or implement a mechanism to handle multiple active sessions correctly.",
+    "ai"
+  ],
+  "2025/03/06 23:19:38.320|00001420|Error      |Utils::GetActiveSessionToken|OpenProcess with Pid 0 failed with error : 87": [
+    "Windows Error",
+    "OpenProcess with Pid 0 failed with error : 87",
+    "Check if the system has a valid console session running, and ensure that the process attempting to open the process is running under an elevated context.",
+    "ai"
+  ],
+  "2025/03/06 23:19:38.750|0000169C|Error      |Utils::GetProcessIDInCurrentLogOn|Could not find the correct process id in the given session": [
+    "Error",
+    "Invalid process ID (PID) 0 used in OpenProcess call",
+    "Verify that the correct session and process IDs are being used, or consider using a different method to obtain the current process ID.",
+    "ai"
+  ],
+  "2025/03/06 23:19:38.750|0000169C|Error      |Utils::GetLogonUserSIDFromToken|OpenProcess with Pid 0 failed with error : 87": [
+    "Error",
+    "OpenProcess with Pid 0 failed with error : 87",
+    "Check if the process ID 0 is valid and exists in the system. If not, update the code to use a valid process ID or handle the error accordingly.",
+    "ai"
+  ],
+  "2026/02/08 22:13:26.070|00000CEC|Error      |CMainService::StopAudioAnalytics|Could not get instance of CAudioAnalyticsManager": [
+    "Error",
+    "CAudioAnalyticsManager instance not obtained during StopAudioAnalytics",
+    "Verify and correct the CAudioAnalyticsManager instance availability in the system configuration",
+    "ai"
+  ],
+  "2026/02/09 23:01:40.527|000013CC|Error      |Utils::GetProcessIDInCurrentLogOn|Could not find the correct process id in the given session": [
+    "error",
+    "Invalid process ID (PID) 0 used in OpenProcess call",
+    "Verify that the correct process ID is being passed to the OpenProcess function, and ensure it's not hardcoded as 0.",
+    "ai"
+  ],
+  "2026/02/09 23:01:40.527|000013CC|Error      |Utils::GetLogonUserSIDFromToken|OpenProcess with Pid 0 failed with error : 87": [
+    "Error",
+    "OpenProcess with Pid 0 failed with error : 87",
+    "Check if the process ID 0 is valid and exists in the system. If not, update the code to use a valid process ID or handle the error accordingly.",
+    "ai"
+  ],
+  "2026/02/10 21:27:44.725|0000144C|Error      |Utils::GetActiveSessionToken|WTSQueryUserToken failed with error: 1008. Bypassing to other winlogon method": [
+    "Win32 Error",
+    "WTSQueryUserToken failed with error 1008 due to multiple active sessions (Session Count = 2)",
+    "Ensure only one active session is present, or implement a workaround for handling multiple active sessions in your application",
+    "ai"
+  ],
+  "2026/02/10 21:27:44.725|0000144C|Error      |Utils::GetActiveSessionToken|OpenProcess with Pid 0 failed with error : 87": [
+    "Windows Error",
+    "OpenProcess with Pid 0 failed with error : 87",
+    "Check if the Windows service account has sufficient permissions to access the process",
+    "ai"
+  ],
+  "2026/02/11 20:39:53.588|00002A88|Error      |Utils::GetProcessIDInCurrentLogOn|Could not find the correct process id in the given session": [
+    "Error",
+    "Invalid process ID (PID) 0 used in OpenProcess call",
+    "Verify that the correct session and process IDs are being used, or consider using a different method to retrieve the process ID.",
+    "ai"
+  ],
+  "2026/02/11 20:39:53.588|00002A88|Error      |Utils::GetLogonUserSIDFromToken|OpenProcess with Pid 0 failed with error : 87": [
+    "Error",
+    "OpenProcess with Pid 0 failed with error : 87",
+    "Check if the process ID 0 is valid and exists in the system. If not, update the code to handle this edge case or use a different method to get the correct process ID.",
+    "ai"
+  ],
+  "CMainService::StartAudioAnalytics": {
+    "type": "Error",
+    "cause": "Service does not exist. Error 0x00000424",
+    "fix": "Check the existence of the HP Analytics Service and resolve any issues that may be causing it to fail to start."
+  },
+  "Utils::GetService": {
+    "type": "Error",
+    "cause": "Service does not exist. Error 0x00000424",
+    "fix": "Check if the service exists and is properly configured."
+  },
+  "Utils::GetActiveSessionToken": {
+    "type": "Win32 Error",
+    "cause": "WTSQueryUserToken failed with error 1008",
+    "fix": "Bypassed to other winlogon method"
+  },
+  "Utils::GetProcessIDInCurrentLogOn": {
+    "type": "ServiceException",
+    "cause": "WTSQueryUserToken failed with error: 1008",
+    "fix": "Check the Windows Terminal Services (WTS) configuration and ensure that the query user token operation is allowed"
+  },
+  "Utils::GetLogonUserSIDFromToken|GetActiveSessionToken": {
+    "type": "Error",
+    "cause": "GetActiveSessionToken failed with error: 1008",
+    "fix": "Bypassing to other winlogon method"
+  },
+  "CMainService::StopAudioAnalytics": {
+    "type": "Error",
+    "cause": "Could not get instance of CAudioAnalyticsManager",
+    "fix": "None provided"
+  },
+  "": {
+    "type": "Service Not Found",
+    "cause": "The HP Analytics Service does not exist or is not running",
+    "fix": "Check if the service is installed and started. If not, install and start the service."
+  },
+  "0x00000424": {
+    "type": "HP Analytics Service",
+    "cause": "Service does not exist. Error 0x00000424",
+    "fix": "Check if the HP Analytics Service is installed and running, otherwise reinstall or start it manually."
+  },
+  "WIN-LOGON_ERROR": {
+    "type": "Windows Error",
+    "cause": "WTSQueryUserToken failed with error 1008 due to multiple concurrent sessions",
+    "fix": "Check for any concurrently running console sessions and close unnecessary ones. If the issue persists, investigate Winlogon.exe process issues or potential registry corruption."
+  },
+  "2025/03/04 03:05:43.979|000013FC|Error      |Utils::GetProcessIDInCurrentLogOn": {
+    "type": "ERROR",
+    "cause": "WTSQueryUserToken failed with error: 1008",
+    "fix": "Check for any recent changes to Windows or installed software that may be affecting the session tokens. If issue persists, try restarting the system or contacting the relevant support team."
+  },
+  "WTS_QUERY_USER_TOKEN_ERROR": {
+    "type": "Error",
+    "cause": "WTSQueryUserToken failed with error: 1008",
+    "fix": "Verify that Windows Terminal Services (WTS) is properly configured and functioning correctly."
+  },
+  "hp_analytics_service_missing": {
+    "type": "Missing or Unavailable HP Analytics Service",
+    "cause": "HP Analytics Service not started or does not exist",
+    "fix": "Verify that the HP Analytics Service is running and correctly configured"
+  },
+  "missing_service": {
+    "type": "Service Initialization Error",
+    "cause": "Service does not exist.",
+    "fix": "Check service existence and initialization"
+  },
+  "WTSQueryUserToken_1008": {
+    "type": "Winlogon Error",
+    "cause": "Multiple active sessions (Session Count = 2) and incorrect state for Sessions (State = 4, SessionId = 0)",
+    "fix": "Verify and close unnecessary sessions to ensure only one active session"
+  },
+  "session_info_error": {
+    "type": "Winlogon Error",
+    "cause": "Failed WTSQueryUserToken and OpenProcess operations due to incorrect session information.",
+    "fix": "Verify and correct session information, or use alternative methods for obtaining process IDs."
+  },
+  "WTS_1008": {
+    "type": "Winlogon Token Errors",
+    "cause": "Failed retrieval of active session token",
+    "fix": "Verify Winlogon service configuration and permissions"
+  },
+  "audio_analytics_thread_error": {
+    "type": "Audio Analytics Thread Error",
+    "cause": "Invalid state of Audio AnalyticsThread",
+    "fix": "Verify and fix Audio AnalyticsThread state"
+  },
+  "service_not_found": {
+    "type": "Service Not Found",
+    "cause": "Missing or invalid service configuration",
+    "fix": "Verify that the HP Analytics Service is properly configured and running"
+  },
+  "Error_ServiceNotExist_0x00000424": {
+    "type": "Error",
+    "cause": "Service does not exist (0x00000424)",
+    "fix": "Check if the HP Analytics Service exists and is running. If it doesn't, try restarting the service or reinstalling it."
+  },
+  "utils_get_process_id_error": {
+    "type": "Utils",
+    "cause": "Failed to retrieve process ID in current logon session",
+    "fix": "Check if the correct process ID is being used or ensure that the required permissions are present for WTSQueryUserToken"
+  },
+  "GetActiveSessionTokenFailed": {
+    "type": "Error",
+    "cause": "Failed to get active session token",
+    "fix": "Check Windows event logs for errors related to WTSQueryUserToken and OpenProcess. Also, ensure that the process ID being used is correct."
+  },
+  "utils_get_service_error": {
+    "type": "Error",
+    "cause": "Service not found",
+    "fix": "Verify that the service exists and is properly configured"
+  },
+  "error_buffer_overflow_adapter_init": {
+    "type": "adapter_init",
+    "cause": "buffer_overflow",
+    "fix": "reallocating_buffer_size_to_2112"
+  },
+  "consent_permission_denied": {
+    "type": "Error",
+    "cause": "Consent Permission denied",
+    "fix": "Ensure consent permissions are granted for the service to function properly."
+  },
+  "Enum_Wwan_Failure_0x80070490": {
+    "type": "Warning",
+    "cause": "WWAN interface enumeration failure due to consent permission denied",
+    "fix": "Enable consent for WWAN configuration and restart the service"
+  },
+  "wwan_enumeration_failure": {
+    "type": "WWAN Device enumeration failed",
+    "cause": "Failed to enumerate WWAN devices due to error 0x80070490",
+    "fix": "Check WWAN device installation and ensure it is properly configured."
+  },
+  "WWAN_DEVICE_NOT_AVAILABLE": {
+    "type": "Error",
+    "cause": "WWAN Device not available",
+    "fix": "Check WWAN device availability and ensure it is properly configured."
+  },
+  "adapter_init_error_2025-03-06": {
+    "type": "Adapter Initialization Error",
+    "cause": "GetAdaptersInfo() failed with error 0x00000000",
+    "fix": "Increase buffer size in NLMEventHandler::InitialiseAdapter"
+  },
+  "initialise_adapter_failed": {
+    "type": "NLMEventHandler::InitialiseAdapter",
+    "cause": "GetAdaptersInfo() failed with error 0x00000000 due to buffer overflow",
+    "fix": "Increase buffer size for GetAdaptersInfo() function"
+  }
+}

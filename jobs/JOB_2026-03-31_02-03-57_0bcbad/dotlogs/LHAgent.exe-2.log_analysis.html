@@ -1,0 +1,73 @@
+
+    <html>
+    <head>
+        <title>Analysis Report - LHAgent.exe-2.log</title>
+        <style>
+            body {
+                font-family: Arial;
+                background:#0f172a;
+                color:white;
+                padding:30px;
+            }
+            .card {
+                background:#1e293b;
+                padding:15px;
+                margin:15px 0;
+                border-radius:8px;
+            }
+
+        </style>
+    </head>
+    <body>
+
+        <h1>File Analysis Report</h1>
+        <h2>File: LHAgent.exe-2.log</h2>
+        <hr>
+    
+            <div class="card">
+            <b>Type:</b> Configuration Corruption<br>
+            <b>Occurrences:</b> 1<br><br>
+
+            <b>Cause:</b><br>
+            Missing keys in JSON item, causing config initialization failure<br><br>
+
+            <b>Fix:</b><br>
+            Verify and correct JSON configuration files for analytics job prefixes
+            </div>
+            
+            <div class="card">
+            <b>Type:</b> Storage & filesystem<br>
+            <b>Occurrences:</b> 3<br><br>
+
+            <b>Cause:</b><br>
+            Configuration corruption or missing files in cloud_queue_*_v1.bin<br><br>
+
+            <b>Fix:</b><br>
+            Verify that the HP Touchpoint Manager Agent has write permissions to C:\ProgramData\Hewlett-Packard\HP Touchpoint Manager\Agent and ensure that the required configuration files are present.
+            </div>
+            
+            <div class="card">
+            <b>Type:</b> Filesystem<br>
+            <b>Occurrences:</b> 1<br><br>
+
+            <b>Cause:</b><br>
+            Permission failure due to invalid handle<br><br>
+
+            <b>Fix:</b><br>
+            Verify file permissions and ensure valid handle is used when writing to C:\ProgramData\HP\HP TechPulse SmartHealth\TMStatus.txt
+            </div>
+            
+            <div class="card">
+            <b>Type:</b> Unknown<br>
+            <b>Occurrences:</b> 1<br><br>
+
+            <b>Cause:</b><br>
+            Unknown<br><br>
+
+            <b>Fix:</b><br>
+            Check manually
+            </div>
+            
+    </body>
+    </html>
+    

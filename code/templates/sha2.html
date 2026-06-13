@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>AI Log & Dump Analyzer</title>
+
+<style>
+body{background:#0f172a;color:#fff;font-family:Segoe UI}
+.container{max-width:1200px;margin:auto;padding:20px}
+.card{background:#1e293b;padding:15px;margin:10px;border-radius:10px}
+.dump{background:#111827;padding:15px;border-left:6px solid orange;margin:15px 0}
+.chat{position:fixed;right:20px;bottom:20px;background:#1e293b;padding:10px;width:300px}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<h2>AI Log + Dump Analyzer</h2>
+
+<input type="file" id="f" multiple>
+<button onclick="go()">Analyze</button>
+
+<div id="out"></div>
+
+</div>
+
+<div class="chat">
+<input id="msg" placeholder="Ask AI">
+<button onclick="chat()">Send</button>
+<div id="chat"></div>
+</div>
+
+<script>
+
+function go(){
+
+ let files=document.getElementById("f").files;
+ let fd=new FormData();
+
+ for(let f of files){
+   fd.append("logfile",f);
+ }
+
+ document.getElementById("out").innerHTML="Analyzing...";
+
+ fetch("/analyze",{method:"POST",body:fd})
+ .then(r=>r.json())
+ .then(show);
+}
+
+function show(data){
+
+ let html="";
+
+ if(data.logs){
+   html+="<h3>Logs</h3>";
+   data.logs.forEach(f=>{
+     html+=`<h4>${f.file}</h4>`;
+     f.analysis.forEach(x=>{
+       html+=`
+       <div class="card">
+       <b>Error:</b> ${x.error}<br>
+       <b>Count:</b> ${x.count}<br>
+       <pre>${x.analysis}</pre>
+       <button onclick="askAI(\`${x.error}\`)">Ask AI</button>
+       </div>`;
+     });
+   });
+ }
+
+ if(data.dumps){
+   html+="<h3>Dumps</h3>";
+   data.dumps.forEach(d=>{
+     html+=`
+     <div class="dump">
+     <b>${d.file}</b><br>
+     <pre>${d.analysis}</pre>
+     </div>`;
+   });
+ }
+
+ document.getElementById("out").innerHTML=html;
+}
+
+function askAI(text){
+
+ fetch("/ask_ai",{
+   method:"POST",
+   headers:{'Content-Type':'application/json'},
+   body:JSON.stringify({error:text})
+ })
+ .then(r=>r.json())
+ .then(d=>{
+   document.getElementById("chat").innerHTML+=d.answer+"<br>";
+ });
+}
+
+function chat(){
+
+ let m=document.getElementById("msg").value;
+
+ fetch("/chat",{
+   method:"POST",
+   headers:{'Content-Type':'application/json'},
+   body:JSON.stringify({message:m})
+ })
+ .then(r=>r.json())
+ .then(d=>{
+   document.getElementById("chat").innerHTML+=d.reply+"<br>";
+ });
+}
+</script>
+
+</body>
+</html>

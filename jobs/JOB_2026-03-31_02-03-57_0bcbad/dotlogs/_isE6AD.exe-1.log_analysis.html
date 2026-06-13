@@ -1,0 +1,51 @@
+
+    <html>
+    <head>
+        <title>Analysis Report - _isE6AD.exe-1.log</title>
+        <style>
+            body {
+                font-family: Arial;
+                background:#0f172a;
+                color:white;
+                padding:30px;
+            }
+            .card {
+                background:#1e293b;
+                padding:15px;
+                margin:15px 0;
+                border-radius:8px;
+            }
+
+        </style>
+    </head>
+    <body>
+
+        <h1>File Analysis Report</h1>
+        <h2>File: _isE6AD.exe-1.log</h2>
+        <hr>
+    
+            <div class="card">
+            <b>Type:</b> Service Control Manager (SCM) failure<br>
+            <b>Occurrences:</b> 2<br><br>
+
+            <b>Cause:</b><br>
+            The application failed to uninstall due to a missing configuration file, specifically DaaSConfigSigned.json.<br><br>
+
+            <b>Fix:</b><br>
+            Verify the existence of the required configuration file and ensure it is in the expected location. If the file is missing, reinstall the application or restore from backup.
+            </div>
+            
+            <div class="card">
+            <b>Type:</b> Service Control Manager<br>
+            <b>Occurrences:</b> 2<br><br>
+
+            <b>Cause:</b><br>
+            Configuration corruption due to missing or corrupted configuration files<br><br>
+
+            <b>Fix:</b><br>
+            Verify that DaaSConfigSigned.json and TechpulseConfigV2.json exist in C:\ProgramData\Hewlett-Packard\HP TechPulse UIUser directory. If not, recreate them.
+            </div>
+            
+    </body>
+    </html>
+    

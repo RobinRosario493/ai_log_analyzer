@@ -1,0 +1,117 @@
+
+    <html>
+    <head>
+        <title>Analysis Report - sampledriver.log</title>
+        <style>
+            body {
+                font-family: Arial;
+                background:#0f172a;
+                color:white;
+                padding:30px;
+            }
+            .card {
+                background:#1e293b;
+                padding:15px;
+                margin:15px 0;
+                border-radius:8px;
+            }
+
+        </style>
+    </head>
+    <body>
+
+        <h1>File Analysis Report</h1>
+        <h2>File: sampledriver.log</h2>
+        <hr>
+    
+            <div class="card">
+            <b>Type:</b> Audio subsystem<br>
+            <b>Occurrences:</b> 1<br><br>
+
+            <b>Cause:</b><br>
+            Driver loading failure due to invalid handle<br><br>
+
+            <b>Fix:</b><br>
+            Check the device manager for any issues with the RTKVHD64 driver and ensure it is properly installed. If necessary, reinstall the driver.
+            </div>
+            
+            <div class="card">
+            <b>Type:</b> Audio subsystem<br>
+            <b>Occurrences:</b> 1<br><br>
+
+            <b>Cause:</b><br>
+            Service startup failure due to permission issue<br><br>
+
+            <b>Fix:</b><br>
+            Verify that the Audio Endpoint Builder service has the required permissions and is configured correctly. If necessary, grant the necessary permissions or adjust the service configuration.
+            </div>
+            
+            <div class="card">
+            <b>Type:</b> Audio subsystem<br>
+            <b>Occurrences:</b> 1<br><br>
+
+            <b>Cause:</b><br>
+            Invalid digital signature in driverEntry routine<br><br>
+
+            <b>Fix:</b><br>
+            Verify the integrity of the audio driver and ensure it has a valid digital signature. If necessary, reinstall or update the driver.
+            </div>
+            
+            <div class="card">
+            <b>Type:</b> Storage<br>
+            <b>Occurrences:</b> 1<br><br>
+
+            <b>Cause:</b><br>
+            Invalid handle due to permission failure<br><br>
+
+            <b>Fix:</b><br>
+            Verify that the service account has necessary permissions and adjust accordingly.
+            </div>
+            
+            <div class="card">
+            <b>Type:</b> Audio Subsystem<br>
+            <b>Occurrences:</b> 1<br><br>
+
+            <b>Cause:</b><br>
+            Invalid digital signature in driverEntry routine<br><br>
+
+            <b>Fix:</b><br>
+            Update audio driver to a trusted and signed version, or disable driver signature enforcement (but only as a temporary workaround)
+            </div>
+            
+            <div class="card">
+            <b>Type:</b> Audio subsystem<br>
+            <b>Occurrences:</b> 1<br><br>
+
+            <b>Cause:</b><br>
+            Invalid digital signature in audio driver<br><br>
+
+            <b>Fix:</b><br>
+            Update or reinstall the audio driver to a valid version
+            </div>
+            
+            <div class="card">
+            <b>Type:</b> Device Install Failure<br>
+            <b>Occurrences:</b> 1<br><br>
+
+            <b>Cause:</b><br>
+            Driver package signature validation failure due to invalid or corrupted driver package 'oem42.inf'<br><br>
+
+            <b>Fix:</b><br>
+            Verify the integrity of the driver package and ensure it is signed correctly. If issues persist, try reinstalling the device driver.
+            </div>
+            
+            <div class="card">
+            <b>Type:</b> Audio Subsystem<br>
+            <b>Occurrences:</b> 1<br><br>
+
+            <b>Cause:</b><br>
+            Driver package signature validation failure due to invalid or corrupted driver package 'oem42.inf'<br><br>
+
+            <b>Fix:</b><br>
+            Verify the integrity of the driver package and ensure it is signed correctly. If necessary, update the driver package from a trusted source.
+            </div>
+            
+    </body>
+    </html>
+    

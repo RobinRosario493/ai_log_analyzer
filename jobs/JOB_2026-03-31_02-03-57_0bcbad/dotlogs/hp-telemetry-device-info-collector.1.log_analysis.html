@@ -1,0 +1,117 @@
+
+    <html>
+    <head>
+        <title>Analysis Report - hp-telemetry-device-info-collector.1.log</title>
+        <style>
+            body {
+                font-family: Arial;
+                background:#0f172a;
+                color:white;
+                padding:30px;
+            }
+            .card {
+                background:#1e293b;
+                padding:15px;
+                margin:15px 0;
+                border-radius:8px;
+            }
+
+        </style>
+    </head>
+    <body>
+
+        <h1>File Analysis Report</h1>
+        <h2>File: hp-telemetry-device-info-collector.1.log</h2>
+        <hr>
+    
+            <div class="card">
+            <b>Type:</b> Telemetry Collector Failure<br>
+            <b>Occurrences:</b> 1319<br><br>
+
+            <b>Cause:</b><br>
+            Configuration corruption or mismatch between registry hash and actual state.<br><br>
+
+            <b>Fix:</b><br>
+            Verify the registry hash and ensure it matches the actual system state. Update the registry hash if necessary.
+            </div>
+            
+            <div class="card">
+            <b>Type:</b> Unknown<br>
+            <b>Occurrences:</b> 1319<br><br>
+
+            <b>Cause:</b><br>
+            Unknown<br><br>
+
+            <b>Fix:</b><br>
+            Check manually
+            </div>
+            
+            <div class="card">
+            <b>Type:</b> Application runtime failure<br>
+            <b>Occurrences:</b> 1451<br><br>
+
+            <b>Cause:</b><br>
+            Invalid registry hash causing state mismatch, preventing upload.<br><br>
+
+            <b>Fix:</b><br>
+            Verify and correct registry hash to ensure accurate device state reporting.
+            </div>
+            
+            <div class="card">
+            <b>Type:</b> Unknown<br>
+            <b>Occurrences:</b> 208<br><br>
+
+            <b>Cause:</b><br>
+            Unknown<br><br>
+
+            <b>Fix:</b><br>
+            Check manually
+            </div>
+            
+            <div class="card">
+            <b>Type:</b> Application runtime failure<br>
+            <b>Occurrences:</b> 208<br><br>
+
+            <b>Cause:</b><br>
+            State did not change according to registry hash. No upload.<br><br>
+
+            <b>Fix:</b><br>
+            Verify registry hash and ensure it matches the current state. If issue persists, check plugin configuration and dependencies.
+            </div>
+            
+            <div class="card">
+            <b>Type:</b> Application runtime failure<br>
+            <b>Occurrences:</b> 219<br><br>
+
+            <b>Cause:</b><br>
+            Invalid registry hash causing state mismatch, preventing upload.<br><br>
+
+            <b>Fix:</b><br>
+            Verify and correct registry hash to ensure accurate device state reporting.
+            </div>
+            
+            <div class="card">
+            <b>Type:</b> Application runtime failure<br>
+            <b>Occurrences:</b> 10<br><br>
+
+            <b>Cause:</b><br>
+            State did not change according to registry hash. No upload.<br><br>
+
+            <b>Fix:</b><br>
+            Verify registry hash and ensure it matches the current state. If issue persists, check plugin configuration and dependencies.
+            </div>
+            
+            <div class="card">
+            <b>Type:</b> Application runtime failure<br>
+            <b>Occurrences:</b> 10<br><br>
+
+            <b>Cause:</b><br>
+            Invalid registry hash causing state mismatch, preventing upload.<br><br>
+
+            <b>Fix:</b><br>
+            Verify and correct registry hash to ensure accurate device state reporting.
+            </div>
+            
+    </body>
+    </html>
+    

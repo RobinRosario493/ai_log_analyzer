@@ -1,0 +1,129 @@
+Level	Date and Time	Source	Event ID	Task Category
+Error	1/22/2026 9:03:19 PM	Microsoft-Windows-CertificateServicesClient-CertEnroll	86	None	"SCEP Certificate enrollment initialization for WORKGROUP\HPADMIN$ via https://NTC-KeyId-23f4e22ad3be374a449772954aa283aed752572e.microsoftaik.azure.net/templates/Aik/scep failed:
+
+GetCACaps
+
+Method: GET(15ms)
+Stage: GetCACaps
+The server name or address could not be resolved 0x80072ee7 (WinHttp: 12007 ERROR_WINHTTP_NAME_NOT_RESOLVED)"
+Error	2/2/2026 10:48:45 AM	Service1	0	None	"Failed to process session change. System.NullReferenceException: Object reference not set to an instance of an object.
+   at HP.Watcher.WatcherEngine.FireEnrollmentCheckIfPresent()
+   at hptpsmarthealthservice.hptpsmarthealthservice.OnSessionChange(SessionChangeDescription changeDescription)
+   at System.ServiceProcess.ServiceBase.DeferredSessionChange(Int32 eventType, Int32 sessionId)"
+Error	2/13/2026 10:35:26 AM	VSS	8193	None	"Volume Shadow Copy Service error: Unexpected error calling routine CoCreateInstance.  hr = 0x8007045b, A system shutdown is in progress.
+. "
+Error	2/13/2026 10:35:26 AM	VSS	13	None	"Volume Shadow Copy Service information: The COM Server with CLSID {4e14fba2-2e22-11d1-9964-00c04fbbb345} and name CEventSystem cannot be started. [0x8007045b, A system shutdown is in progress.
+] "
+Error	2/13/2026 10:35:26 AM	VSS	13	None	"Volume Shadow Copy Service information: The COM Server with CLSID {4e14fba2-2e22-11d1-9964-00c04fbbb345} and name CEventSystem cannot be started. [0x8007045b, A system shutdown is in progress.
+] "
+Error	2/19/2026 10:01:01 AM	Service1	0	None	"Failed to process session change. System.NullReferenceException: Object reference not set to an instance of an object.
+   at HP.Watcher.WatcherEngine.FireEnrollmentCheckIfPresent()
+   at hptpsmarthealthservice.hptpsmarthealthservice.OnSessionChange(SessionChangeDescription changeDescription)
+   at System.ServiceProcess.ServiceBase.DeferredSessionChange(Int32 eventType, Int32 sessionId)"
+Error	1/22/2026 9:48:03 PM	Service1	0	None	"Failed to process session change. System.NullReferenceException: Object reference not set to an instance of an object.
+   at HP.Watcher.WatcherEngine.FireEnrollmentCheckIfPresent()
+   at hptpsmarthealthservice.hptpsmarthealthservice.OnSessionChange(SessionChangeDescription changeDescription)
+   at System.ServiceProcess.ServiceBase.DeferredSessionChange(Int32 eventType, Int32 sessionId)"
+Error	2/16/2026 9:58:22 AM	Service1	0	None	"Failed to process session change. System.NullReferenceException: Object reference not set to an instance of an object.
+   at HP.Watcher.WatcherEngine.FireEnrollmentCheckIfPresent()
+   at hptpsmarthealthservice.hptpsmarthealthservice.OnSessionChange(SessionChangeDescription changeDescription)
+   at System.ServiceProcess.ServiceBase.DeferredSessionChange(Int32 eventType, Int32 sessionId)"
+Error	2/5/2026 1:08:39 PM	Application Hang	1002	Hanging Events	"The program olk.exe version 1.2026.105.100 stopped interacting with Windows and was closed. To see if more information about the problem is available, check the problem history in the Security and Maintenance control panel.
+"
+Error	2/13/2026 10:36:05 AM	Service1	0	None	"Failed to process session change. System.NullReferenceException: Object reference not set to an instance of an object.
+   at HP.Watcher.WatcherEngine.FireEnrollmentCheckIfPresent()
+   at hptpsmarthealthservice.hptpsmarthealthservice.OnSessionChange(SessionChangeDescription changeDescription)
+   at System.ServiceProcess.ServiceBase.DeferredSessionChange(Int32 eventType, Int32 sessionId)"
+Error	2/6/2026 9:51:52 AM	Service1	0	None	"Failed to process session change. System.NullReferenceException: Object reference not set to an instance of an object.
+   at HP.Watcher.WatcherEngine.FireEnrollmentCheckIfPresent()
+   at hptpsmarthealthservice.hptpsmarthealthservice.OnSessionChange(SessionChangeDescription changeDescription)
+   at System.ServiceProcess.ServiceBase.DeferredSessionChange(Int32 eventType, Int32 sessionId)"
+Error	2/3/2026 11:48:41 AM	Service1	0	None	"Failed to process session change. System.NullReferenceException: Object reference not set to an instance of an object.
+   at HP.Watcher.WatcherEngine.FireEnrollmentCheckIfPresent()
+   at hptpsmarthealthservice.hptpsmarthealthservice.OnSessionChange(SessionChangeDescription changeDescription)
+   at System.ServiceProcess.ServiceBase.DeferredSessionChange(Int32 eventType, Int32 sessionId)"
+Error	2/7/2026 7:26:37 PM	Service1	0	None	"Failed to process session change. System.NullReferenceException: Object reference not set to an instance of an object.
+   at HP.Watcher.WatcherEngine.FireEnrollmentCheckIfPresent()
+   at hptpsmarthealthservice.hptpsmarthealthservice.OnSessionChange(SessionChangeDescription changeDescription)
+   at System.ServiceProcess.ServiceBase.DeferredSessionChange(Int32 eventType, Int32 sessionId)"
+Error	1/23/2026 9:16:19 AM	Microsoft-Windows-Security-SPP	8200	None	"License acquisition failure details. 
+hr=0x80072EE7"
+Error	1/23/2026 9:16:19 AM	Microsoft-Windows-Security-SPP	1014	None	"Acquisition of End User License failed. hr=0x80072EE7
+Sku Id=bd3762d7-270d-4760-8fb3-d829ca45278a"
+Error	2/13/2026 10:35:26 AM	VSS	13	None	"Volume Shadow Copy Service information: The COM Server with CLSID {4e14fba2-2e22-11d1-9964-00c04fbbb345} and name CEventSystem cannot be started. [0x8007045b, A system shutdown is in progress.
+] "
+Error	2/13/2026 10:35:26 AM	VSS	8193	None	"Volume Shadow Copy Service error: Unexpected error calling routine CoCreateInstance.  hr = 0x8007045b, A system shutdown is in progress.
+. "
+Error	1/28/2026 12:51:47 PM	Service1	0	None	"Failed to process session change. System.NullReferenceException: Object reference not set to an instance of an object.
+   at HP.Watcher.WatcherEngine.FireEnrollmentCheckIfPresent()
+   at hptpsmarthealthservice.hptpsmarthealthservice.OnSessionChange(SessionChangeDescription changeDescription)
+   at System.ServiceProcess.ServiceBase.DeferredSessionChange(Int32 eventType, Int32 sessionId)"
+Error	2/10/2026 9:52:54 AM	Service1	0	None	"Failed to process session change. System.NullReferenceException: Object reference not set to an instance of an object.
+   at HP.Watcher.WatcherEngine.FireEnrollmentCheckIfPresent()
+   at hptpsmarthealthservice.hptpsmarthealthservice.OnSessionChange(SessionChangeDescription changeDescription)
+   at System.ServiceProcess.ServiceBase.DeferredSessionChange(Int32 eventType, Int32 sessionId)"
+Error	2/10/2026 9:52:54 AM	Microsoft-Windows-AppModel-State	12	None	Failure to write an application setting for package Microsoft.AAD.BrokerPlugin_cw5n1h2txyewy. Error Code: -2147023878
+Error	1/23/2026 9:16:19 AM	Microsoft-Windows-Security-SPP	8200	None	"License acquisition failure details. 
+hr=0x80072EE7"
+Error	1/23/2026 9:16:19 AM	Microsoft-Windows-Security-SPP	1014	None	"Acquisition of End User License failed. hr=0x80072EE7
+Sku Id=bd3762d7-270d-4760-8fb3-d829ca45278a"
+Error	2/20/2026 10:18:30 AM	Service1	0	None	"Failed to process session change. System.NullReferenceException: Object reference not set to an instance of an object.
+   at HP.Watcher.WatcherEngine.FireEnrollmentCheckIfPresent()
+   at hptpsmarthealthservice.hptpsmarthealthservice.OnSessionChange(SessionChangeDescription changeDescription)
+   at System.ServiceProcess.ServiceBase.DeferredSessionChange(Int32 eventType, Int32 sessionId)"
+Error	2/3/2026 2:33:13 PM	Application Error	1000	Application Crashing Events	"Faulting application name: PerfWatson2.exe, version: 18.0.11222.15, time stamp: 0xfc6b3872
+Faulting module name: KERNELBASE.dll, version: 10.0.26100.7705, time stamp: 0x0e31726d
+Exception code: 0xe0434352
+Fault offset: 0x00000000000ca80a
+Faulting process id: 0x38CC
+Faulting application start time: 0x1DC94DFE551D154
+Faulting application path: C:\Program Files\Microsoft Visual Studio\18\Community\Common7\IDE\PerfWatson2.exe
+Faulting module path: C:\Windows\System32\KERNELBASE.dll
+Report Id: cf126da1-6060-4168-b961-e585e84ee09a
+Faulting package full name: 
+Faulting package-relative application ID: "
+Error	2/3/2026 2:33:13 PM	.NET Runtime	1026	None	Application: PerfWatson2.exe
+Framework Version: v4.0.30319
+Description: The process was terminated due to an unhandled exception.
+Exception Info: System.InvalidOperationException
+   at System.Collections.Generic.HashSet`1+Enumerator[[System.__Canon, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]].MoveNext()
+   at Microsoft.VisualStudio.Telemetry.RealTimeTelemetrySession.Microsoft.VisualStudio.Telemetry.ETW.IEventRecordReceiver.ReceiveEvent(Microsoft.VisualStudio.Telemetry.ETW.EventData)
+   at Microsoft.VisualStudio.Telemetry.TelemetryService.Microsoft.VisualStudio.Telemetry.ETW.IEventRecordReceiver.ReceiveEvent(Microsoft.VisualStudio.Telemetry.ETW.EventData)
+   at Microsoft.VisualStudio.Telemetry.ETW.TraceEventNativeMethods.ProcessTrace(UInt64[], UInt32, IntPtr, IntPtr)
+   at Microsoft.VisualStudio.Telemetry.ETW.RealtimeETWListener.ProcessWorker()
+   at System.Threading.ExecutionContext.RunInternal(System.Threading.ExecutionContext, System.Threading.ContextCallback, System.Object, Boolean)
+   at System.Threading.ExecutionContext.Run(System.Threading.ExecutionContext, System.Threading.ContextCallback, System.Object, Boolean)
+   at System.Threading.ExecutionContext.Run(System.Threading.ExecutionContext, System.Threading.ContextCallback, System.Object)
+   at System.Threading.ThreadHelper.ThreadStart()
+
+
+Error	1/22/2026 9:48:30 PM	Service1	0	None	"Failed to process session change. System.NullReferenceException: Object reference not set to an instance of an object.
+   at HP.Watcher.WatcherEngine.FireEnrollmentCheckIfPresent()
+   at hptpsmarthealthservice.hptpsmarthealthservice.OnSessionChange(SessionChangeDescription changeDescription)
+   at System.ServiceProcess.ServiceBase.DeferredSessionChange(Int32 eventType, Int32 sessionId)"
+Error	2/7/2026 8:12:14 PM	Service1	0	None	"Failed to process session change. System.NullReferenceException: Object reference not set to an instance of an object.
+   at HP.Watcher.WatcherEngine.FireEnrollmentCheckIfPresent()
+   at hptpsmarthealthservice.hptpsmarthealthservice.OnSessionChange(SessionChangeDescription changeDescription)
+   at System.ServiceProcess.ServiceBase.DeferredSessionChange(Int32 eventType, Int32 sessionId)"
+Error	2/13/2026 10:35:26 AM	VSS	8193	None	"Volume Shadow Copy Service error: Unexpected error calling routine CoCreateInstance.  hr = 0x8007045b, A system shutdown is in progress.
+. "
+Error	2/13/2026 10:35:26 AM	VSS	13	None	"Volume Shadow Copy Service information: The COM Server with CLSID {4e14fba2-2e22-11d1-9964-00c04fbbb345} and name CEventSystem cannot be started. [0x8007045b, A system shutdown is in progress.
+] "
+Error	1/23/2026 9:16:20 AM	Microsoft-Windows-Security-SPP	8198	None	"License Activation (slui.exe) failed with the following error code:
+hr=0x80072EE7
+Command-line arguments:
+RuleId=31e71c49-8da7-4a2f-ad92-45d98a1c79ba;Action=AutoActivate;AppId=55c92734-d682-4d71-983e-d6ec3f16059f;SkuId=bd3762d7-270d-4760-8fb3-d829ca45278a;NotificationInterval=1440;Trigger=TimerEvent"
+Error	1/22/2026 9:01:22 PM	Microsoft-Windows-CertificateServicesClient-CertEnroll	86	None	"SCEP Certificate enrollment initialization for WORKGROUP\DESKTOP-ND0L17F$ via https://NTC-KeyId-23f4e22ad3be374a449772954aa283aed752572e.microsoftaik.azure.net/templates/Aik/scep failed:
+
+GetCACaps
+
+Method: GET(16ms)
+Stage: GetCACaps
+The server name or address could not be resolved 0x80072ee7 (WinHttp: 12007 ERROR_WINHTTP_NAME_NOT_RESOLVED)"
+Error	1/23/2026 9:16:21 AM	Microsoft-Windows-CertificateServicesClient-CertEnroll	86	None	"SCEP Certificate enrollment initialization for WORKGROUP\WIN-80891M6RBOH$ via https://NTC-KeyId-23f4e22ad3be374a449772954aa283aed752572e.microsoftaik.azure.net/templates/Aik/scep failed:
+
+GetCACaps
+
+Method: GET(31ms)
+Stage: GetCACaps
+The server name or address could not be resolved 0x80072ee7 (WinHttp: 12007 ERROR_WINHTTP_NAME_NOT_RESOLVED)"

@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+<title>AI Diagnostics Analyzer</title>
+
+<style>
+
+body{
+background:#0f172a;
+color:white;
+font-family:Arial;
+padding:40px;
+}
+
+.panel{
+background:#1e293b;
+padding:20px;
+margin:20px;
+border-radius:10px;
+}
+
+button{
+background:#2563eb;
+border:none;
+padding:10px 20px;
+color:white;
+cursor:pointer;
+margin-top:10px;
+}
+
+input{
+margin-top:10px;
+}
+
+.card{
+background:#1e293b;
+padding:15px;
+margin:15px 0;
+border-radius:8px;
+}
+
+.high{color:red;}
+.medium{color:orange;}
+.low{color:lightgreen;}
+.info{color:lightblue;}
+
+</style>
+
+</head>
+
+<body>
+
+<h1>AI System Diagnostics Analyzer</h1>
+
+<!-- LOG UPLOAD -->
+
+<div class="panel">
+
+<h2>Upload Log File</h2>
+
+<input type="file" id="logfile">
+
+<br>
+
+<button onclick="uploadLog()">Analyze Logs</button>
+
+</div>
+
+
+<!-- ETL UPLOAD -->
+
+<div class="panel">
+
+<h2>Upload ETL File</h2>
+
+<input type="file" id="etlfile">
+
+<br>
+
+<button onclick="uploadETL()">Analyze ETL</button>
+
+</div>
+
+
+<!-- DUMP UPLOAD -->
+
+<div class="panel">
+
+<h2>Upload Dump File</h2>
+
+<input type="file" id="dumpfile">
+
+<br>
+
+<button onclick="uploadDump()">Analyze Dump</button>
+
+</div>
+
+
+<!-- RESULTS -->
+
+<div class="panel">
+
+<h2>Analysis Results</h2>
+
+<div id="results"></div>
+
+</div>
+
+
+<!-- RCA -->
+
+<div class="panel">
+
+<h2>Final Root Cause Analysis</h2>
+
+<button onclick="runCorrelation()">Run Correlation</button>
+
+<div id="rca"></div>
+
+</div>
+
+
+<script>
+
+
+function displayCards(data){
+
+let container=document.getElementById("results")
+
+container.innerHTML=""
+
+data.files.forEach(file=>{
+
+file.analysis.forEach(card=>{
+
+let div=document.createElement("div")
+
+div.className="card"
+
+let severity=(card.severity || "Medium").toLowerCase()
+
+div.innerHTML=
+"<b>File:</b> "+file.file+"<br>"+
+"<b>Type:</b> "+card.type+"<br>"+
+"<b>Severity:</b> <span class='"+severity+"'>"+card.severity+"</span><br>"+
+"<b>Occurrences:</b> "+card.count+"<br><br>"+
+"<b>Cause:</b><br>"+card.cause+"<br><br>"+
+"<b>Fix:</b><br>"+card.fix
+
+container.appendChild(div)
+
+})
+
+})
+
+}
+
+
+function uploadLog(){
+
+let file=document.getElementById("logfile").files[0]
+
+let data=new FormData()
+
+data.append("logfile",file)
+
+fetch("/analyze_logs",{
+method:"POST",
+body:data
+})
+.then(r=>r.json())
+.then(d=>displayCards(d))
+
+}
+
+
+function uploadETL(){
+
+let file=document.getElementById("etlfile").files[0]
+
+let data=new FormData()
+
+data.append("etlfile",file)
+
+fetch("/analyze_etl",{
+method:"POST",
+body:data
+})
+.then(r=>r.json())
+.then(d=>displayCards(d))
+
+}
+
+
+function uploadDump(){
+
+let file=document.getElementById("dumpfile").files[0]
+
+let data=new FormData()
+
+data.append("dumpfile",file)
+
+fetch("/analyze_dumps",{
+method:"POST",
+body:data
+})
+.then(r=>r.json())
+.then(d=>displayCards(d))
+
+}
+
+
+function runCorrelation(){
+
+fetch("/final_correlation")
+.then(r=>r.json())
+.then(d=>{
+
+let rca=document.getElementById("rca")
+
+rca.innerHTML=
+"<h3>Root Cause</h3>"+d.global_summary.root_cause+
+"<br><br><h3>Fix</h3>"+d.global_summary.fix+
+"<br><br><h3>Confidence</h3>"+d.global_summary.confidence
+
+})
+
+}
+
+
+</script>
+
+
+</body>
+</html>

@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>AI Log Analyzer</title>
+
+<style>
+body{
+    font-family:Arial;
+    background:#0f172a;
+    color:white;
+    padding:30px;
+}
+
+button{
+    padding:8px 14px;
+    background:#3b82f6;
+    border:none;
+    color:white;
+    border-radius:6px;
+    cursor:pointer;
+    margin-top:6px;
+}
+
+.card{
+    background:#1e293b;
+    padding:18px;
+    margin:15px 0;
+    border-radius:10px;
+}
+
+.summary{
+    background:#020617;
+    padding:20px;
+    margin-top:20px;
+    border-radius:10px;
+}
+
+/* CHATBOT ICON */
+#chatIcon{
+position:fixed;
+bottom:20px;
+right:20px;
+background:#3b82f6;
+width:60px;
+height:60px;
+border-radius:50%;
+display:flex;
+align-items:center;
+justify-content:center;
+cursor:pointer;
+font-size:28px;
+box-shadow:0 0 15px rgba(0,0,0,0.4);
+}
+
+/* CHAT WINDOW */
+#chatBox{
+display:none;
+position:fixed;
+bottom:90px;
+right:20px;
+width:320px;
+height:420px;
+background:#f4f4f4;
+border-radius:12px;
+padding:12px;
+box-shadow:0 0 20px rgba(0,0,0,0.6);
+}
+
+#chatLog{
+height:320px;
+overflow-y:auto;
+font-size:13px;
+margin-bottom:10px;
+}
+
+.msgUser{color:#38bdf8;margin-top:6px}
+.msgBot{color:black;margin-top:6px}
+
+input{
+width:70%;
+padding:6px;
+border-radius:6px;
+border:none;
+}
+
+</style>
+</head>
+
+<body>
+
+<h2>AI Log Analyzer</h2>
+
+<input type="file" id="fileInput">
+<button onclick="upload()">Analyze</button>
+
+<div id="out"></div>
+
+<!-- CHAT ICON -->
+<div id="chatIcon" onclick="toggleChat()">🤖</div>
+
+<!-- CHAT WINDOW -->
+<div id="chatBox">
+<div style="display:flex;justify-content:space-between">
+<b>AI Assistant</b>
+<span onclick="toggleChat()" style="cursor:pointer">❌</span>
+</div>
+
+<div id="chatLog"></div>
+
+<input id="msg">
+<button onclick="send()">Send</button>
+</div>
+
+
+<script>
+
+let LAST_ERROR_CONTEXT = "";
+
+/* ---------------- UPLOAD ---------------- */
+function upload(){
+
+ let f=document.getElementById("fileInput").files[0];
+ if(!f){ alert("Select file"); return; }
+
+ let fd=new FormData();
+ fd.append("logfile",f);
+
+ fetch("/analyze",{method:"POST",body:fd})
+ .then(r=>r.json())
+ .then(show);
+}
+
+/* ---------------- SHOW RESULTS ---------------- */
+function show(data){
+
+ let html=`<div class="summary">
+ Total Errors: ${data.total_errors}<br>
+ Active Issues: ${data.active_issues.length}<br>
+ Auto Resolved: ${data.resolved_issues.length}
+ </div>`;
+
+ data.active_issues.forEach(x=>{
+
+ html+=`
+ <div class="card">
+ <b>${x.type}</b><br>
+ Occurrences: ${x.count}<br><br>
+
+ <b>Sample:</b><br>${x.sample}<br><br>
+
+ <b>Cause:</b> ${x.cause}<br>
+ <b>Fix:</b> ${x.fix}<br><br>
+
+ <button onclick="askAI(\`${x.sample}\`)">Ask AI</button>
+
+ </div>`;
+ });
+
+ document.getElementById("out").innerHTML=html;
+}
+
+/* ---------------- CHAT TOGGLE ---------------- */
+function toggleChat(){
+ let c=document.getElementById("chatBox");
+ c.style.display = c.style.display==="none" ? "block":"none";
+}
+
+/* ---------------- SEND NORMAL CHAT ---------------- */
+function send(){
+
+ let q=document.getElementById("msg").value;
+ if(!q) return;
+
+ document.getElementById("chatLog").innerHTML+=
+ `<div class="msgUser"><b>You:</b> ${q}</div>`;
+
+ fetch("/chat",{
+ method:"POST",
+ headers:{"Content-Type":"application/json"},
+ body:JSON.stringify({q:q,context:LAST_ERROR_CONTEXT})
+ })
+ .then(r=>r.json())
+ .then(d=>{
+ document.getElementById("chatLog").innerHTML+=
+ `<div class="msgBot"><b>AI:</b> ${d.answer}</div>`;
+ });
+
+ document.getElementById("msg").value="";
+}
+
+/* ---------------- ASK AI FROM ERROR ---------------- */
+function askAI(errorText){
+
+ LAST_ERROR_CONTEXT = errorText;
+
+ toggleChat();
+
+ document.getElementById("chatLog").innerHTML+=
+ `<div class="msgUser"><b>You:</b> Explain this error</div>`;
+
+ fetch("/chat",{
+ method:"POST",
+ headers:{"Content-Type":"application/json"},
+ body:JSON.stringify({
+     q:"Explain this error and give permanent fix",
+     context:errorText
+ })
+ })
+ .then(r=>r.json())
+ .then(d=>{
+ document.getElementById("chatLog").innerHTML+=
+ `<div class="msgBot"><b>AI:</b> ${d.answer}</div>`;
+ });
+
+}
+
+</script>
+</body>
+</html>

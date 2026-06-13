@@ -1,0 +1,73 @@
+
+    <html>
+    <head>
+        <title>Analysis Report - setupapi.offline.log</title>
+        <style>
+            body {
+                font-family: Arial;
+                background:#0f172a;
+                color:white;
+                padding:30px;
+            }
+            .card {
+                background:#1e293b;
+                padding:15px;
+                margin:15px 0;
+                border-radius:8px;
+            }
+
+        </style>
+    </head>
+    <body>
+
+        <h1>File Analysis Report</h1>
+        <h2>File: setupapi.offline.log</h2>
+        <hr>
+    
+            <div class="card">
+            <b>Type:</b> Storage & filesystem<br>
+            <b>Occurrences:</b> 106<br><br>
+
+            <b>Cause:</b><br>
+            Resource locking issue due to another process holding the hive key, preventing unload of offline registry hives.<br><br>
+
+            <b>Fix:</b><br>
+            Check for and terminate any processes that may be holding onto the hive keys. If necessary, restart the system to release the locks.
+            </div>
+            
+            <div class="card">
+            <b>Type:</b> Storage & filesystem<br>
+            <b>Occurrences:</b> 133<br><br>
+
+            <b>Cause:</b><br>
+            Resource locking issue due to another process holding onto the hive key, preventing unload of registry hives.<br><br>
+
+            <b>Fix:</b><br>
+            Check for and terminate any processes that may be holding onto the hive keys. If necessary, restart the system to ensure a clean slate.
+            </div>
+            
+            <div class="card">
+            <b>Type:</b> Service Control Manager<br>
+            <b>Occurrences:</b> 21<br><br>
+
+            <b>Cause:</b><br>
+            Invalid service configuration or missing dependencies for Microsoft Hyper-V Network Adapter and HID over Bluetooth Low Energy devices services.<br><br>
+
+            <b>Fix:</b><br>
+            Verify service configurations, check for missing dependencies, and ensure correct driver installation.
+            </div>
+            
+            <div class="card">
+            <b>Type:</b> Service Control Manager<br>
+            <b>Occurrences:</b> 1<br><br>
+
+            <b>Cause:</b><br>
+            Invalid service configuration due to missing or incorrect hardware ID<br><br>
+
+            <b>Fix:</b><br>
+            Verify that the BTHLEDevice hardware ID exists in the system and update the mshidumdf.sys driver configuration accordingly.
+            </div>
+            
+    </body>
+    </html>
+    

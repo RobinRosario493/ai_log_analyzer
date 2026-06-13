@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>AI Log Analyzer</title>
+<style>
+body{font-family:Arial;background:#0f172a;color:white;padding:30px}
+button{padding:10px 20px;background:#3b82f6;border:none;color:white}
+.card{background:#1e293b;padding:15px;margin:10px;border-radius:8px}
+.summary{background:#020617;padding:15px;margin-top:20px}
+</style>
+</head>
+
+<body>
+<h2>Upload Log File</h2>
+<input type="file" id="fileInput">
+<button onclick="upload()">Analyze</button>
+
+<div id="out"></div>
+
+<script>
+function upload(){
+ let f=document.getElementById("fileInput").files[0];
+ let fd=new FormData();
+ fd.append("logfile",f);
+
+ fetch("/analyze",{method:"POST",body:fd})
+ .then(r=>r.json())
+ .then(show);
+}
+
+function show(d){
+ let html=`<div class="summary">
+ Total Lines: ${d.total_lines}<br>
+ Unique Patterns: ${d.patterns}<br>
+</div>`;
+
+ html+=`<h3>Level Counts</h3>`;
+ for(let k in d.level_counts){
+   html+=`${k}: ${d.level_counts[k]}<br>`;
+ }
+
+ html+=`<h3>Top Issues</h3>`;
+ d.top.forEach(x=>{
+   html+=`<div class="card">
+   <b>${x.type}</b><br>
+   Count: ${x.count}<br>
+   ${x.cause}<br>
+   Fix: ${x.fix}
+   </div>`;
+ });
+
+ html+=`<h3>All Patterns</h3>`;
+ d.analysis.forEach(x=>{
+   html+=`<div class="card">
+   <b>${x.level}</b> | ${x.type}<br>
+   Occurrences: ${x.count}<br>
+   ${x.cause}<br>
+   Fix: ${x.fix}
+   </div>`;
+ });
+
+ document.getElementById("out").innerHTML=html;
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,282 @@
+
+    <html>
+    <head>
+        <title>Analysis Report - PackageManager.log</title>
+        <style>
+            body {
+                font-family: Arial;
+                background:#0f172a;
+                color:white;
+                padding:30px;
+            }
+            .card {
+                background:#1e293b;
+                padding:15px;
+                margin:15px 0;
+                border-radius:8px;
+            }
+
+        </style>
+    </head>
+    <body>
+
+        <h1>File Analysis Report</h1>
+        <h2>File: PackageManager.log</h2>
+        <hr>
+    
+            <div class="card">
+            <b>Type:</b> Service Control Manager<br>
+            <b>Occurrences:</b> 28<br><br>
+
+            <b>Cause:</b><br>
+            Invalid service startup due to missing dependency<br><br>
+
+            <b>Fix:</b><br>
+            Verify the dependent service is running and configured correctly. Check the service's dependencies in the SCM and ensure all required services are started.
+            </div>
+            
+            <div class="card">
+            <b>Type:</b> Service Control Manager<br>
+            <b>Occurrences:</b> 14<br><br>
+
+            <b>Cause:</b><br>
+            Service dependency missing or corrupted<br><br>
+
+            <b>Fix:</b><br>
+            Verify the service dependencies and restart the service. If the issue persists, check for any recent changes to the service configuration.
+            </div>
+            
+            <div class="card">
+            <b>Type:</b> Service Control Manager (SCM) failure<br>
+            <b>Occurrences:</b> 14<br><br>
+
+            <b>Cause:</b><br>
+            Invalid handle due to incorrect service state transition<br><br>
+
+            <b>Fix:</b><br>
+            Verify service 'hphost' is properly stopped before attempting to stop it again. Check service dependencies and ensure no other processes are holding onto the service handle.
+            </div>
+            
+            <div class="card">
+            <b>Type:</b> Service Control Manager (SCM) failure<br>
+            <b>Occurrences:</b> 14<br><br>
+
+            <b>Cause:</b><br>
+            Invalid handle due to incorrect service state transition<br><br>
+
+            <b>Fix:</b><br>
+            Verify the service 'hphost' is properly stopped before attempting to stop it again. Check for any pending operations or dependencies.
+            </div>
+            
+            <div class="card">
+            <b>Type:</b> Resource Exhaustion<br>
+            <b>Occurrences:</b> 10<br><br>
+
+            <b>Cause:</b><br>
+            File handle leak or process holding file locks, preventing release of system resources.<br><br>
+
+            <b>Fix:</b><br>
+            Run Process Explorer to identify and terminate the processes holding file locks in C:\Program Files\HP\HP On Device Framework. Then, restart the affected services.
+            </div>
+            
+            <div class="card">
+            <b>Type:</b> Filesystem<br>
+            <b>Occurrences:</b> 10<br><br>
+
+            <b>Cause:</b><br>
+            Resource exhaustion due to file locks held by multiple processes<br><br>
+
+            <b>Fix:</b><br>
+            Run 'taskkill /im HP On Device Framework.exe' and then restart the service to release file locks.
+            </div>
+            
+            <div class="card">
+            <b>Type:</b> Driver failure<br>
+            <b>Occurrences:</b> 843<br><br>
+
+            <b>Cause:</b><br>
+            WUDFHost and WUDFCompanionHost driver failures indicate a potential issue with the Windows Driver Foundation (WDF) or USB device stack.<br><br>
+
+            <b>Fix:</b><br>
+            Check for any recent driver updates, disable and re-enable the USB devices, or try rolling back to a previous driver version if available.
+            </div>
+            
+            <div class="card">
+            <b>Type:</b> Service failure<br>
+            <b>Occurrences:</b> 10<br><br>
+
+            <b>Cause:</b><br>
+            svchost and amdpmfservice failures suggest issues with Windows services. svchost hosts multiple services, while amdpmfservice is related to AMD power management.<br><br>
+
+            <b>Fix:</b><br>
+            Check the service status using 'sc query' command, restart the affected services if necessary, or check for any recent updates or configuration changes.
+            </div>
+            
+            <div class="card">
+            <b>Type:</b> Service startup failure<br>
+            <b>Occurrences:</b> 10<br><br>
+
+            <b>Cause:</b><br>
+            amdpmfservice failed to start due to invalid handle<br><br>
+
+            <b>Fix:</b><br>
+            Check the service configuration and ensure that the required handles are valid. Restart the service if necessary.
+            </div>
+            
+            <div class="card">
+            <b>Type:</b> Package Installation Failure<br>
+            <b>Occurrences:</b> 10<br><br>
+
+            <b>Cause:</b><br>
+            Invalid package cache directory permissions<br><br>
+
+            <b>Fix:</b><br>
+            Run `icacls C:\ProgramData\Package Cache` with elevated privileges to grant write access to the BUILTIN\Administrators group, then restart the Windows Installer service.
+            </div>
+            
+            <div class="card">
+            <b>Type:</b> Service Control Manager<br>
+            <b>Occurrences:</b> 10<br><br>
+
+            <b>Cause:</b><br>
+            Invalid package installation due to missing or corrupted dependencies.<br><br>
+
+            <b>Fix:</b><br>
+            Verify the integrity of the packages and their dependencies, reinstall if necessary, and ensure proper permissions for installation.
+            </div>
+            
+            <div class="card">
+            <b>Type:</b> Service Control Manager<br>
+            <b>Occurrences:</b> 10<br><br>
+
+            <b>Cause:</b><br>
+            Failed package installation due to invalid or missing dependencies<br><br>
+
+            <b>Fix:</b><br>
+            Verify the package cache and dependencies for hp.win.svc.voice.1.0.118.nupkg, then reinstall the package.
+            </div>
+            
+            <div class="card">
+            <b>Type:</b> Service Control Manager<br>
+            <b>Occurrences:</b> 8<br><br>
+
+            <b>Cause:</b><br>
+            Failed service installation due to missing dependencies or corrupted package<br><br>
+
+            <b>Fix:</b><br>
+            Verify the package integrity and ensure all required dependencies are installed before attempting reinstallation.
+            </div>
+            
+            <div class="card">
+            <b>Type:</b> Service Control Manager<br>
+            <b>Occurrences:</b> 8<br><br>
+
+            <b>Cause:</b><br>
+            Missing or corrupted service dependency<br><br>
+
+            <b>Fix:</b><br>
+            Check the service dependencies and ensure 'hphost' is properly registered and started.
+            </div>
+            
+            <div class="card">
+            <b>Type:</b> Service Control Manager<br>
+            <b>Occurrences:</b> 5<br><br>
+
+            <b>Cause:</b><br>
+            Missing or corrupted service definition for 'hphost'<br><br>
+
+            <b>Fix:</b><br>
+            Verify service installation and configuration, check for any recent changes to the service definition.
+            </div>
+            
+            <div class="card">
+            <b>Type:</b> Service startup failure<br>
+            <b>Occurrences:</b> 10<br><br>
+
+            <b>Cause:</b><br>
+            Failed service dependencies or configuration corruption during startup of DataExchangeHost and SearchProtocolHost services.<br><br>
+
+            <b>Fix:</b><br>
+            Check the Windows Event Log for specific error messages related to these services. Verify that the services are configured correctly and their dependencies are met. If necessary, restart the services or check for corrupted system files using System File Checker (SFC).
+            </div>
+            
+            <div class="card">
+            <b>Type:</b> Service Control Manager<br>
+            <b>Occurrences:</b> 14<br><br>
+
+            <b>Cause:</b><br>
+            Service startup failure due to missing dependency<br><br>
+
+            <b>Fix:</b><br>
+            Verify that all required services are running and dependencies are met. Check service logs for further details.
+            </div>
+            
+            <div class="card">
+            <b>Type:</b> Service Control Manager<br>
+            <b>Occurrences:</b> 1<br><br>
+
+            <b>Cause:</b><br>
+            Service startup failure due to invalid service configuration<br><br>
+
+            <b>Fix:</b><br>
+            Verify the service configuration and restart the service. If the issue persists, check for any recent changes to the service's dependencies or permissions.
+            </div>
+            
+            <div class="card">
+            <b>Type:</b> Service Control Manager<br>
+            <b>Occurrences:</b> 1<br><br>
+
+            <b>Cause:</b><br>
+            Invalid handle due to incorrect service name or permissions issue<br><br>
+
+            <b>Fix:</b><br>
+            Verify the service name and ensure the account running the service has necessary permissions. Check event logs for related errors.
+            </div>
+            
+            <div class="card">
+            <b>Type:</b> Service Control Manager<br>
+            <b>Occurrences:</b> 1<br><br>
+
+            <b>Cause:</b><br>
+            Invalid handle due to incorrect service reference or permissions issue<br><br>
+
+            <b>Fix:</b><br>
+            Verify the service exists and has correct permissions, then retry stopping the service using `net stop hphost` command
+            </div>
+            
+            <div class="card">
+            <b>Type:</b> Service Control Manager<br>
+            <b>Occurrences:</b> 1<br><br>
+
+            <b>Cause:</b><br>
+            Missing or corrupted service registration<br><br>
+
+            <b>Fix:</b><br>
+            Verify the 'hphost' service is registered and configured correctly. Check the Windows Service Manager for any issues.
+            </div>
+            
+            <div class="card">
+            <b>Type:</b> Service Control Manager<br>
+            <b>Occurrences:</b> 1<br><br>
+
+            <b>Cause:</b><br>
+            Invalid service startup due to missing or corrupted package cache<br><br>
+
+            <b>Fix:</b><br>
+            Verify the integrity of the C:\ProgramData\Package Cache directory and ensure it has sufficient permissions for the PackageManager to function correctly.
+            </div>
+            
+            <div class="card">
+            <b>Type:</b> Service Control Manager<br>
+            <b>Occurrences:</b> 14<br><br>
+
+            <b>Cause:</b><br>
+            Invalid handle due to incorrect permissions on the package cache directory<br><br>
+
+            <b>Fix:</b><br>
+            Verify that the account running the service has write permissions on C:\ProgramData\Package Cache\Installer_Install and ensure it is not a permission issue.
+            </div>
+            
+    </body>
+    </html>
+    

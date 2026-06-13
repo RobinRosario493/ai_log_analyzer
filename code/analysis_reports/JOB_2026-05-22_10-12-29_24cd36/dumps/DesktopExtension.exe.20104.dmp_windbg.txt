@@ -1,0 +1,416 @@
+
+************* Path validation summary **************
+Response                         Time (ms)     Location
+Deferred                                       srv*C:\symbols*https://msdl.microsoft.com/download/symbols
+OK                                             uploaded_pdbs
+Opened log file 'analysis_reports\JOB_2026-05-22_10-12-29_24cd36\dumps\DesktopExtension.exe.20104.dmp_windbg.txt'
+
+************* Preparing the environment for Debugger Extensions Gallery repositories **************
+   ExtensionRepository : Implicit
+   UseExperimentalFeatureForNugetShare : true
+   AllowNugetExeUpdate : true
+   NonInteractiveNuget : true
+   AllowNugetMSCredentialProviderInstall : true
+   AllowParallelInitializationOfLocalRepositories : true
+   EnableRedirectToChakraJsProvider : false
+
+   -- Configuring repositories
+      ----> Repository : LocalInstalled, Enabled: true
+      ----> Repository : UserExtensions, Enabled: true
+
+>>>>>>>>>>>>> Preparing the environment for Debugger Extensions Gallery repositories completed, duration 0.000 seconds
+
+************* Waiting for Debugger Extensions Gallery to Initialize **************
+
+>>>>>>>>>>>>> Waiting for Debugger Extensions Gallery to Initialize completed, duration 0.781 seconds
+   ----> Repository : UserExtensions, Enabled: true, Packages count: 0
+   ----> Repository : LocalInstalled, Enabled: true, Packages count: 46
+
+Microsoft (R) Windows Debugger Version 10.0.29547.1002 AMD64
+Copyright (c) Microsoft Corporation. All rights reserved.
+
+
+Loading Dump File [C:\Users\robin\OneDrive\Desktop\ai_log_analyzer\code\analysis_reports\JOB_2026-05-22_10-12-29_24cd36\dumps\DesktopExtension.exe.20104.dmp]
+User Mini Dump File: Only registers, stack and portions of memory are available
+
+
+************* Path validation summary **************
+Response                         Time (ms)     Location
+Deferred                                       srv*C:\symbols*https://msdl.microsoft.com/download/symbols
+OK                                             uploaded_pdbs
+Symbol search path is: srv*C:\symbols*https://msdl.microsoft.com/download/symbols;uploaded_pdbs
+Executable search path is: 
+Windows 10 Version 26200 MP (16 procs) Free x64
+Product: WinNt, suite: SingleUserTS Personal
+Edition build lab: 26100.1.amd64fre.ge_release.240331-1435
+Debug session time: Sun Mar  1 12:54:44.000 2026 (UTC + 5:30)
+System Uptime: 17 days 16:57:27.434
+Process Uptime: 0 days 0:01:01.000
+.NatVis script successfully loaded from 'C:\Program Files\WindowsApps\Microsoft.WinDbg_1.2603.20001.0_x64__8wekyb3d8bbwe\amd64\Visualizers\atlmfc.natvis'
+NatVis script successfully loaded from 'C:\Program Files\WindowsApps\Microsoft.WinDbg_1.2603.20001.0_x64__8wekyb3d8bbwe\amd64\Visualizers\concurrency.natvis'
+NatVis script successfully loaded from 'C:\Program Files\WindowsApps\Microsoft.WinDbg_1.2603.20001.0_x64__8wekyb3d8bbwe\amd64\Visualizers\cpp_rest.natvis'
+NatVis script successfully loaded from 'C:\Program Files\WindowsApps\Microsoft.WinDbg_1.2603.20001.0_x64__8wekyb3d8bbwe\amd64\Visualizers\ObjectiveC.natvis'
+NatVis script successfully loaded from 'C:\Program Files\WindowsApps\Microsoft.WinDbg_1.2603.20001.0_x64__8wekyb3d8bbwe\amd64\Visualizers\stl.natvis'
+NatVis script successfully loaded from 'C:\Program Files\WindowsApps\Microsoft.WinDbg_1.2603.20001.0_x64__8wekyb3d8bbwe\amd64\Visualizers\Windows.Data.Json.natvis'
+NatVis script successfully loaded from 'C:\Program Files\WindowsApps\Microsoft.WinDbg_1.2603.20001.0_x64__8wekyb3d8bbwe\amd64\Visualizers\Windows.Devices.Geolocation.natvis'
+NatVis script successfully loaded from 'C:\Program Files\WindowsApps\Microsoft.WinDbg_1.2603.20001.0_x64__8wekyb3d8bbwe\amd64\Visualizers\Windows.Devices.Sensors.natvis'
+NatVis script successfully loaded from 'C:\Program Files\WindowsApps\Microsoft.WinDbg_1.2603.20001.0_x64__8wekyb3d8bbwe\amd64\Visualizers\Windows.Media.natvis'
+NatVis script successfully loaded from 'C:\Program Files\WindowsApps\Microsoft.WinDbg_1.2603.20001.0_x64__8wekyb3d8bbwe\amd64\Visualizers\windows.natvis'
+NatVis script successfully loaded from 'C:\Program Files\WindowsApps\Microsoft.WinDbg_1.2603.20001.0_x64__8wekyb3d8bbwe\amd64\Visualizers\winrt.natvis'
+..CLR providers have been placed in the service container
+.............................................................
+...........................................................
+Loading unloaded module list
+.
+----------------------------------------------------------------------------
+The user dump currently examined is a minidump. Consequently, only a subset
+of sos.dll functionality will be available. If needed, attaching to the live
+process or debugging a full dump will allow access to sos.dll's full feature
+set.
+To create a full user dump use the command: .dump /ma <filename>
+----------------------------------------------------------------------------
+This dump file has an exception of interest stored in it.
+The stored exception information can be accessed via .ecxr
+(4e88.4d44): Access violation - code c0000005 (first/second chance not available)
+
++------------------------------------------------------------------------+
+| This target supports Hardware-enforced Stack Protection. A HW based    |
+| "Shadow Stack" may be available to assist in debugging and analysis.   |
+| See aka.ms/userhsp for more info.                                      |
+|                                                                        |
+| dps @ssp                                                               |
+|                                                                        |
++------------------------------------------------------------------------+
+
+For analysis of this file, run !analyze -v
+ntdll!NtWaitForMultipleObjects+0x14:
+00007ff8`268225a4 c3              ret
+0:000> .symfix; .reload;!analyze -v; lm; k; q
+.symfix; .reload;!analyze -v; lm; k; q
+................................................................
+................................................................
+...................
+Loading unloaded module list
+.
+................................................................
+................................................................
+...................
+Loading unloaded module list
+.
+*******************************************************************************
+*                                                                             *
+*                        Exception Analysis                                   *
+*                                                                             *
+*******************************************************************************
+
+!ip2md 7fff91af01f7
+
+Failed to request MethodData, not in JIT code range
+
+KEY_VALUES_STRING: 1
+
+    Key  : AV.Dereference
+    Value: NullPtr
+
+    Key  : AV.Type
+    Value: Read
+
+    Key  : Analysis.CPU.mSec
+    Value: 4406
+
+    Key  : Analysis.Elapsed.mSec
+    Value: 7372
+
+    Key  : Analysis.IO.Other.Mb
+    Value: 0
+
+    Key  : Analysis.IO.Read.Mb
+    Value: 1
+
+    Key  : Analysis.IO.Write.Mb
+    Value: 0
+
+    Key  : Analysis.Init.CPU.mSec
+    Value: 687
+
+    Key  : Analysis.Init.Elapsed.mSec
+    Value: 4609
+
+    Key  : Analysis.Memory.CommitPeak.Mb
+    Value: 159
+
+    Key  : Analysis.Version.DbgEng
+    Value: 10.0.29547.1002
+
+    Key  : Analysis.Version.Description
+    Value: 10.2602.27.2 amd64fre
+
+    Key  : Analysis.Version.Ext
+    Value: 1.2602.27.2
+
+    Key  : CLR.BuiltBy
+    Value: NET481REL1LAST_25H2_C
+
+    Key  : CLR.Engine
+    Value: CLR
+
+    Key  : CLR.Version
+    Value: 4.8.9325.0
+
+    Key  : Failure.Bucket
+    Value: INVALID_POINTER_READ_c0000005_RtkAudioCore.dll!Unknown
+
+    Key  : Failure.Exception.Code
+    Value: 0xc0000005
+
+    Key  : Failure.Exception.IP.Address
+    Value: 0x7fff91af01f7
+
+    Key  : Failure.Exception.IP.Module
+    Value: RtkAudioCore
+
+    Key  : Failure.Exception.IP.Offset
+    Value: 0x701f7
+
+    Key  : Failure.Hash
+    Value: {942aa5b1-3306-67b8-6db8-35ea320aa5bb}
+
+    Key  : Failure.ProblemClass.Primary
+    Value: INVALID_POINTER_READ
+
+    Key  : Faulting.IP.Type
+    Value: Paged
+
+    Key  : Timeline.OS.Boot.DeltaSec
+    Value: 1529847
+
+    Key  : Timeline.Process.Start.DeltaSec
+    Value: 61
+
+    Key  : WER.OS.Branch
+    Value: ge_release
+
+    Key  : WER.OS.Version
+    Value: 10.0.26100.1
+
+    Key  : WER.Process.Version
+    Value: 1.0.0.0
+
+
+FILE_IN_CAB:  DesktopExtension.exe.20104.dmp
+
+NTGLOBALFLAG:  0
+
+APPLICATION_VERIFIER_FLAGS:  0
+
+CONTEXT:  (.ecxr)
+.ecxr
+rax=0000000000000000 rbx=0000000000000000 rcx=000001a7fb2c3608
+rdx=00007fff91c60000 rsi=000001a7fb2e5200 rdi=000001a7fb2c3650
+rip=00007fff91af01f7 rsp=0000008bf4bff160 rbp=0000f4d8e8cf5aec
+ r8=0000000000000001  r9=0000000000000033 r10=98940b50de7ce56e
+r11=000000000000000b r12=0000000000000001 r13=00007fff91bac5b4
+r14=0000008bf4bff2c8 r15=000001a7fb2b4400
+iopl=0         nv up ei pl nz na pe nc
+cs=0033  ss=002b  ds=002b  es=002b  fs=0053  gs=002b             efl=00010206
+RtkAudioCore+0x701f7:
+00007fff`91af01f7 4c8b00          mov     r8,qword ptr [rax] ds:00000000`00000000=????????????????
+.cxr
+Resetting default scope
+
+EXCEPTION_RECORD:  (.exr -1)
+.exr -1
+ExceptionAddress: 00007fff91af01f7 (RtkAudioCore+0x00000000000701f7)
+   ExceptionCode: c0000005 (Access violation)
+  ExceptionFlags: 00000000
+NumberParameters: 2
+   Parameter[0]: 0000000000000000
+   Parameter[1]: 0000000000000000
+Attempt to read from address 0000000000000000
+
+PROCESS_NAME:  DesktopExtension.exe
+
+READ_ADDRESS:  0000000000000000 
+
+ERROR_CODE: (NTSTATUS) 0xc0000005 - The instruction at 0x%p referenced memory at 0x%p. The memory could not be %s.
+
+EXCEPTION_CODE_STR:  c0000005
+
+EXCEPTION_PARAMETER1:  0000000000000000
+
+EXCEPTION_PARAMETER2:  0000000000000000
+
+STACK_TEXT:  
+0000008b`f4bff160 00000000`00000000     : 00000000`00000000 00000000`00000000 00000000`00000000 00000000`00000000 : RtkAudioCore+0x701f7
+
+
+STACK_COMMAND: ~0s; .ecxr ; kb
+
+IP_IN_PAGED_CODE: 
+RtkAudioCore+701f7
+00007fff`91af01f7 4c8b00          mov     r8,qword ptr [rax]
+
+SYMBOL_NAME:  RtkAudioCore+701f7
+
+MODULE_NAME: RtkAudioCore
+
+IMAGE_NAME:  RtkAudioCore.dll
+
+FAILURE_BUCKET_ID:  INVALID_POINTER_READ_c0000005_RtkAudioCore.dll!Unknown
+
+OS_VERSION:  10.0.26100.1
+
+BUILDLAB_STR:  ge_release
+
+OSPLATFORM_TYPE:  x64
+
+OSNAME:  Windows 10
+
+IMAGE_VERSION:  1.51.362.225
+
+FAILURE_ID_HASH:  {942aa5b1-3306-67b8-6db8-35ea320aa5bb}
+
+Followup:     MachineOwner
+---------
+
+start             end                 module name
+000001a7`f5c20000 000001a7`f5c3a000   DesktopExtension   (deferred)             
+000001a7`f5f20000 000001a7`f5f2a000   System_Runtime   (deferred)             
+000001a7`f5f30000 000001a7`f5f38000   System_Runtime_InteropServices_WindowsRuntime   (deferred)             
+000001a7`f5f40000 000001a7`f5f86000   log4net    (deferred)             
+000001a7`f5fb0000 000001a7`f5fc1000   Windows_Foundation   (deferred)             
+000001a7`f8e60000 000001a7`f8e87000   Windows_Storage_1a7f8e60000   (deferred)             
+000001a7`f8e90000 000001a7`f8eb6000   System_Runtime_WindowsRuntime   (deferred)             
+000001a7`f8ec0000 000001a7`f8eed000   Windows_System   (deferred)             
+000001a7`fa000000 000001a7`fa0d9000   Windows_ApplicationModel_1a7fa000000   (deferred)             
+000001a7`fa2d0000 000001a7`fa2d7000   DTSApo4xWinRTComponent   (deferred)             
+000001a7`fa2e0000 000001a7`fa2e8000   System_ObjectModel   (deferred)             
+000001a7`fa300000 000001a7`fa31c000   RtkAudioCore_1a7fa300000   (deferred)             
+000001a7`fa330000 000001a7`fa33b000   FMAPOCTL_1a7fa330000   (deferred)             
+000001a7`fa350000 000001a7`fa35e000   Wacom_ISD_SettingsClient   (deferred)             
+000001a7`fa370000 000001a7`fa44b000   Windows_Devices   (deferred)             
+000001a7`fa450000 000001a7`fa509000   Windows_Media   (deferred)             
+000001a7`fa510000 000001a7`fa5e9000   Windows_ApplicationModel_1a7fa510000   (deferred)             
+000001a7`fa670000 000001a7`fa68a000   netstandard   (deferred)             
+000001a7`fa700000 000001a7`fad16000   HP_AudioControl   (deferred)             
+000001a7`fad20000 000001a7`fad76000   HP_PenControl   (deferred)             
+00007ff8`03a50000 00007ff8`03b14000   Windows_StateRepositoryPS   (deferred)             
+00007ff8`03d00000 00007ff8`03d50000   MSWB7      (deferred)             
+00007ff8`03ec0000 00007ff8`03ef0000   DevDispItemProvider   (deferred)             
+00007ff8`04ab0000 00007ff8`04b52000   MpOAV      (deferred)             
+00007ff8`04c20000 00007ff8`04d86000   System_Management   (deferred)             
+00007ff8`051f0000 00007ff8`0520f000   wmiutils   (deferred)             
+00007ff8`05220000 00007ff8`05870000   OneCoreUAPCommonProxyStub   (deferred)             
+00007ff8`05960000 00007ff8`05a51000   fastprox   (deferred)             
+00007ff8`05d20000 00007ff8`05f64000   twinapi_appcore   (pdb symbols)          C:\ProgramData\Dbg\sym\twinapi.appcore.pdb\2093093579E997DDDE4942E078A40DF51\twinapi.appcore.pdb
+00007ff8`0ab70000 00007ff8`0ab85000   wbemsvc    (deferred)             
+00007ff8`0cbb0000 00007ff8`0cbca000   windows_staterepositorycore   (deferred)             
+00007ff8`0e010000 00007ff8`0e08a000   wbemcomn   (deferred)             
+00007ff8`0e090000 00007ff8`0e0a2000   wbemprox   (deferred)             
+00007ff8`0e200000 00007ff8`0e246000   System_ServiceProcess   (deferred)             
+00007ff8`0e610000 00007ff8`0eec1000   System_Xml   (deferred)             
+00007ff8`10630000 00007ff8`10763000   System_Configuration   (deferred)             
+00007ff8`10770000 00007ff8`111f5000   System_Core   (deferred)             
+00007ff8`117e0000 00007ff8`12402000   System     (deferred)             
+00007ff8`128f0000 00007ff8`12929000   rometadata   (deferred)             
+00007ff8`12a50000 00007ff8`12b41000   Windows_Media_Devices   (deferred)             
+00007ff8`12d70000 00007ff8`12e9f000   clrjit     (deferred)             
+00007ff8`154f0000 00007ff8`16aff000   mscorlib   (deferred)             
+00007ff8`16bc0000 00007ff8`16bdd000   amsi       (deferred)             
+00007ff8`16db0000 00007ff8`16dcf000   Windows_Shell_ServiceHostBuilder   (deferred)             
+00007ff8`175a0000 00007ff8`1766e000   ucrtbase_clr0400   (deferred)             
+00007ff8`17670000 00007ff8`17708000   MMDevAPI   (deferred)             
+00007ff8`17710000 00007ff8`180b4000   clr        (pdb symbols)          C:\ProgramData\Dbg\sym\clr.pdb\FBECA55044B14C4BB038D19A545175E63\clr.pdb
+00007ff8`18230000 00007ff8`1839e000   AppXDeploymentClient   (deferred)             
+00007ff8`184a0000 00007ff8`184ac000   VCRUNTIME140_1_CLR0400   (deferred)             
+00007ff8`184b0000 00007ff8`184cb000   VCRUNTIME140_CLR0400   (deferred)             
+00007ff8`185d0000 00007ff8`1866b000   mscoreei   (deferred)             
+00007ff8`18680000 00007ff8`186ed000   mscoree    (deferred)             
+00007ff8`18fc0000 00007ff8`18fcb000   version    (deferred)             
+00007ff8`1d9a0000 00007ff8`1daa3000   propsys    (deferred)             
+00007ff8`1e090000 00007ff8`1e145000   policymanager   (deferred)             
+00007ff8`20540000 00007ff8`205eb000   uxtheme    (deferred)             
+00007ff8`21760000 00007ff8`21794000   IPHLPAPI   (deferred)             
+00007ff8`21ca0000 00007ff8`21cd9000   rsaenh     (deferred)             
+00007ff8`21d40000 00007ff8`21d5b000   kernel_appcore   (deferred)             
+00007ff8`21e60000 00007ff8`21e96000   ntmarta    (deferred)             
+00007ff8`22360000 00007ff8`2238b000   userenv    (deferred)             
+00007ff8`225f0000 00007ff8`2260b000   cryptsp    (deferred)             
+00007ff8`22610000 00007ff8`2261c000   CRYPTBASE   (deferred)             
+00007ff8`22c00000 00007ff8`22c57000   cfgmgr32   (deferred)             
+00007ff8`22c60000 00007ff8`22c8d000   devobj     (deferred)             
+00007ff8`22dc0000 00007ff8`22e62000   sxs        (deferred)             
+00007ff8`22e90000 00007ff8`22eba000   bcrypt     (deferred)             
+00007ff8`22ec0000 00007ff8`22ee9000   profapi    (deferred)             
+00007ff8`22fa0000 00007ff8`23045000   bcryptPrimitives   (deferred)             
+00007ff8`23050000 00007ff8`2319b000   ucrtbase   (deferred)             
+00007ff8`231a0000 00007ff8`23a03000   Windows_Storage   (deferred)             
+00007ff8`23c50000 00007ff8`23c77000   win32u     (deferred)             
+00007ff8`23c80000 00007ff8`23dea000   WinTypes   (deferred)             
+00007ff8`23e80000 00007ff8`23fab000   gdi32full   (deferred)             
+00007ff8`23fb0000 00007ff8`243a1000   KERNELBASE   (pdb symbols)          C:\ProgramData\Dbg\sym\kernelbase.pdb\A90E5D05D0B1888A19154D2C8EA9C6871\kernelbase.pdb
+00007ff8`243b0000 00007ff8`24453000   msvcp_win   (deferred)             
+00007ff8`24520000 00007ff8`24551000   imm32      (deferred)             
+00007ff8`24a50000 00007ff8`24b68000   rpcrt4     (deferred)             
+00007ff8`24b70000 00007ff8`24d36000   user32     (pdb symbols)          C:\ProgramData\Dbg\sym\user32.pdb\B542AE7A5C9557CB1D2A08DB389942671\user32.pdb
+00007ff8`24f20000 00007ff8`25672000   shell32    (deferred)             
+00007ff8`25680000 00007ff8`256e7000   shlwapi    (deferred)             
+00007ff8`256f0000 00007ff8`257b9000   kernel32   (pdb symbols)          C:\ProgramData\Dbg\sym\kernel32.pdb\B6CA8B991DC7692CFB6097D608FB6ACE1\kernel32.pdb
+00007ff8`257c0000 00007ff8`25869000   msvcrt     (deferred)             
+00007ff8`25870000 00007ff8`2589b000   gdi32      (deferred)             
+00007ff8`258a0000 00007ff8`25977000   oleaut32   (deferred)             
+00007ff8`25a90000 00007ff8`25b86000   SHCore     (deferred)             
+00007ff8`25b90000 00007ff8`25c36000   sechost    (deferred)             
+00007ff8`25c40000 00007ff8`25c60000   imagehlp   (deferred)             
+00007ff8`25c70000 00007ff8`25e07000   ole32      (private pdb symbols)  C:\ProgramData\Dbg\sym\ole32.pdb\C829BFC31AC609507C25E3B45EA48E2D1\ole32.pdb
+00007ff8`25f90000 00007ff8`26040000   clbcatq    (deferred)             
+00007ff8`26050000 00007ff8`26104000   advapi32   (deferred)             
+00007ff8`26180000 00007ff8`262df000   msctf      (deferred)             
+00007ff8`262f0000 00007ff8`26676000   combase    (deferred)             
+00007ff8`266c0000 00007ff8`26928000   ntdll      (pdb symbols)          C:\ProgramData\Dbg\sym\ntdll.pdb\2CF5F86ACB68735923D72913BBD9B0E31\ntdll.pdb
+00007fff`91a80000 00007fff`91cb0000   RtkAudioCore T (no symbols)           
+00007fff`b9b30000 00007fff`b9bb9000   FMAPOCTL   (deferred)             
+00007fff`bba60000 00007fff`bba72000   OnDemandBrokerClient   (deferred)             
+00007fff`cadb0000 00007fff`cadb8000   DefaultDeviceManager   (deferred)             
+00007fff`cade0000 00007fff`cadef000   DDORes     (deferred)             
+00007fff`cf960000 00007fff`cf9ec000   MSVCP140_APP   (deferred)             
+00007fff`d2610000 00007fff`d2668000   biwinrt    (deferred)             
+00007fff`d7ae0000 00007fff`d7b32000   vccorlib140_app   (deferred)             
+00007fff`da9a0000 00007fff`da9bd000   VCRUNTIME140_APP   (deferred)             
+00007fff`dbec0000 00007fff`dbf1d000   capauthz   (deferred)             
+00007fff`dccc0000 00007fff`dcd9f000   AppContracts   (deferred)             
+00007fff`dd120000 00007fff`dd12c000   VCRUNTIME140_1_APP   (deferred)             
+00007fff`dd130000 00007fff`dd18d000   execmodelclient   (deferred)             
+00007fff`e3380000 00007fff`e3394000   execmodelproxy   (deferred)             
+00007fff`ecda0000 00007fff`ecefa000   wpnapps    (deferred)             
+00007fff`ed680000 00007fff`ed6d8000   Windows_System_Diagnostics   (deferred)             
+00007fff`f48b0000 00007fff`f4917000   Windows_Storage_ApplicationData   (deferred)             
+00007fff`f5ac0000 00007fff`f5c16000   Windows_UI   (deferred)             
+00007fff`f6480000 00007fff`f653d000   Windows_Devices_Enumeration   (deferred)             
+00007fff`f6540000 00007fff`f6617000   Windows_ApplicationModel   (deferred)             
+00007fff`f6e20000 00007fff`f6e68000   windows_staterepositoryclient   (deferred)             
+00007fff`f78b0000 00007fff`f796f000   Windows_FileExplorer_Common   (deferred)             
+00007fff`f7980000 00007fff`f7a49000   OneCoreCommonProxyStub   (deferred)             
+00007fff`fca60000 00007fff`fccfe000   icu        (deferred)             
+00007fff`fcd10000 00007fff`fcdcf000   StructuredQuery   (deferred)             
+00007fff`ff040000 00007fff`ff1f4000   AudioSes   (deferred)             
+00007fff`ffb90000 00007fff`ffbbf000   wminet_utils   (deferred)             
+
+Unloaded modules:
+00007ff8`24460000 00007ff8`24468000   psapi.dll
+ # Child-SP          RetAddr               Call Site
+00 0000008b`f4bfdc28 00007ff8`23ff2533     ntdll!NtWaitForMultipleObjects+0x14
+01 0000008b`f4bfdc30 00007ff8`23ff2401     KERNELBASE!WaitForMultipleObjectsEx+0x123
+02 0000008b`f4bfdf20 00007ff8`257412f0     KERNELBASE!WaitForMultipleObjects+0x11
+03 0000008b`f4bfdf60 00007ff8`257687ed     kernel32!WerpReportFaultInternal+0x62c
+04 0000008b`f4bfe0e0 00007ff8`240c58bc     kernel32!WerpReportFault+0xc5
+05 0000008b`f4bfe130 00007ff8`2682a4a3     KERNELBASE!UnhandledExceptionFilter+0x34c
+06 0000008b`f4bfe220 00007ff8`267e1853     ntdll!RtlUserThreadStart$filt$0+0x3f
+07 0000008b`f4bfe250 00007ff8`2682618f     ntdll!_C_specific_handler+0x93
+08 0000008b`f4bfe2c0 00007ff8`266d2327     ntdll!RtlpExecuteHandlerForException+0xf
+09 0000008b`f4bfe2f0 00007ff8`26825ace     ntdll!RtlDispatchException+0x437
+0a 0000008b`f4bfea40 00007fff`91af01f7     ntdll!KiUserExceptionDispatch+0x2e
+0b 0000008b`f4bff160 00000000`00000000     RtkAudioCore+0x701f7
+Exit a remote ntsd/cdb client with Ctrl-b<enter>.
+Exit a remote windbg client with File.Exit (Alt-F4).
+If you really want the server to quit use an extra q, such as 'qq' or 'qqd'.

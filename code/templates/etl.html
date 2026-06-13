@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+    <title>AI System Analyzer</title>
+
+    <style>
+        body {
+            background: #0f172a;
+            color: #fff;
+            font-family: Segoe UI;
+            margin: 0
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: auto;
+            padding: 30px
+        }
+
+        h1 {
+            text-align: center
+        }
+
+        .section {
+            background: #020617;
+            padding: 20px;
+            margin-bottom: 25px;
+            border-radius: 10px
+        }
+
+        button {
+            padding: 8px 14px;
+            background: #2563eb;
+            border: none;
+            color: white;
+            border-radius: 6px;
+            cursor: pointer
+        }
+
+        .card {
+            background: #1e293b;
+            padding: 15px;
+            margin: 12px 0;
+            border-radius: 8px
+        }
+
+        .badge {
+            padding: 3px 8px;
+            border-radius: 20px;
+            font-size: 12px;
+        }
+
+        .active {
+            background: #dc2626;
+        }
+
+        .resolved {
+            background: #059669;
+        }
+
+        .chat-toggle {
+            position: fixed;
+            bottom: 25px;
+            right: 25px;
+            width: 55px;
+            height: 55px;
+            border-radius: 50%;
+            background: #2563eb;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            cursor: pointer
+        }
+
+        .chat-window {
+            position: fixed;
+            bottom: 95px;
+            right: 25px;
+            width: 350px;
+            height: 420px;
+            background: #1e293b;
+            display: none;
+            flex-direction: column;
+            border-radius: 10px
+        }
+
+        .chat-box {
+            flex: 1;
+            overflow: auto;
+            padding: 10px
+        }
+
+        .chat-input {
+            display: flex;
+            padding: 10px
+        }
+
+        .chat-input input {
+            flex: 1
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <div class="container">
+        <h1>Unified AI Analyzer</h1>
+
+        <!-- LOG UPLOAD -->
+
+        <div class="section">
+            <h3>Upload Logs (.txt)</h3>
+            <input type="file" id="logs" multiple>
+            <button onclick="analyzeLogs()">Analyze Logs</button>
+            <div id="logResults"></div>
+        </div>
+
+        <!-- LOG FILE (.log) UPLOAD -->
+        <div class="section">
+            <h3>Upload Logs (.log)</h3>
+            <input type="file" id="dotLogs" multiple>
+            <button onclick="analyzeDotLogs()">Analyze .log</button>
+            <div id="dotLogResults"></div>
+        </div>
+
+        <!-- ETL UPLOAD -->
+
+        <div class="section">
+            <h3>Upload ETL Files (.etl)</h3>
+            <input type="file" id="etlFiles" multiple>
+            <button onclick="analyzeETL()">Analyze ETL</button>
+            <div id="etlResults"></div>
+        </div>
+
+        <!-- DUMP UPLOAD -->
+
+        <div class="section">
+            <h3>Upload Dumps (.dmp)</h3>
+            <input type="file" id="dumps" multiple>
+            <input type="file" id="pdbs" multiple>
+            <button onclick="analyzeDumps()">Analyze Dumps</button>
+            <div id="dumpResults"></div>
+        </div>
+
+    </div>
+
+    <!-- CHAT -->
+
+    <div class="chat-toggle" onclick="toggleChat()">🤖</div>
+
+    <div class="chat-window" id="chatWindow">
+        <div class="chat-box" id="chatBox"></div>
+        <div class="chat-input">
+            <input id="chatInput">
+            <button onclick="sendChat()">Send</button>
+        </div>
+    </div>
+
+    <script>
+        function analyzeDotLogs() {
+            let files = document.getElementById("dotLogs").files;
+            if (files.length === 0) { alert("Select .log file"); return; }
+
+            let fd = new FormData();
+            for (let f of files) fd.append("logfile", f);
+
+            document.getElementById("dotLogResults").innerHTML = "Analyzing .log...";
+
+            fetch("/analyze_dotlogs", { method: "POST", body: fd })
+                .then(r => r.json())
+                .then(showDotLogs);
+        }
+
+        function showDotLogs(data) {
+            let html = "";
+            data.files.forEach(file => {
+                html += `<div class="card">
+<h3>📘 ${file.file}</h3>
+Total Errors: ${file.total_errors}
+</div>`;
+
+                file.analysis.forEach(card => {
+                    html += `
+<div class="card">
+<b>Type:</b> ${card.type}<br>
+<b>Count:</b> ${card.count}<br>
+<b>Status:</b>
+<span class="badge ${card.status == "Active" ? "active" : "resolved"}">${card.status}</span>
+<br><br>
+
+<b>Sample:</b><br>${card.error_line}<br><br>
+<b>Cause:</b> ${card.cause}<br>
+<b>Fix:</b> ${card.fix}<br><br>
+
+<button onclick='askAI(${JSON.stringify(card.error_line)})'>Ask AI</button>
+</div>`;
+                });
+            });
+            document.getElementById("dotLogResults").innerHTML = html;
+        }
+
+        //////////////////////// LOG ANALYSIS ////////////////////////
+        function analyzeLogs() {
+            let files = document.getElementById("logs").files;
+            if (files.length === 0) { alert("Select log file"); return; }
+
+            let fd = new FormData();
+            for (let f of files) fd.append("logfile", f);
+
+            document.getElementById("logResults").innerHTML = "Analyzing logs...";
+
+            fetch("/analyze_logs", { method: "POST", body: fd })
+                .then(r => r.json())
+                .then(showLogs);
+        }
+
+        function showLogs(data) {
+            let html = "";
+            data.files.forEach(file => {
+                html += `<div class="card">
+<h3>📄 ${file.file}</h3>
+Total Errors: ${file.total_errors}
+</div>`;
+
+                file.analysis.forEach(card => {
+                    html += `
+<div class="card">
+<b>Type:</b> ${card.type}<br>
+<b>Count:</b> ${card.count}<br>
+<b>Status:</b>
+<span class="badge ${card.status == "Active" ? "active" : "resolved"}">${card.status}</span>
+<br><br>
+
+<b>Sample:</b><br>${card.error_line}<br><br>
+<b>Cause:</b> ${card.cause}<br>
+<b>Fix:</b> ${card.fix}<br><br>
+
+<button onclick='askAI(${JSON.stringify(card.error_line)})'>Ask AI</button>
+</div>
+`;
+                });
+            });
+            document.getElementById("logResults").innerHTML = html;
+        }
+
+        //////////////////////// ETL ANALYSIS ////////////////////////
+        function analyzeETL() {
+            let files = document.getElementById("etlFiles").files;
+            if (files.length === 0) { alert("Select ETL file"); return; }
+
+            let fd = new FormData();
+            for (let f of files) fd.append("etlfile", f);
+
+            document.getElementById("etlResults").innerHTML = "Converting & analyzing ETL...";
+
+            fetch("/analyze_etl", { method: "POST", body: fd })
+                .then(r => r.json())
+                .then(showETL);
+        }
+
+        function showETL(data) {
+            let html = "";
+            data.files.forEach(file => {
+                html += `<div class="card">
+<h3>🧩 ${file.file}</h3>
+Total Errors: ${file.total_errors}
+</div>`;
+
+                file.analysis.forEach(card => {
+                    html += `
+<div class="card">
+<b>Type:</b> ${card.type}<br>
+<b>Count:</b> ${card.count}<br>
+<b>Status:</b>
+<span class="badge active">${card.status}</span>
+<br><br>
+
+<b>Sample:</b><br>${card.error_line}<br><br>
+<b>Cause:</b> ${card.cause}<br>
+<b>Fix:</b> ${card.fix}<br><br>
+
+<button onclick='askAI(${JSON.stringify(card.error_line)})'>Ask AI</button>
+</div>
+`;
+                });
+            });
+            document.getElementById("etlResults").innerHTML = html;
+        }
+
+        //////////////////////// DUMP ANALYSIS ////////////////////////
+        function analyzeDumps() {
+            let dumpFiles = document.getElementById("dumps").files;
+            let pdbFiles = document.getElementById("pdbs").files;
+
+            if (dumpFiles.length === 0) {
+                alert("Select dump file");
+                return;
+            }
+
+            let fd = new FormData();
+            for (let f of dumpFiles) fd.append("dumpfile", f);
+            for (let p of pdbFiles) fd.append("pdbfile", p);
+
+            document.getElementById("dumpResults").innerHTML = "Analyzing dump...";
+
+            fetch("/analyze_dumps", { method: "POST", body: fd })
+                .then(r => r.json())
+                .then(showDumps);
+        }
+
+        function showDumps(data) {
+            let html = "";
+            data.files.forEach(f => {
+                html += `
+<div class="card">
+<h3>🧠 ${f.file}</h3>
+<pre>${f.analysis}</pre>
+
+</div>`;
+            });
+            document.getElementById("dumpResults").innerHTML = html;
+        }
+
+        //////////////////////// ASK AI ////////////////////////
+        function askAI(text) {
+            if (document.getElementById("chatWindow").style.display !== "flex") {
+                toggleChat();
+            }
+            addMsg("You: Explain this error → " + text);
+
+            fetch("/ask_ai", {
+                method: "POST",
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ error: text })
+            })
+                .then(r => r.json())
+                .then(d => {
+                    addMsg("AI: " + (d.answer || "No response"));
+                });
+        }
+
+        //////////////////////// CHAT ////////////////////////
+        function toggleChat() {
+            let w = document.getElementById("chatWindow");
+            w.style.display = w.style.display == "flex" ? "none" : "flex";
+        }
+
+        function sendChat() {
+            let q = document.getElementById("chatInput").value;
+            if (!q) return;
+
+            addMsg("You: " + q);
+            document.getElementById("chatInput").value = "";
+
+            fetch("/chat", {
+                method: "POST",
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ message: q })
+            })
+                .then(r => r.json())
+                .then(d => {
+                    addMsg("AI: " + d.reply);
+                });
+        }
+
+        function addMsg(t) {
+            let box = document.getElementById("chatBox");
+            box.innerHTML += `<div>${t}</div><br>`;
+            box.scrollTop = box.scrollHeight;
+        }
+
+    </script>
+</body>
+
+</html>

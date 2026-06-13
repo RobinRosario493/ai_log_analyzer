@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Crash Dump Analyzer</title>
+
+<style>
+body {
+    font-family: Arial, sans-serif;
+    background: #0f172a;
+    color: #e5e7eb;
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    background: #020617;
+    padding: 20px;
+    text-align: center;
+    font-size: 22px;
+    font-weight: bold;
+    border-bottom: 1px solid #1f2937;
+}
+
+.container {
+    width: 90%;
+    max-width: 900px;
+    margin: 30px auto;
+}
+
+.upload-box {
+    background: #111827;
+    padding: 25px;
+    border-radius: 12px;
+    text-align: center;
+    border: 1px solid #1f2937;
+}
+
+input[type="file"] {
+    margin: 15px 0;
+}
+
+button {
+    background: #2563eb;
+    color: white;
+    border: none;
+    padding: 10px 22px;
+    border-radius: 6px;
+    font-size: 15px;
+    cursor: pointer;
+}
+
+button:hover {
+    background: #1d4ed8;
+}
+
+.status {
+    margin-top: 15px;
+    font-weight: bold;
+    color: #38bdf8;
+}
+
+.results {
+    margin-top: 25px;
+}
+
+.card {
+    background: #111827;
+    padding: 18px;
+    border-radius: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #1f2937;
+}
+
+.label {
+    color: #9ca3af;
+}
+
+.value {
+    color: #22c55e;
+}
+
+.audio {
+    color: #facc15;
+    font-weight: bold;
+}
+
+.loading {
+    display: none;
+    text-align: center;
+    margin-top: 20px;
+}
+</style>
+</head>
+
+<body>
+
+<header>AI Crash Dump Analyzer</header>
+
+<div class="container">
+
+    <div class="upload-box">
+        <form id="uploadForm">
+            <input type="file" name="dumpfile" multiple>
+            <br>
+            <button type="submit">Analyze Dumps</button>
+        </form>
+
+        <div class="status" id="status">Waiting for upload...</div>
+    </div>
+
+    <div class="loading" id="loading">
+        ⏳ Running WinDbg analysis... check terminal
+    </div>
+
+    <div class="results" id="results"></div>
+
+</div>
+
+<script>
+document.getElementById("uploadForm").onsubmit = async function(e) {
+    e.preventDefault();
+
+    document.getElementById("status").innerText = "Uploading dumps...";
+    document.getElementById("loading").style.display = "block";
+    document.getElementById("results").innerHTML = "";
+
+    let formData = new FormData(this);
+
+    let res = await fetch("/analyze", {
+        method: "POST",
+        body: formData
+    });
+
+    let data = await res.json();
+
+    document.getElementById("status").innerText = "Analysis complete";
+    document.getElementById("loading").style.display = "none";
+
+    let html = "";
+
+    data.forEach(d => {
+
+        html += `
+        <div class="card">
+            <div><span class="label">File:</span> ${d.file}</div>
+            <div><span class="label">Bugcheck:</span> <span class="value">${d.bugcheck}</span></div>
+            <div><span class="label">Driver:</span> <span class="value">${d.driver}</span></div>
+            <div><span class="label">Module:</span> ${d.module}</div>
+            <div><span class="label">Root Cause:</span> ${d.root_cause}</div>
+            <div><span class="label">Audio Related:</span> 
+                ${d.audio_related ? '<span class="audio">YES</span>' : 'No'}
+            </div>
+            <hr>
+            <div><span class="label">AI Summary:</span></div>
+            <div>${d.ai_summary}</div>
+        </div>
+        `;
+    });
+
+    document.getElementById("results").innerHTML = html;
+};
+</script>
+
+</body>
+</html>

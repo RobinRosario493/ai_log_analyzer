@@ -1,0 +1,161 @@
+
+    <html>
+    <head>
+        <title>Analysis Report - sampledriver.log</title>
+        <style>
+            body {
+                font-family: Arial;
+                background:#0f172a;
+                color:white;
+                padding:30px;
+            }
+            .card {
+                background:#1e293b;
+                padding:15px;
+                margin:15px 0;
+                border-radius:8px;
+            }
+
+        </style>
+    </head>
+    <body>
+
+        <h1>File Analysis Report</h1>
+        <h2>File: sampledriver.log</h2>
+        <hr>
+    
+            <div class="card">
+            <b>Type:</b> Audio Subsystem<br>
+            <b>Occurrences:</b> 4<br><br>
+
+            <b>Cause:</b><br>
+            Invalid audio device handle due to concurrent access by multiple processes<br><br>
+
+            <b>Fix:</b><br>
+            Verify that no other process is using the audio device and restart the application
+            </div>
+            
+            <div class="card">
+            <b>Type:</b> Audio Subsystem<br>
+            <b>Occurrences:</b> 1<br><br>
+
+            <b>Cause:</b><br>
+            Invalid audio device handle due to concurrent access by another process<br><br>
+
+            <b>Fix:</b><br>
+            Verify that no other processes are using the audio device and restart the application if necessary. If the issue persists, check for any recent changes to audio settings or device configurations.
+            </div>
+            
+            <div class="card">
+            <b>Type:</b> Authentication<br>
+            <b>Occurrences:</b> 16<br><br>
+
+            <b>Cause:</b><br>
+            Invalid token impersonation due to missing domain membership<br><br>
+
+            <b>Fix:</b><br>
+            Verify the machine's domain membership and ensure it is properly joined to the domain.
+            </div>
+            
+            <div class="card">
+            <b>Type:</b> Audio subsystem<br>
+            <b>Occurrences:</b> 1<br><br>
+
+            <b>Cause:</b><br>
+            Driver loading failure due to invalid device configuration<br><br>
+
+            <b>Fix:</b><br>
+            Verify the PCI device is properly configured and restart the system
+            </div>
+            
+            <div class="card">
+            <b>Type:</b> Service Startup Failure<br>
+            <b>Occurrences:</b> 1<br><br>
+
+            <b>Cause:</b><br>
+            Audio Endpoint Builder service failed to start due to permission failure (Access Denied, error code 0x80070005)<br><br>
+
+            <b>Fix:</b><br>
+            Verify the service account has necessary permissions and try restarting the service. If issue persists, check for conflicting services or resource conflicts.
+            </div>
+            
+            <div class="card">
+            <b>Type:</b> Audio subsystem<br>
+            <b>Occurrences:</b> 1<br><br>
+
+            <b>Cause:</b><br>
+            Permission failure due to insufficient privileges for the Audio Endpoint Builder service<br><br>
+
+            <b>Fix:</b><br>
+            Run the service as an administrator or adjust the service account's permissions to allow access
+            </div>
+            
+            <div class="card">
+            <b>Type:</b> Driver Failure<br>
+            <b>Occurrences:</b> 1<br><br>
+
+            <b>Cause:</b><br>
+            RTKVHD64.sys driver is attempting to access memory at an IRQL that is not less or equal, indicating a potential bug in the driver's handling of IRQL levels.<br><br>
+
+            <b>Fix:</b><br>
+            Verify that RTKVHD64.sys is up-to-date and functioning correctly. If issues persist, consider updating the driver or seeking assistance from the driver's vendor.
+            </div>
+            
+            <div class="card">
+            <b>Type:</b> Kernel<br>
+            <b>Occurrences:</b> 1<br><br>
+
+            <b>Cause:</b><br>
+            Driver IRQL not less or equal issue, likely due to a kernel-mode driver attempting to access memory at an invalid IRQL level.<br><br>
+
+            <b>Fix:</b><br>
+            Verify the RTKVHD64.sys driver is up-to-date and functioning correctly. If issues persist, consider updating the driver or disabling it temporarily to isolate the problem.
+            </div>
+            
+            <div class="card">
+            <b>Type:</b> Service Failure<br>
+            <b>Occurrences:</b> 1<br><br>
+
+            <b>Cause:</b><br>
+            Windows Audio Service dependency issue due to missing or corrupted audio endpoint builder configuration.<br><br>
+
+            <b>Fix:</b><br>
+            Restart the Windows Audio Service, then re-register the audio endpoint builder using the command: `netsh audio reset` and `audioendpointbuilder.exe /reinstall`.
+            </div>
+            
+            <div class="card">
+            <b>Type:</b> Audio subsystem<br>
+            <b>Occurrences:</b> 1<br><br>
+
+            <b>Cause:</b><br>
+            Audio service startup failure due to missing or corrupted audio device configuration.<br><br>
+
+            <b>Fix:</b><br>
+            Check the audio device configuration and ensure it's correct. If necessary, reinstall the audio driver or update the audio device settings.
+            </div>
+            
+            <div class="card">
+            <b>Type:</b> Driver Failure<br>
+            <b>Occurrences:</b> 1<br><br>
+
+            <b>Cause:</b><br>
+            Driver signature validation failure due to Windows Update driver mismatch<br><br>
+
+            <b>Fix:</b><br>
+            Reinstall OEM certified audio driver
+            </div>
+            
+            <div class="card">
+            <b>Type:</b> Audio subsystem<br>
+            <b>Occurrences:</b> 1<br><br>
+
+            <b>Cause:</b><br>
+            Driver signature validation failure due to Windows Update driver mismatch<br><br>
+
+            <b>Fix:</b><br>
+            Reinstall OEM certified audio driver
+            </div>
+            
+    </body>
+    </html>
+    

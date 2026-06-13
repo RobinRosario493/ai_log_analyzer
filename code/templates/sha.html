@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>AI Log Analyzer</title>
+
+    <style>
+        body {
+            margin: 0;
+            font-family: "Segoe UI", Arial, sans-serif;
+            background: #0f172a;
+            color: #f1f5f9;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 40px auto;
+            padding: 20px;
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 30px;
+            font-weight: 600;
+        }
+
+        .upload-section {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        input[type="file"] {
+            padding: 6px;
+            background: #1e293b;
+            color: white;
+            border-radius: 6px;
+            border: 1px solid #334155;
+        }
+
+        button {
+            padding: 8px 18px;
+            margin-left: 10px;
+            background: #2563eb;
+            border: none;
+            border-radius: 6px;
+            color: white;
+            cursor: pointer;
+            transition: 0.2s ease;
+        }
+
+        button:hover {
+            background: #1d4ed8;
+        }
+
+        .summary {
+            background: #1e293b;
+            padding: 15px 20px;
+            border-radius: 8px;
+            margin-bottom: 25px;
+            display: flex;
+            justify-content: space-between;
+            font-weight: 500;
+        }
+
+        .section-title {
+            margin-top: 40px;
+            margin-bottom: 15px;
+            font-size: 18px;
+            font-weight: 600;
+        }
+
+        .card {
+            background: #1e293b;
+            padding: 18px;
+            border-radius: 10px;
+            margin-bottom: 15px;
+            line-height: 1.6;
+            border-left: 6px solid #ef4444;
+            transition: 0.2s ease;
+        }
+
+        .card.resolved {
+            border-left: 6px solid #10b981;
+        }
+
+        .badge {
+            padding: 3px 10px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 500;
+            margin-left: 10px;
+        }
+
+        .badge.active {
+            background: #dc2626;
+        }
+
+        .badge.resolved {
+            background: #059669;
+        }
+
+        .label {
+            font-weight: 600;
+        }
+
+        /* Chat Button */
+        .chat-toggle {
+            position: fixed;
+            bottom: 25px;
+            right: 25px;
+            background: #2563eb;
+            width: 55px;
+            height: 55px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 22px;
+            cursor: pointer;
+            box-shadow: 0 0 12px rgba(0,0,0,0.6);
+        }
+
+        .chat-window {
+            position: fixed;
+            bottom: 95px;
+            right: 25px;
+            width: 350px;
+            height: 420px;
+            background: #1e293b;
+            border-radius: 10px;
+            display: none;
+            flex-direction: column;
+            box-shadow: 0 0 20px rgba(0,0,0,0.7);
+        }
+
+        .chat-header {
+            padding: 10px;
+            background: #2563eb;
+            border-radius: 10px 10px 0 0;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .chat-box {
+            flex: 1;
+            overflow-y: auto;
+            padding: 10px;
+            font-size: 14px;
+        }
+
+        .chat-input {
+            display: flex;
+            padding: 10px;
+        }
+
+        .chat-input input {
+            flex: 1;
+            padding: 6px;
+            border-radius: 6px;
+            border: none;
+        }
+
+        .chat-input button {
+            margin-left: 5px;
+            padding: 6px 12px;
+        }
+
+        .user-msg {
+            color: #60a5fa;
+            margin-bottom: 6px;
+        }
+
+        .ai-msg {
+            color: #34d399;
+            margin-bottom: 10px;
+        }
+
+        .ask-ai-btn {
+            margin-top: 10px;
+            background: #334155;
+        }
+
+    </style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <h1>AI Log Analyzer</h1>
+
+    <div class="upload-section">
+        <input type="file" id="fileInput">
+        <button onclick="analyze()">Analyze</button>
+    </div>
+
+    <div id="output"></div>
+
+</div>
+
+<div class="chat-toggle" onclick="toggleChat()">🤖</div>
+
+<div class="chat-window" id="chatWindow">
+
+    <div class="chat-header">
+        <span>🤖 AI Assistant</span>
+        <span style="cursor:pointer;" onclick="toggleChat()">✖</span>
+    </div>
+
+    <div class="chat-box" id="chatBox"></div>
+
+    <div class="chat-input">
+        <input type="text" id="chatInput" placeholder="Ask about error...">
+        <button onclick="sendMessage()">Send</button>
+    </div>
+
+</div>
+
+<script>
+
+function toggleChat(){
+    const chat = document.getElementById("chatWindow");
+    chat.style.display = chat.style.display === "flex" ? "none" : "flex";
+}
+
+function analyze(){
+
+    const file = document.getElementById("fileInput").files[0];
+    if(!file){
+        alert("Select file");
+        return;
+    }
+
+    const formData = new FormData();
+    formData.append("logfile", file);
+
+    fetch("/analyze", {
+        method:"POST",
+        body: formData
+    })
+    .then(r=>r.json())
+    .then(show);
+}
+
+function show(data){
+
+    let active = "";
+    let resolved = "";
+
+    data.analysis.forEach(x=>{
+
+        let card = `
+        <div class="card ${x.status === 'Resolved' ? 'resolved' : ''}">
+            <div><span class="label">Error:</span> ${x.error_line}</div>
+            <div><span class="label">Type:</span> ${x.type}</div>
+            <div><span class="label">Occurrences:</span> ${x.count}</div>
+            <div>
+                <span class="label">Status:</span> 
+                <span class="badge ${x.status === 'Active' ? 'active' : 'resolved'}">
+                    ${x.status}
+                </span>
+            </div>
+        `;
+
+        if(x.status === "Active"){
+            card += `
+                <div><span class="label">Cause:</span> ${x.cause}</div>
+                <div><span class="label">Fix:</span> ${x.fix}</div>
+                <button class="ask-ai-btn"
+                        onclick="askAI('${encodeURIComponent(x.error_line)}')">
+                    Ask AI
+                </button>
+            `;
+        }
+
+        card += `</div>`;
+
+        if(x.status === "Active") active += card;
+        else resolved += card;
+    });
+
+    // Calculate counts
+const activeCount = data.analysis.filter(x => x.status === "Active").length;
+const resolvedCount = data.analysis.filter(x => x.status === "Resolved").length;
+
+document.getElementById("output").innerHTML = `
+    <div class="summary">
+        <div>Total: ${data.total_errors}</div>
+        <div>Active: ${activeCount}</div>
+        <div>Resolved: ${resolvedCount}</div>
+    </div>
+
+
+        <div class="section-title">Active Errors</div>
+        ${active || "No Active Errors"}
+
+        <div class="section-title">Resolved Errors</div>
+        ${resolved || "No Resolved Errors"}
+    `;
+}
+
+function askAI(encodedText){
+
+    const errorText = decodeURIComponent(encodedText);
+
+    const chat = document.getElementById("chatWindow");
+    chat.style.display = "flex";
+
+    const input = document.getElementById("chatInput");
+    input.value = "Explain this error: " + errorText;
+    input.focus();
+}
+
+function sendMessage(){
+
+    const input = document.getElementById("chatInput");
+    const message = input.value.trim();
+    if(!message) return;
+
+    const box = document.getElementById("chatBox");
+
+    box.innerHTML += `<div class="user-msg">You: ${message}</div>`;
+    input.value = "";
+
+    // Typing animation
+    const typingDiv = document.createElement("div");
+    typingDiv.className = "ai-msg";
+    typingDiv.id = "typing";
+    typingDiv.innerHTML = "AI is typing...";
+    box.appendChild(typingDiv);
+
+    box.scrollTop = box.scrollHeight;
+
+    fetch("/chat", {
+        method:"POST",
+        headers: {"Content-Type":"application/json"},
+        body: JSON.stringify({message: message})
+    })
+    .then(r=>r.json())
+    .then(data=>{
+
+        // Remove typing animation
+        document.getElementById("typing").remove();
+
+        box.innerHTML += `<div class="ai-msg">AI: ${data.reply}</div>`;
+        box.scrollTop = box.scrollHeight;
+    });
+}
+
+
+</script>
+
+</body>
+</html>

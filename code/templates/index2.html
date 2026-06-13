@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>AI Log Analyzer</title>
+
+    <style>
+        body {
+            font-family: Arial;
+            background: #0f172a;
+            color: white;
+            padding: 30px;
+        }
+
+        h2 {
+            margin-bottom: 10px;
+        }
+
+        button {
+            padding: 10px 20px;
+            background: #3b82f6;
+            border: none;
+            color: white;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-left: 10px;
+        }
+
+        .summary {
+            background: #020617;
+            padding: 15px;
+            margin-top: 20px;
+            border-left: 5px solid cyan;
+        }
+
+        .card {
+            background: #1e293b;
+            padding: 15px;
+            margin-top: 15px;
+            border-radius: 8px;
+            border-left: 5px solid red;
+        }
+
+        .rule { border-left-color: #22c55e; }
+        .ai { border-left-color: #3b82f6; }
+        .fallback { border-left-color: #f59e0b; }
+
+        .count {
+            color: #38bdf8;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+
+<h2>Upload Log File</h2>
+
+<input type="file" id="fileInput">
+<button onclick="upload()">Analyze</button>
+
+<div id="output"></div>
+
+<script>
+
+function upload(){
+    const file = document.getElementById("fileInput").files[0];
+
+    if(!file){
+        alert("Please select a file");
+        return;
+    }
+
+    const fd = new FormData();
+    fd.append("logfile", file);
+
+    fetch("/analyze", {
+        method: "POST",
+        body: fd
+    })
+    .then(res => res.json())
+    .then(show)
+    .catch(err => {
+        console.error(err);
+        alert("Error analyzing log");
+    });
+}
+
+function show(data){
+
+    let html = `
+        <div class="summary">
+            Total Errors: ${data.total_errors}<br>
+            Root Causes: ${data.analysis.length}
+        </div>
+    `;
+
+    data.analysis.forEach(item => {
+
+        let cls = item.source || "fallback";
+
+        html += `
+            <div class="card ${cls}">
+                <div><b>Sample:</b> ${item.error_line}</div>
+                <div><b>Type:</b> ${item.type}</div>
+                <div class="count">Occurrences: ${item.count}</div>
+                <div><b>Cause:</b> ${item.cause}</div>
+                <div><b>Fix:</b> ${item.fix}</div>
+                <div><b>Source:</b> ${item.source}</div>
+            </div>
+        `;
+    });
+
+    document.getElementById("output").innerHTML = html;
+}
+
+</script>
+
+</body>
+</html>

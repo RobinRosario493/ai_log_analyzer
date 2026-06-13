@@ -1,0 +1,744 @@
+
+    <html>
+    <head>
+        <title>Analysis Report - HPAudioAnalytics.log</title>
+        <style>
+            body {
+                font-family: Arial;
+                background:#0f172a;
+                color:white;
+                padding:30px;
+            }
+            .card {
+                background:#1e293b;
+                padding:15px;
+                margin:15px 0;
+                border-radius:8px;
+            }
+
+        </style>
+    </head>
+    <body>
+
+        <h1>File Analysis Report</h1>
+        <h2>File: HPAudioAnalytics.log</h2>
+        <hr>
+    
+            <div class="card">
+            <b>Type:</b> Audio subsystem<br>
+            <b>Occurrences:</b> 1<br><br>
+
+            <b>Cause:</b><br>
+            Failed to register Audio sessions<br><br>
+
+            <b>Fix:</b><br>
+            Check the registry settings for Audio Analytics and ensure it's enabled correctly.
+            </div>
+            
+            <div class="card">
+            <b>Type:</b> Session Manager<br>
+            <b>Occurrences:</b> 2<br><br>
+
+            <b>Cause:</b><br>
+            Invalid process ID in current logon session<br><br>
+
+            <b>Fix:</b><br>
+            Verify the correct process ID and ensure it matches the active session
+            </div>
+            
+            <div class="card">
+            <b>Type:</b> Service Control Manager (SCM) issue<br>
+            <b>Occurrences:</b> 1<br><br>
+
+            <b>Cause:</b><br>
+            The HpTouchpointAnalyticsService service is installed but not running as expected.<br><br>
+
+            <b>Fix:</b><br>
+            Check the service status and restart it if necessary. Verify that the service is configured correctly and that there are no dependency issues.
+            </div>
+            
+            <div class="card">
+            <b>Type:</b> Audio subsystem<br>
+            <b>Occurrences:</b> 1<br><br>
+
+            <b>Cause:</b><br>
+            Failed to register Audio sessions<br><br>
+
+            <b>Fix:</b><br>
+            Check the registry settings for Audio Analytics and ensure it's enabled correctly.
+            </div>
+            
+            <div class="card">
+            <b>Type:</b> Session Manager<br>
+            <b>Occurrences:</b> 1<br><br>
+
+            <b>Cause:</b><br>
+            Invalid process ID in current logon session<br><br>
+
+            <b>Fix:</b><br>
+            Verify the correct process ID and ensure it matches the active session
+            </div>
+            
+            <div class="card">
+            <b>Type:</b> Session & token handling<br>
+            <b>Occurrences:</b> 1<br><br>
+
+            <b>Cause:</b><br>
+            Failed to obtain active session token due to WTSQueryUserToken error (1008) and subsequent OpenProcess failure (87)<br><br>
+
+            <b>Fix:</b><br>
+            Verify that the service has necessary permissions to access user tokens and check for any conflicts with other services or processes.
+            </div>
+            
+            <div class="card">
+            <b>Type:</b> Session & token handling<br>
+            <b>Occurrences:</b> 12<br><br>
+
+            <b>Cause:</b><br>
+            Failed to obtain active session token due to WTSQueryUserToken error (1008) and subsequent OpenProcess failure (87)<br><br>
+
+            <b>Fix:</b><br>
+            Verify that the service has necessary permissions to access user tokens and check for any conflicts with other services or processes.
+            </div>
+            
+            <div class="card">
+            <b>Type:</b> Audio subsystem<br>
+            <b>Occurrences:</b> 36<br><br>
+
+            <b>Cause:</b><br>
+            Invalid handle due to incorrect process ID in current session<br><br>
+
+            <b>Fix:</b><br>
+            Verify that the process ID obtained from `Utils::GetProcessIDInCurrentLogOn` matches the actual process running in the current session. If not, investigate why the process is not found.
+            </div>
+            
+            <div class="card">
+            <b>Type:</b> Session & token handling<br>
+            <b>Occurrences:</b> 21<br><br>
+
+            <b>Cause:</b><br>
+            Invalid handle (OpenProcess failed with error code 87)<br><br>
+
+            <b>Fix:</b><br>
+            Verify that the process ID being used to open a process is valid and exists in the current session.
+            </div>
+            
+            <div class="card">
+            <b>Type:</b> Session Manager<br>
+            <b>Occurrences:</b> 15<br><br>
+
+            <b>Cause:</b><br>
+            Failed to register Audio sessions<br><br>
+
+            <b>Fix:</b><br>
+            Check the audio subsystem configuration and ensure that all necessary components are installed and running.
+            </div>
+            
+            <div class="card">
+            <b>Type:</b> Session & token handling<br>
+            <b>Occurrences:</b> 15<br><br>
+
+            <b>Cause:</b><br>
+            Failed to open process with PID 0 due to invalid handle (error 87)<br><br>
+
+            <b>Fix:</b><br>
+            Check that the process ID is valid and the service has necessary permissions to access it.
+            </div>
+            
+            <div class="card">
+            <b>Type:</b> Session & token handling<br>
+            <b>Occurrences:</b> 15<br><br>
+
+            <b>Cause:</b><br>
+            Invalid session handle or session mismatch<br><br>
+
+            <b>Fix:</b><br>
+            Verify session creation and management in CMainService::OnSessionChange
+            </div>
+            
+            <div class="card">
+            <b>Type:</b> Service Control Manager<br>
+            <b>Occurrences:</b> 15<br><br>
+
+            <b>Cause:</b><br>
+            Failed to get instance of CAudioAnalyticsManager due to permission issue or invalid handle.<br><br>
+
+            <b>Fix:</b><br>
+            Check the service account's permissions and ensure it has access to the required resources. Verify that the CAudioAnalyticsManager is registered correctly and its dependencies are met.
+            </div>
+            
+            <div class="card">
+            <b>Type:</b> Session & token handling<br>
+            <b>Occurrences:</b> 11<br><br>
+
+            <b>Cause:</b><br>
+            Failed to open process with PID 0 due to resource exhaustion or session mismatch.<br><br>
+
+            <b>Fix:</b><br>
+            Check the system's available resources and ensure there are no issues with session management. Verify that the correct process ID is being used and that the session IDs match.
+            </div>
+            
+            <div class="card">
+            <b>Type:</b> Session & token handling<br>
+            <b>Occurrences:</b> 10<br><br>
+
+            <b>Cause:</b><br>
+            Invalid handle (OpenProcess failed with error code 87)<br><br>
+
+            <b>Fix:</b><br>
+            Verify that the process ID being used to open a process is valid and exists in the current session.
+            </div>
+            
+            <div class="card">
+            <b>Type:</b> Session Manager<br>
+            <b>Occurrences:</b> 1<br><br>
+
+            <b>Cause:</b><br>
+            Failed to register Audio sessions<br><br>
+
+            <b>Fix:</b><br>
+            Check the audio subsystem configuration and ensure that all necessary components are installed and running.
+            </div>
+            
+            <div class="card">
+            <b>Type:</b> Session & token handling<br>
+            <b>Occurrences:</b> 1<br><br>
+
+            <b>Cause:</b><br>
+            Invalid handle due to incorrect process ID in the given session<br><br>
+
+            <b>Fix:</b><br>
+            Verify that the process ID is correct and valid for the current session. If necessary, restart the service or reconfigure the system.
+            </div>
+            
+            <div class="card">
+            <b>Type:</b> Unknown<br>
+            <b>Occurrences:</b> 2<br><br>
+
+            <b>Cause:</b><br>
+            Unknown<br><br>
+
+            <b>Fix:</b><br>
+            Check manually
+            </div>
+            
+            <div class="card">
+            <b>Type:</b> Audio subsystem<br>
+            <b>Occurrences:</b> 2<br><br>
+
+            <b>Cause:</b><br>
+            Failed to register Audio sessions<br><br>
+
+            <b>Fix:</b><br>
+            Check the audio session registration logic and ensure that it's properly handling errors.
+            </div>
+            
+            <div class="card">
+            <b>Type:</b> Session & token handling<br>
+            <b>Occurrences:</b> 1<br><br>
+
+            <b>Cause:</b><br>
+            Invalid handle due to incorrect process ID in current session<br><br>
+
+            <b>Fix:</b><br>
+            Verify that the process ID matches the active session and correct the token impersonation failure by restarting the service or correcting the registry settings.
+            </div>
+            
+            <div class="card">
+            <b>Type:</b> Session & token handling<br>
+            <b>Occurrences:</b> 1<br><br>
+
+            <b>Cause:</b><br>
+            Invalid handle due to incorrect process ID in current session<br><br>
+
+            <b>Fix:</b><br>
+            Verify that the process ID matches the active session and correct the token impersonation if necessary.
+            </div>
+            
+            <div class="card">
+            <b>Type:</b> Session & token handling<br>
+            <b>Occurrences:</b> 1<br><br>
+
+            <b>Cause:</b><br>
+            Permission failure due to OpenProcess with Pid 0 failed with error : 87<br><br>
+
+            <b>Fix:</b><br>
+            Check that the service has the required permissions and correct any configuration issues.
+            </div>
+            
+            <div class="card">
+            <b>Type:</b> Session & token handling<br>
+            <b>Occurrences:</b> 1<br><br>
+
+            <b>Cause:</b><br>
+            Invalid handle due to incorrect process ID in session<br><br>
+
+            <b>Fix:</b><br>
+            Verify that the process ID matches the current session and correct any discrepancies.
+            </div>
+            
+            <div class="card">
+            <b>Type:</b> Session & token handling<br>
+            <b>Occurrences:</b> 3<br><br>
+
+            <b>Cause:</b><br>
+            Invalid handle due to incorrect process ID in the given session<br><br>
+
+            <b>Fix:</b><br>
+            Verify that the process ID is correct and the session is active, then retry the operation.
+            </div>
+            
+            <div class="card">
+            <b>Type:</b> Audio subsystem<br>
+            <b>Occurrences:</b> 8<br><br>
+
+            <b>Cause:</b><br>
+            Failed to get instance of CAudioAnalyticsManager due to permission issue<br><br>
+
+            <b>Fix:</b><br>
+            Check that the service has necessary permissions and configuration, then restart the service.
+            </div>
+            
+            <div class="card">
+            <b>Type:</b> Session & token handling<br>
+            <b>Occurrences:</b> 8<br><br>
+
+            <b>Cause:</b><br>
+            Invalid handle due to incorrect process ID in the given session<br><br>
+
+            <b>Fix:</b><br>
+            Verify that the process ID is correct and valid for the current session. Check if the process exists and has a valid handle.
+            </div>
+            
+            <div class="card">
+            <b>Type:</b> Unknown<br>
+            <b>Occurrences:</b> 2<br><br>
+
+            <b>Cause:</b><br>
+            Unknown<br><br>
+
+            <b>Fix:</b><br>
+            Check manually
+            </div>
+            
+            <div class="card">
+            <b>Type:</b> Session & token handling<br>
+            <b>Occurrences:</b> 6<br><br>
+
+            <b>Cause:</b><br>
+            Invalid handle due to incorrect process ID in session<br><br>
+
+            <b>Fix:</b><br>
+            Verify that the process ID matches the current session and correct any discrepancies.
+            </div>
+            
+            <div class="card">
+            <b>Type:</b> Audio subsystem<br>
+            <b>Occurrences:</b> 1<br><br>
+
+            <b>Cause:</b><br>
+            Failed to get instance of CAudioAnalyticsManager<br><br>
+
+            <b>Fix:</b><br>
+            Check if CAudioAnalyticsManager is properly registered and initialized in the service.
+            </div>
+            
+            <div class="card">
+            <b>Type:</b> Session & token handling<br>
+            <b>Occurrences:</b> 1<br><br>
+
+            <b>Cause:</b><br>
+            Invalid handle due to incorrect process ID in the given session<br><br>
+
+            <b>Fix:</b><br>
+            Verify that the process ID is correct and valid for the current session. If necessary, restart the service or reconfigure the session settings.
+            </div>
+            
+            <div class="card">
+            <b>Type:</b> Unknown<br>
+            <b>Occurrences:</b> 1<br><br>
+
+            <b>Cause:</b><br>
+            Unknown<br><br>
+
+            <b>Fix:</b><br>
+            Check manually
+            </div>
+            
+            <div class="card">
+            <b>Type:</b> Session & token handling<br>
+            <b>Occurrences:</b> 3<br><br>
+
+            <b>Cause:</b><br>
+            Invalid handle due to incorrect process ID in the given session<br><br>
+
+            <b>Fix:</b><br>
+            Verify that the process ID is correct and the session is active, then retry the operation.
+            </div>
+            
+            <div class="card">
+            <b>Type:</b> Session & token handling<br>
+            <b>Occurrences:</b> 3<br><br>
+
+            <b>Cause:</b><br>
+            Token impersonation failure due to OpenProcess with Pid 0 failed<br><br>
+
+            <b>Fix:</b><br>
+            Check that the process ID is valid and the user has necessary permissions, then retry the operation.
+            </div>
+            
+            <div class="card">
+            <b>Type:</b> Service Control Manager<br>
+            <b>Occurrences:</b> 4<br><br>
+
+            <b>Cause:</b><br>
+            Invalid handle due to incorrect process ID in session<br><br>
+
+            <b>Fix:</b><br>
+            Verify that the process ID matches the current session and correct any discrepancies.
+            </div>
+            
+            <div class="card">
+            <b>Type:</b> Session & Token Handling<br>
+            <b>Occurrences:</b> 4<br><br>
+
+            <b>Cause:</b><br>
+            Token impersonation failure due to invalid handle<br><br>
+
+            <b>Fix:</b><br>
+            Check the token permissions and ensure that the process has the necessary rights to access the session.
+            </div>
+            
+            <div class="card">
+            <b>Type:</b> Session & token handling<br>
+            <b>Occurrences:</b> 1<br><br>
+
+            <b>Cause:</b><br>
+            Invalid handle due to incorrect process ID in the given session<br><br>
+
+            <b>Fix:</b><br>
+            Verify that the process ID matches the current session and correct any discrepancies.
+            </div>
+            
+            <div class="card">
+            <b>Type:</b> Service Control Manager (SCM)<br>
+            <b>Occurrences:</b> 1<br><br>
+
+            <b>Cause:</b><br>
+            Failed to start service due to missing instance of CAudioAnalyticsManager<br><br>
+
+            <b>Fix:</b><br>
+            Check that the CAudioAnalyticsManager instance is properly registered and started.
+            </div>
+            
+            <div class="card">
+            <b>Type:</b> Session & token handling<br>
+            <b>Occurrences:</b> 1<br><br>
+
+            <b>Cause:</b><br>
+            Invalid handle due to incorrect process ID in the given session<br><br>
+
+            <b>Fix:</b><br>
+            Verify that the process ID is correct and the session is active. If necessary, restart the service.
+            </div>
+            
+            <div class="card">
+            <b>Type:</b> Service Control Manager (SCM)<br>
+            <b>Occurrences:</b> 1<br><br>
+
+            <b>Cause:</b><br>
+            Failed to get instance of CAudioAnalyticsManager due to permission issue<br><br>
+
+            <b>Fix:</b><br>
+            Check that the service account has necessary permissions and try restarting the service.
+            </div>
+            
+            <div class="card">
+            <b>Type:</b> Session & token handling<br>
+            <b>Occurrences:</b> 1<br><br>
+
+            <b>Cause:</b><br>
+            Invalid handle due to incorrect process ID in the given session<br><br>
+
+            <b>Fix:</b><br>
+            Verify that the process ID is correct and the session is active, then retry the operation.
+            </div>
+            
+            <div class="card">
+            <b>Type:</b> Service Control Manager (SCM)<br>
+            <b>Occurrences:</b> 2<br><br>
+
+            <b>Cause:</b><br>
+            Failed to get instance of CAudioAnalyticsManager due to service startup failure<br><br>
+
+            <b>Fix:</b><br>
+            Check the service status and ensure it is running, then restart the service if necessary.
+            </div>
+            
+            <div class="card">
+            <b>Type:</b> Session & token handling<br>
+            <b>Occurrences:</b> 1<br><br>
+
+            <b>Cause:</b><br>
+            Invalid handle due to incorrect process ID in the given session<br><br>
+
+            <b>Fix:</b><br>
+            Verify that the process ID is correct and the session is active, then retry the operation.
+            </div>
+            
+            <div class="card">
+            <b>Type:</b> Service Control Manager (SCM)<br>
+            <b>Occurrences:</b> 1<br><br>
+
+            <b>Cause:</b><br>
+            Failed to get instance of CAudioAnalyticsManager during service startup<br><br>
+
+            <b>Fix:</b><br>
+            Check if the CAudioAnalyticsManager is registered and running correctly, then restart the service.
+            </div>
+            
+            <div class="card">
+            <b>Type:</b> Session & token handling<br>
+            <b>Occurrences:</b> 1<br><br>
+
+            <b>Cause:</b><br>
+            Invalid handle due to incorrect process ID in the given session<br><br>
+
+            <b>Fix:</b><br>
+            Verify that the process ID is correct and valid for the current session. Check the session management and ensure that the process ID is properly registered.
+            </div>
+            
+            <div class="card">
+            <b>Type:</b> Unknown<br>
+            <b>Occurrences:</b> 1<br><br>
+
+            <b>Cause:</b><br>
+            Unknown<br><br>
+
+            <b>Fix:</b><br>
+            Check manually
+            </div>
+            
+            <div class="card">
+            <b>Type:</b> Token handling<br>
+            <b>Occurrences:</b> 4<br><br>
+
+            <b>Cause:</b><br>
+            Invalid handle (error 1008) and permission failure (error 87)<br><br>
+
+            <b>Fix:</b><br>
+            Verify session token creation and ensure proper permissions for WTSQueryUserToken.
+            </div>
+            
+            <div class="card">
+            <b>Type:</b> Unknown<br>
+            <b>Occurrences:</b> 4<br><br>
+
+            <b>Cause:</b><br>
+            Unknown<br><br>
+
+            <b>Fix:</b><br>
+            Check manually
+            </div>
+            
+            <div class="card">
+            <b>Type:</b> Session & token handling<br>
+            <b>Occurrences:</b> 1<br><br>
+
+            <b>Cause:</b><br>
+            Invalid handle (OpenProcess failed with error 87)<br><br>
+
+            <b>Fix:</b><br>
+            Verify that the process ID and session ID are correct, and ensure that the OpenProcess call is properly configured.
+            </div>
+            
+            <div class="card">
+            <b>Type:</b> Audio subsystem failure<br>
+            <b>Occurrences:</b> 4<br><br>
+
+            <b>Cause:</b><br>
+            Failed to register Audio sessions due to invalid handle or permission issue<br><br>
+
+            <b>Fix:</b><br>
+            Check audio session registration and ensure proper permissions are set. Verify that the service has the necessary dependencies and is configured correctly.
+            </div>
+            
+            <div class="card">
+            <b>Type:</b> Session & token handling<br>
+            <b>Occurrences:</b> 4<br><br>
+
+            <b>Cause:</b><br>
+            Invalid handle due to incorrect process ID in the given session<br><br>
+
+            <b>Fix:</b><br>
+            Verify that the process ID is correct and valid for the current session, or adjust the service configuration to use a different method for retrieving the process ID.
+            </div>
+            
+            <div class="card">
+            <b>Type:</b> Session & token handling<br>
+            <b>Occurrences:</b> 1<br><br>
+
+            <b>Cause:</b><br>
+            Token impersonation failure due to OpenProcess with Pid 0 failed with error : 87<br><br>
+
+            <b>Fix:</b><br>
+            Check the service's permissions and ensure it has the necessary access rights to open processes, or adjust the service configuration to use a different method for retrieving process tokens.
+            </div>
+            
+            <div class="card">
+            <b>Type:</b> Session & token handling<br>
+            <b>Occurrences:</b> 1<br><br>
+
+            <b>Cause:</b><br>
+            Invalid handle due to incorrect process ID in the given session<br><br>
+
+            <b>Fix:</b><br>
+            Verify that the process ID is correct and the session is active. If necessary, restart the service.
+            </div>
+            
+            <div class="card">
+            <b>Type:</b> Unknown<br>
+            <b>Occurrences:</b> 1<br><br>
+
+            <b>Cause:</b><br>
+            Unknown<br><br>
+
+            <b>Fix:</b><br>
+            Check manually
+            </div>
+            
+            <div class="card">
+            <b>Type:</b> Session & token handling<br>
+            <b>Occurrences:</b> 1<br><br>
+
+            <b>Cause:</b><br>
+            Invalid handle due to incorrect process ID in the given session<br><br>
+
+            <b>Fix:</b><br>
+            Verify that the process ID is correct and the session is active, then retry the operation.
+            </div>
+            
+            <div class="card">
+            <b>Type:</b> Service Control Manager (SCM)<br>
+            <b>Occurrences:</b> 1<br><br>
+
+            <b>Cause:</b><br>
+            Failed to get instance of CAudioAnalyticsManager due to service startup failure<br><br>
+
+            <b>Fix:</b><br>
+            Check the service status and ensure it is running, then restart the service if necessary.
+            </div>
+            
+            <div class="card">
+            <b>Type:</b> Session & token handling<br>
+            <b>Occurrences:</b> 1<br><br>
+
+            <b>Cause:</b><br>
+            Invalid handle due to incorrect process ID in the given session<br><br>
+
+            <b>Fix:</b><br>
+            Verify that the process ID is correct and the session is properly set up. Check for any issues with the Windows Station or Session Manager.
+            </div>
+            
+            <div class="card">
+            <b>Type:</b> Unknown<br>
+            <b>Occurrences:</b> 1<br><br>
+
+            <b>Cause:</b><br>
+            Unknown<br><br>
+
+            <b>Fix:</b><br>
+            Check manually
+            </div>
+            
+            <div class="card">
+            <b>Type:</b> Session & token handling<br>
+            <b>Occurrences:</b> 1<br><br>
+
+            <b>Cause:</b><br>
+            Invalid handle due to incorrect process ID in the given session<br><br>
+
+            <b>Fix:</b><br>
+            Verify that the process ID is correct and the session is active, then retry the operation.
+            </div>
+            
+            <div class="card">
+            <b>Type:</b> Service Control Manager (SCM)<br>
+            <b>Occurrences:</b> 3<br><br>
+
+            <b>Cause:</b><br>
+            Failed to get instance of CAudioAnalyticsManager due to service startup failure<br><br>
+
+            <b>Fix:</b><br>
+            Check the service configuration and ensure that it is started correctly, then restart the service.
+            </div>
+            
+            <div class="card">
+            <b>Type:</b> Session & token handling<br>
+            <b>Occurrences:</b> 3<br><br>
+
+            <b>Cause:</b><br>
+            Invalid handle due to incorrect process ID in the given session<br><br>
+
+            <b>Fix:</b><br>
+            Verify that the process ID is correct and the session is properly established. Check for any configuration corruption or permission issues.
+            </div>
+            
+            <div class="card">
+            <b>Type:</b> Unknown<br>
+            <b>Occurrences:</b> 1<br><br>
+
+            <b>Cause:</b><br>
+            Unknown<br><br>
+
+            <b>Fix:</b><br>
+            Check manually
+            </div>
+            
+            <div class="card">
+            <b>Type:</b> Session & token handling<br>
+            <b>Occurrences:</b> 1<br><br>
+
+            <b>Cause:</b><br>
+            Invalid handle due to incorrect process ID in session<br><br>
+
+            <b>Fix:</b><br>
+            Verify that the process ID is correct and valid for the current session. Check if the process exists and has a valid handle.
+            </div>
+            
+            <div class="card">
+            <b>Type:</b> Session & token handling<br>
+            <b>Occurrences:</b> 2<br><br>
+
+            <b>Cause:</b><br>
+            Invalid handle due to incorrect process ID in session<br><br>
+
+            <b>Fix:</b><br>
+            Verify that the process ID matches the current session and correct any discrepancies.
+            </div>
+            
+            <div class="card">
+            <b>Type:</b> Session & token handling<br>
+            <b>Occurrences:</b> 1<br><br>
+
+            <b>Cause:</b><br>
+            Invalid handle due to incorrect process ID in the given session<br><br>
+
+            <b>Fix:</b><br>
+            Verify that the process ID is correct and the session is active before attempting to access it.
+            </div>
+            
+            <div class="card">
+            <b>Type:</b> Session & token handling<br>
+            <b>Occurrences:</b> 1<br><br>
+
+            <b>Cause:</b><br>
+            Token impersonation failure due to OpenProcess with Pid 0 failed<br><br>
+
+            <b>Fix:</b><br>
+            Check that the process ID is valid and the user has necessary permissions to access it.
+            </div>
+            
+    </body>
+    </html>
+    

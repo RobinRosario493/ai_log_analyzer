@@ -1,0 +1,40 @@
+
+    <html>
+    <head>
+        <title>Analysis Report - setupapi.setup.log</title>
+        <style>
+            body {
+                font-family: Arial;
+                background:#0f172a;
+                color:white;
+                padding:30px;
+            }
+            .card {
+                background:#1e293b;
+                padding:15px;
+                margin:15px 0;
+                border-radius:8px;
+            }
+
+        </style>
+    </head>
+    <body>
+
+        <h1>File Analysis Report</h1>
+        <h2>File: setupapi.setup.log</h2>
+        <hr>
+    
+            <div class="card">
+            <b>Type:</b> Service Control Manager<br>
+            <b>Occurrences:</b> 1<br><br>
+
+            <b>Cause:</b><br>
+            Failed to add Broadcom NetXtreme Gigabit Ethernet service due to missing or corrupted driver installation.<br><br>
+
+            <b>Fix:</b><br>
+            Reinstall the Broadcom NetXtreme Gigabit Ethernet driver and ensure it is properly configured. Run `pnputil -a b57nd60a.sys` to add the driver, then restart the system.
+            </div>
+            
+    </body>
+    </html>
+    

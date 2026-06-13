@@ -1,0 +1,62 @@
+
+    <html>
+    <head>
+        <title>Analysis Report - HPTouchpointManagerTray.exe-0.log</title>
+        <style>
+            body {
+                font-family: Arial;
+                background:#0f172a;
+                color:white;
+                padding:30px;
+            }
+            .card {
+                background:#1e293b;
+                padding:15px;
+                margin:15px 0;
+                border-radius:8px;
+            }
+
+        </style>
+    </head>
+    <body>
+
+        <h1>File Analysis Report</h1>
+        <h2>File: HPTouchpointManagerTray.exe-0.log</h2>
+        <hr>
+    
+            <div class="card">
+            <b>Type:</b> Application runtime failure<br>
+            <b>Occurrences:</b> 2<br><br>
+
+            <b>Cause:</b><br>
+            Failed to decrypt file, likely due to corrupted or invalid encryption key<br><br>
+
+            <b>Fix:</b><br>
+            Check and update the encryption keys for the affected files, and ensure that the decryption process is functioning correctly.
+            </div>
+            
+            <div class="card">
+            <b>Type:</b> Networking issue<br>
+            <b>Occurrences:</b> 2<br><br>
+
+            <b>Cause:</b><br>
+            Failed to discover proxies using WinHttpGetProxyForUrl, indicating a potential network connectivity or configuration issue<br><br>
+
+            <b>Fix:</b><br>
+            Verify that the system has valid proxy settings and can connect to the required resources. Check for any network-related issues or misconfigurations.
+            </div>
+            
+            <div class="card">
+            <b>Type:</b> Application runtime failure<br>
+            <b>Occurrences:</b> 1<br><br>
+
+            <b>Cause:</b><br>
+            Configuration corruption due to missing 'Certificates' tag in JSON configuration file.<br><br>
+
+            <b>Fix:</b><br>
+            Verify that the JSON configuration file contains a valid 'Certificates' section and correct its format if necessary.
+            </div>
+            
+    </body>
+    </html>
+    

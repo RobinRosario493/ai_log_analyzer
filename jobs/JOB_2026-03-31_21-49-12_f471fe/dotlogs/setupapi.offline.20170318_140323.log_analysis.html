@@ -1,0 +1,722 @@
+
+    <html>
+    <head>
+        <title>Analysis Report - setupapi.offline.20170318_140323.log</title>
+        <style>
+            body {
+                font-family: Arial;
+                background:#0f172a;
+                color:white;
+                padding:30px;
+            }
+            .card {
+                background:#1e293b;
+                padding:15px;
+                margin:15px 0;
+                border-radius:8px;
+            }
+
+        </style>
+    </head>
+    <body>
+
+        <h1>File Analysis Report</h1>
+        <h2>File: setupapi.offline.20170318_140323.log</h2>
+        <hr>
+    
+            <div class="card">
+            <b>Type:</b> Storage & filesystem<br>
+            <b>Occurrences:</b> 2<br><br>
+
+            <b>Cause:</b><br>
+            Resource locking issue due to another process holding the hive key, preventing unload of offline registry hives.<br><br>
+
+            <b>Fix:</b><br>
+            Check for and terminate any processes that may be holding onto the hive keys. If necessary, restart the system to release the locks.
+            </div>
+            
+            <div class="card">
+            <b>Type:</b> Unknown<br>
+            <b>Occurrences:</b> 5<br><br>
+
+            <b>Cause:</b><br>
+            Unknown<br><br>
+
+            <b>Fix:</b><br>
+            Check manually
+            </div>
+            
+            <div class="card">
+            <b>Type:</b> Unknown<br>
+            <b>Occurrences:</b> 5<br><br>
+
+            <b>Cause:</b><br>
+            Unknown<br><br>
+
+            <b>Fix:</b><br>
+            Check manually
+            </div>
+            
+            <div class="card">
+            <b>Type:</b> Unknown<br>
+            <b>Occurrences:</b> 1<br><br>
+
+            <b>Cause:</b><br>
+            Unknown<br><br>
+
+            <b>Fix:</b><br>
+            Check manually
+            </div>
+            
+            <div class="card">
+            <b>Type:</b> Unknown<br>
+            <b>Occurrences:</b> 1<br><br>
+
+            <b>Cause:</b><br>
+            Unknown<br><br>
+
+            <b>Fix:</b><br>
+            Check manually
+            </div>
+            
+            <div class="card">
+            <b>Type:</b> Unknown<br>
+            <b>Occurrences:</b> 5<br><br>
+
+            <b>Cause:</b><br>
+            Unknown<br><br>
+
+            <b>Fix:</b><br>
+            Check manually
+            </div>
+            
+            <div class="card">
+            <b>Type:</b> Driver installation failure<br>
+            <b>Occurrences:</b> 5<br><br>
+
+            <b>Cause:</b><br>
+            Missing INF files and sections<br><br>
+
+            <b>Fix:</b><br>
+            Check INF file inclusion and ensure all required sections are present.
+            </div>
+            
+            <div class="card">
+            <b>Type:</b> Driver Failure<br>
+            <b>Occurrences:</b> 1<br><br>
+
+            <b>Cause:</b><br>
+            Missing INF file and required section, likely due to driver configuration corruption or missing dependencies.<br><br>
+
+            <b>Fix:</b><br>
+            Run `dism /online /cleanup-image /restorehealth` to repair system image and ensure all drivers are up-to-date. If issue persists, check for corrupted INF files and re-register affected drivers using `driverquery /reg`.
+            </div>
+            
+            <div class="card">
+            <b>Type:</b> Driver Installation Failure<br>
+            <b>Occurrences:</b> 1<br><br>
+
+            <b>Cause:</b><br>
+            Missing INF file 'netrndis.inf' and section [Usb_Rndis.ndi] not found, leading to driver package configuration failure.<br><br>
+
+            <b>Fix:</b><br>
+            Reinstall or update the affected driver package, ensuring all required INF files are present and correctly configured.
+            </div>
+            
+            <div class="card">
+            <b>Type:</b> Driver Installation Failure<br>
+            <b>Occurrences:</b> 1<br><br>
+
+            <b>Cause:</b><br>
+            Missing INF file 'usbstor.inf' and section [USBSTOR_CB.NT] not found, leading to driver package configuration failure.<br><br>
+
+            <b>Fix:</b><br>
+            Reinstall or update the affected driver package, ensuring all required INF files are present and correctly configured.
+            </div>
+            
+            <div class="card">
+            <b>Type:</b> Unknown<br>
+            <b>Occurrences:</b> 1<br><br>
+
+            <b>Cause:</b><br>
+            Unknown<br><br>
+
+            <b>Fix:</b><br>
+            Check manually
+            </div>
+            
+            <div class="card">
+            <b>Type:</b> Unknown<br>
+            <b>Occurrences:</b> 1<br><br>
+
+            <b>Cause:</b><br>
+            Unknown<br><br>
+
+            <b>Fix:</b><br>
+            Check manually
+            </div>
+            
+            <div class="card">
+            <b>Type:</b> Driver loading failure<br>
+            <b>Occurrences:</b> 5<br><br>
+
+            <b>Cause:</b><br>
+            Missing or corrupted INF file 'wpdmtp.inf' and 'WINUSB.INF'<br><br>
+
+            <b>Fix:</b><br>
+            Reinstall the Windows Driver Package (WDP) for MTP drivers, or manually copy the missing INF files to their respective locations.
+            </div>
+            
+            <div class="card">
+            <b>Type:</b> Driver installation failure<br>
+            <b>Occurrences:</b> 1<br><br>
+
+            <b>Cause:</b><br>
+            Missing INF files and sections<br><br>
+
+            <b>Fix:</b><br>
+            Check INF file inclusion and ensure all required sections are present.
+            </div>
+            
+            <div class="card">
+            <b>Type:</b> Driver installation failure<br>
+            <b>Occurrences:</b> 5<br><br>
+
+            <b>Cause:</b><br>
+            Missing INF files and sections<br><br>
+
+            <b>Fix:</b><br>
+            Check INF file inclusion and ensure all required sections are present.
+            </div>
+            
+            <div class="card">
+            <b>Type:</b> Driver Installation Failure<br>
+            <b>Occurrences:</b> 44<br><br>
+
+            <b>Cause:</b><br>
+            Missing INF file and required sections due to incorrect driver installation<br><br>
+
+            <b>Fix:</b><br>
+            Reinstall the Qualcomm Atheros Communications Inc. driver with correct INF files and sections
+            </div>
+            
+            <div class="card">
+            <b>Type:</b> Driver Installation Failure<br>
+            <b>Occurrences:</b> 37<br><br>
+
+            <b>Cause:</b><br>
+            Missing or corrupted INF files and sections for Qualcomm Atheros driver installation<br><br>
+
+            <b>Fix:</b><br>
+            Reinstall the Qualcomm Atheros driver or update the INF files to resolve the issue.
+            </div>
+            
+            <div class="card">
+            <b>Type:</b> Driver installation failure<br>
+            <b>Occurrences:</b> 18<br><br>
+
+            <b>Cause:</b><br>
+            Missing INF files and sections<br><br>
+
+            <b>Fix:</b><br>
+            Check INF file inclusion and ensure all required sections are present.
+            </div>
+            
+            <div class="card">
+            <b>Type:</b> Driver installation failure<br>
+            <b>Occurrences:</b> 27<br><br>
+
+            <b>Cause:</b><br>
+            Missing INF files and sections<br><br>
+
+            <b>Fix:</b><br>
+            Check INF file inclusion and ensure all required sections are present.
+            </div>
+            
+            <div class="card">
+            <b>Type:</b> Unknown<br>
+            <b>Occurrences:</b> 9<br><br>
+
+            <b>Cause:</b><br>
+            Unknown<br><br>
+
+            <b>Fix:</b><br>
+            Check manually
+            </div>
+            
+            <div class="card">
+            <b>Type:</b> Driver Installation Failure<br>
+            <b>Occurrences:</b> 9<br><br>
+
+            <b>Cause:</b><br>
+            Missing INF file and required sections for BDA and BT HID drivers<br><br>
+
+            <b>Fix:</b><br>
+            Reinstall the affected drivers or update the INF files to include the missing sections.
+            </div>
+            
+            <div class="card">
+            <b>Type:</b> Unknown<br>
+            <b>Occurrences:</b> 1<br><br>
+
+            <b>Cause:</b><br>
+            Unknown<br><br>
+
+            <b>Fix:</b><br>
+            Check manually
+            </div>
+            
+            <div class="card">
+            <b>Type:</b> Driver Installation Failure<br>
+            <b>Occurrences:</b> 1<br><br>
+
+            <b>Cause:</b><br>
+            Missing INF file and required section, likely due to configuration corruption or missing dependencies.<br><br>
+
+            <b>Fix:</b><br>
+            Reinstall the Bluetooth driver package, ensuring all necessary files are present and correctly configured. Verify that the 'bthaudhid.inf' file is correctly included in the INF file and that the '[BtaMPM.CopyFilesOnly]' section exists.
+            </div>
+            
+            <div class="card">
+            <b>Type:</b> Driver Failure<br>
+            <b>Occurrences:</b> 1<br><br>
+
+            <b>Cause:</b><br>
+            Missing INF file and required section, likely due to driver configuration corruption or missing dependencies.<br><br>
+
+            <b>Fix:</b><br>
+            Run `dism /online /cleanup-image /restorehealth` to repair system image and ensure all drivers are up-to-date. If issue persists, check for corrupted INF files and re-register affected drivers using `driverquery /reg`.
+            </div>
+            
+            <div class="card">
+            <b>Type:</b> Unknown<br>
+            <b>Occurrences:</b> 1<br><br>
+
+            <b>Cause:</b><br>
+            Unknown<br><br>
+
+            <b>Fix:</b><br>
+            Check manually
+            </div>
+            
+            <div class="card">
+            <b>Type:</b> Driver Installation Failure<br>
+            <b>Occurrences:</b> 5<br><br>
+
+            <b>Cause:</b><br>
+            Missing INF files (mdmcpq.inf) causing driver installation failure.<br><br>
+
+            <b>Fix:</b><br>
+            Reinstall or update the affected drivers, ensuring all required INF files are present.
+            </div>
+            
+            <div class="card">
+            <b>Type:</b> Driver Installation Failure<br>
+            <b>Occurrences:</b> 5<br><br>
+
+            <b>Cause:</b><br>
+            Missing or corrupted INF file 'wdmaudio.inf' and 'keyboard.inf'<br><br>
+
+            <b>Fix:</b><br>
+            Reinstall audio driver using Device Manager or update Windows to the latest version.
+            </div>
+            
+            <div class="card">
+            <b>Type:</b> Driver Installation Failure<br>
+            <b>Occurrences:</b> 2<br><br>
+
+            <b>Cause:</b><br>
+            Missing section [WDMPORTCLS.CopyFilesOnly] in INF file 'hdaudbus.inf'<br><br>
+
+            <b>Fix:</b><br>
+            Update INF file 'hdaudbus.inf' to include the missing section.
+            </div>
+            
+            <div class="card">
+            <b>Type:</b> Driver installation failure<br>
+            <b>Occurrences:</b> 2<br><br>
+
+            <b>Cause:</b><br>
+            Missing or corrupted INF file (keyboard.inf)<br><br>
+
+            <b>Fix:</b><br>
+            Reinstall keyboard driver or update INF file
+            </div>
+            
+            <div class="card">
+            <b>Type:</b> Driver installation failure<br>
+            <b>Occurrences:</b> 3<br><br>
+
+            <b>Cause:</b><br>
+            Missing or corrupted INF file (ks.inf, kscaptur.inf)<br><br>
+
+            <b>Fix:</b><br>
+            Reinstall KS and KSCAPTUR drivers or update INF files
+            </div>
+            
+            <div class="card">
+            <b>Type:</b> Driver installation failure<br>
+            <b>Occurrences:</b> 3<br><br>
+
+            <b>Cause:</b><br>
+            Missing INF files and sections<br><br>
+
+            <b>Fix:</b><br>
+            Check INF file inclusion and ensure all required sections are present.
+            </div>
+            
+            <div class="card">
+            <b>Type:</b> Driver Failure<br>
+            <b>Occurrences:</b> 1<br><br>
+
+            <b>Cause:</b><br>
+            Missing INF file and required section, likely due to driver configuration corruption or missing dependencies.<br><br>
+
+            <b>Fix:</b><br>
+            Run `dism /online /cleanup-image /restorehealth` to repair system image and ensure all drivers are up-to-date. If issue persists, check for corrupted INF files and re-register affected drivers using `driverquery /reg`.
+            </div>
+            
+            <div class="card">
+            <b>Type:</b> Driver Initialization Failure<br>
+            <b>Occurrences:</b> 1<br><br>
+
+            <b>Cause:</b><br>
+            Missing or corrupted INF file 'display.inf' and 'basicdisplay.inf'<br><br>
+
+            <b>Fix:</b><br>
+            Reinstall display drivers or update Windows to a newer version that includes the required INF files.
+            </div>
+            
+            <div class="card">
+            <b>Type:</b> Unknown<br>
+            <b>Occurrences:</b> 1<br><br>
+
+            <b>Cause:</b><br>
+            Unknown<br><br>
+
+            <b>Fix:</b><br>
+            Check manually
+            </div>
+            
+            <div class="card">
+            <b>Type:</b> Driver installation failure<br>
+            <b>Occurrences:</b> 1<br><br>
+
+            <b>Cause:</b><br>
+            Missing INF files and sections<br><br>
+
+            <b>Fix:</b><br>
+            Check INF file inclusion and ensure all required sections are present.
+            </div>
+            
+            <div class="card">
+            <b>Type:</b> Driver Installation Failure<br>
+            <b>Occurrences:</b> 1<br><br>
+
+            <b>Cause:</b><br>
+            Missing INF file 'usbstor.inf' and section [USBSTOR_CB.NT] not found, leading to driver package configuration failure.<br><br>
+
+            <b>Fix:</b><br>
+            Reinstall or update the affected driver package, ensuring all required INF files are present and correctly configured.
+            </div>
+            
+            <div class="card">
+            <b>Type:</b> Driver installation failure<br>
+            <b>Occurrences:</b> 1<br><br>
+
+            <b>Cause:</b><br>
+            Missing INF files and sections<br><br>
+
+            <b>Fix:</b><br>
+            Check INF file inclusion and ensure all required sections are present.
+            </div>
+            
+            <div class="card">
+            <b>Type:</b> Unknown<br>
+            <b>Occurrences:</b> 1<br><br>
+
+            <b>Cause:</b><br>
+            Unknown<br><br>
+
+            <b>Fix:</b><br>
+            Check manually
+            </div>
+            
+            <div class="card">
+            <b>Type:</b> Unknown<br>
+            <b>Occurrences:</b> 1<br><br>
+
+            <b>Cause:</b><br>
+            Unknown<br><br>
+
+            <b>Fix:</b><br>
+            Check manually
+            </div>
+            
+            <div class="card">
+            <b>Type:</b> Unknown<br>
+            <b>Occurrences:</b> 1<br><br>
+
+            <b>Cause:</b><br>
+            Unknown<br><br>
+
+            <b>Fix:</b><br>
+            Check manually
+            </div>
+            
+            <div class="card">
+            <b>Type:</b> Unknown<br>
+            <b>Occurrences:</b> 1<br><br>
+
+            <b>Cause:</b><br>
+            Unknown<br><br>
+
+            <b>Fix:</b><br>
+            Check manually
+            </div>
+            
+            <div class="card">
+            <b>Type:</b> Service Control Manager (SCM)<br>
+            <b>Occurrences:</b> 1<br><br>
+
+            <b>Cause:</b><br>
+            Missing INF file 'cmbatt.inf' and driver package configuration failure.<br><br>
+
+            <b>Fix:</b><br>
+            Verify the presence of 'cmbatt.inf' in the correct location and ensure it contains the required information for driver package configuration.
+            </div>
+            
+            <div class="card">
+            <b>Type:</b> Driver Installation Failure<br>
+            <b>Occurrences:</b> 1<br><br>
+
+            <b>Cause:</b><br>
+            Missing INF file and required section, likely due to corrupted or incomplete driver package.<br><br>
+
+            <b>Fix:</b><br>
+            Reinstall the HID battery driver from a trusted source, ensuring all necessary files are present and correctly configured.
+            </div>
+            
+            <div class="card">
+            <b>Type:</b> Driver installation failure<br>
+            <b>Occurrences:</b> 1<br><br>
+
+            <b>Cause:</b><br>
+            Missing INF files and sections<br><br>
+
+            <b>Fix:</b><br>
+            Check INF file inclusion and ensure all required sections are present.
+            </div>
+            
+            <div class="card">
+            <b>Type:</b> Driver Installation Failure<br>
+            <b>Occurrences:</b> 1<br><br>
+
+            <b>Cause:</b><br>
+            Missing INF file and required sections<br><br>
+
+            <b>Fix:</b><br>
+            Reinstall or update driver package, ensure all necessary INF files are included.
+            </div>
+            
+            <div class="card">
+            <b>Type:</b> Driver Installation Failure<br>
+            <b>Occurrences:</b> 1<br><br>
+
+            <b>Cause:</b><br>
+            Missing INF file and required sections<br><br>
+
+            <b>Fix:</b><br>
+            Reinstall or update driver package, ensure all necessary INF files are included.
+            </div>
+            
+            <div class="card">
+            <b>Type:</b> Service Control Manager (SCM)<br>
+            <b>Occurrences:</b> 1<br><br>
+
+            <b>Cause:</b><br>
+            Missing INF file 'volume.inf' and section [volume_install.NT] not found, causing driver package configuration failure.<br><br>
+
+            <b>Fix:</b><br>
+            Verify the presence of 'volume.inf' in the correct location and ensure it contains the required section [volume_install.NT].
+            </div>
+            
+            <div class="card">
+            <b>Type:</b> Service Control Manager (SCM)<br>
+            <b>Occurrences:</b> 1<br><br>
+
+            <b>Cause:</b><br>
+            Missing INF file 'cmbatt.inf' and driver package configuration failure.<br><br>
+
+            <b>Fix:</b><br>
+            Verify the presence of 'cmbatt.inf' in the correct location and ensure it contains the required information for driver package configuration.
+            </div>
+            
+            <div class="card">
+            <b>Type:</b> Driver Installation Failure<br>
+            <b>Occurrences:</b> 1<br><br>
+
+            <b>Cause:</b><br>
+            Missing INF files for CMBatt and MDMGL drivers, resulting in failed driver installation.<br><br>
+
+            <b>Fix:</b><br>
+            Check the INF files 'cmbatt.inf' and 'mdmgl004.inf', 'mdmgl007.inf' are present in the correct locations. Verify the file paths and permissions.
+            </div>
+            
+            <div class="card">
+            <b>Type:</b> Driver Installation Failure<br>
+            <b>Occurrences:</b> 25<br><br>
+
+            <b>Cause:</b><br>
+            Missing INF files (mdmcpq.inf) causing driver installation failure.<br><br>
+
+            <b>Fix:</b><br>
+            Reinstall or update the affected drivers, ensuring all required INF files are present.
+            </div>
+            
+            <div class="card">
+            <b>Type:</b> Driver Installation Failure<br>
+            <b>Occurrences:</b> 25<br><br>
+
+            <b>Cause:</b><br>
+            Missing INF files (mdmgl004.inf and mdmgl007.inf) causing driver installation failure.<br><br>
+
+            <b>Fix:</b><br>
+            Reinstall or update the affected drivers, ensuring all required INF files are present.
+            </div>
+            
+            <div class="card">
+            <b>Type:</b> Driver Installation Failure<br>
+            <b>Occurrences:</b> 2<br><br>
+
+            <b>Cause:</b><br>
+            Missing INF files (mdmcpq.inf) causing driver installation failure.<br><br>
+
+            <b>Fix:</b><br>
+            Reinstall or update the affected drivers, ensuring all required INF files are present.
+            </div>
+            
+            <div class="card">
+            <b>Type:</b> Unknown<br>
+            <b>Occurrences:</b> 2<br><br>
+
+            <b>Cause:</b><br>
+            Unknown<br><br>
+
+            <b>Fix:</b><br>
+            Check manually
+            </div>
+            
+            <div class="card">
+            <b>Type:</b> Unknown<br>
+            <b>Occurrences:</b> 1<br><br>
+
+            <b>Cause:</b><br>
+            Unknown<br><br>
+
+            <b>Fix:</b><br>
+            Check manually
+            </div>
+            
+            <div class="card">
+            <b>Type:</b> Driver Installation Failure<br>
+            <b>Occurrences:</b> 1<br><br>
+
+            <b>Cause:</b><br>
+            INF file parsing error due to duplicate section definitions and missing included INF files.<br><br>
+
+            <b>Fix:</b><br>
+            Update the INF file 'xinputhid.inf' to remove duplicate section definitions. Ensure all required sections are present in the correct order. Verify that all necessary INF files are correctly referenced and included.
+            </div>
+            
+            <div class="card">
+            <b>Type:</b> Unknown<br>
+            <b>Occurrences:</b> 1<br><br>
+
+            <b>Cause:</b><br>
+            Unknown<br><br>
+
+            <b>Fix:</b><br>
+            Check manually
+            </div>
+            
+            <div class="card">
+            <b>Type:</b> Unknown<br>
+            <b>Occurrences:</b> 1<br><br>
+
+            <b>Cause:</b><br>
+            Unknown<br><br>
+
+            <b>Fix:</b><br>
+            Check manually
+            </div>
+            
+            <div class="card">
+            <b>Type:</b> Driver Installation Failure<br>
+            <b>Occurrences:</b> 1<br><br>
+
+            <b>Cause:</b><br>
+            Missing INF file 'usbstor.inf' and section [USBSTOR_CB.NT] not found, leading to driver package configuration failure.<br><br>
+
+            <b>Fix:</b><br>
+            Reinstall or update the affected driver package, ensuring all required INF files are present and correctly configured.
+            </div>
+            
+            <div class="card">
+            <b>Type:</b> Driver Installation Failure<br>
+            <b>Occurrences:</b> 1<br><br>
+
+            <b>Cause:</b><br>
+            Missing INF file and section, unable to load driver package<br><br>
+
+            <b>Fix:</b><br>
+            Check INF files and sections for missing or corrupted entries. Verify driver package integrity.
+            </div>
+            
+            <div class="card">
+            <b>Type:</b> Driver Store Failure<br>
+            <b>Occurrences:</b> 6<br><br>
+
+            <b>Cause:</b><br>
+            Unable to unload hive key due to another process holding it, unable to close registry hives<br><br>
+
+            <b>Fix:</b><br>
+            Check for running processes that may be holding onto the registry hives. Restart system or terminate processes as needed.
+            </div>
+            
+            <div class="card">
+            <b>Type:</b> Driver Installation<br>
+            <b>Occurrences:</b> 196<br><br>
+
+            <b>Cause:</b><br>
+            Invalid driver configuration<br><br>
+
+            <b>Fix:</b><br>
+            Verify INF file pci.inf and correct Config Flags (0x00000000)
+            </div>
+            
+            <div class="card">
+            <b>Type:</b> Service Management<br>
+            <b>Occurrences:</b> 2<br><br>
+
+            <b>Cause:</b><br>
+            Missing service dependency<br><br>
+
+            <b>Fix:</b><br>
+            Check if 'ErrDev' service is registered and started correctly
+            </div>
+            
+            <div class="card">
+            <b>Type:</b> Storage<br>
+            <b>Occurrences:</b> 1<br><br>
+
+            <b>Cause:</b><br>
+            Invalid device class GUID<br><br>
+
+            <b>Fix:</b><br>
+            Verify device class GUID in INF file and ensure it matches the expected value.
+            </div>
+            
+    </body>
+    </html>
+    

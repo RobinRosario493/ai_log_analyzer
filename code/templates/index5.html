@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Enterprise Log Analyzer</title>
+
+<style>
+body{
+    margin:0;
+    font-family:Segoe UI;
+    background:#0b1220;
+    color:white;
+}
+
+/* HEADER */
+.header{
+    padding:18px 30px;
+    background:#020617;
+    font-size:22px;
+    font-weight:600;
+    border-bottom:1px solid #1e293b;
+}
+
+/* LAYOUT */
+.container{
+    padding:25px 35px;
+}
+
+/* KPI CARDS */
+.kpi{
+    display:flex;
+    gap:20px;
+    margin-bottom:25px;
+}
+
+.kpi-card{
+    background:#020617;
+    padding:20px;
+    border-radius:10px;
+    flex:1;
+    font-size:18px;
+}
+
+.kpi-card span{
+    font-size:28px;
+    color:#38bdf8;
+}
+
+/* TABLE */
+.table{
+    background:#020617;
+    padding:20px;
+    border-radius:10px;
+}
+
+.row{
+    padding:14px;
+    border-bottom:1px solid #1e293b;
+}
+
+.row:hover{
+    background:#111827;
+}
+
+/* UPLOAD */
+.upload{
+    margin-bottom:20px;
+}
+
+/* CHATBOT */
+.robot{
+    position:fixed;
+    bottom:25px;
+    right:25px;
+    width:65px;
+    height:65px;
+    border-radius:50%;
+    background:#3b82f6;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:30px;
+    cursor:pointer;
+}
+
+.chat{
+    position:fixed;
+    bottom:100px;
+    right:25px;
+    width:340px;
+    background:#020617;
+    border-radius:10px;
+    display:none;
+    padding:15px;
+}
+
+.chatlog{
+    height:240px;
+    overflow:auto;
+    font-size:14px;
+}
+</style>
+</head>
+
+<body>
+
+<div class="header">
+AI Enterprise Log Analyzer
+</div>
+
+<div class="container">
+
+<div class="upload">
+<input type="file" id="fileInput">
+<button onclick="upload()">Analyze</button>
+</div>
+
+<!-- KPI -->
+<div class="kpi">
+<div class="kpi-card">Total Errors<br><span id="t">0</span></div>
+<div class="kpi-card">Active Issues<br><span id="a">0</span></div>
+<div class="kpi-card">AI Confidence<br><span>High</span></div>
+</div>
+
+<!-- TABLE -->
+<div class="table">
+<h3>Active Root Causes</h3>
+<div id="table"></div>
+</div>
+
+</div>
+
+<!-- ROBOT -->
+<div class="robot" onclick="toggleChat()">🤖</div>
+
+<!-- CHAT WINDOW -->
+<div class="chat" id="chat">
+<div class="chatlog" id="log"></div>
+<input id="q" style="width:70%">
+<button onclick="ask()">Send</button>
+</div>
+
+<script>
+
+function upload(){
+
+ let f=document.getElementById("fileInput").files[0];
+ if(!f){alert("Select file");return;}
+
+ let fd=new FormData();
+ fd.append("logfile",f);
+
+ fetch("/analyze",{method:"POST",body:fd})
+ .then(r=>r.json())
+ .then(show);
+}
+
+function show(data){
+
+ document.getElementById("t").innerText=data.total_errors;
+ document.getElementById("a").innerText=data.active_issues.length;
+
+ let html="";
+
+ data.active_issues.forEach(x=>{
+ html+=`
+ <div class="row">
+ <b>${x.type}</b> | Occurrences: ${x.count}<br>
+ <small>${x.sample}</small><br>
+ Cause: ${x.cause}<br>
+ Fix: ${x.fix}
+ </div>`;
+ });
+
+ document.getElementById("table").innerHTML=html;
+}
+
+/* CHATBOT */
+
+function toggleChat(){
+ let c=document.getElementById("chat");
+ c.style.display=c.style.display=="block"?"none":"block";
+}
+
+function ask(){
+
+ let q=document.getElementById("q").value;
+
+ fetch("/chat",{
+ method:"POST",
+ headers:{"Content-Type":"application/json"},
+ body:JSON.stringify({q:q})
+ })
+ .then(r=>r.json())
+ .then(d=>{
+ document.getElementById("log").innerHTML+=
+ "<div><b>You:</b>"+q+"</div>"+
+ "<div><b>AI:</b>"+d.answer+"</div><hr>";
+ });
+}
+
+</script>
+
+</body>
+</html>

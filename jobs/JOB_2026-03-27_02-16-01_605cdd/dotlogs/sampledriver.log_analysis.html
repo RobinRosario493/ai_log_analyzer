@@ -1,0 +1,62 @@
+
+    <html>
+    <head>
+        <title>Analysis Report - sampledriver.log</title>
+        <style>
+            body {
+                font-family: Arial;
+                background:#0f172a;
+                color:white;
+                padding:30px;
+            }
+            .card {
+                background:#1e293b;
+                padding:15px;
+                margin:15px 0;
+                border-radius:8px;
+            }
+
+        </style>
+    </head>
+    <body>
+
+        <h1>File Analysis Report</h1>
+        <h2>File: sampledriver.log</h2>
+        <hr>
+    
+            <div class="card">
+            <b>Type:</b> Driver Installation Failure<br>
+            <b>Occurrences:</b> 1<br><br>
+
+            <b>Cause:</b><br>
+            Invalid driver package signature due to configuration corruption or tampering<br><br>
+
+            <b>Fix:</b><br>
+            Re-sign the driver package with a valid certificate and re-apply it, or update the driver from a trusted source
+            </div>
+            
+            <div class="card">
+            <b>Type:</b> Driver Installation<br>
+            <b>Occurrences:</b> 1<br><br>
+
+            <b>Cause:</b><br>
+            Driver package signature validation failure<br><br>
+
+            <b>Fix:</b><br>
+            Reinstall the driver package from a trusted source or update the driver to a version with a valid digital signature.
+            </div>
+            
+            <div class="card">
+            <b>Type:</b> Session Manager Failure<br>
+            <b>Occurrences:</b> 1<br><br>
+
+            <b>Cause:</b><br>
+            Invalid session handle due to concurrent login attempt<br><br>
+
+            <b>Fix:</b><br>
+            Verify user account lockout policies and ensure proper session management configuration.
+            </div>
+            
+    </body>
+    </html>
+    

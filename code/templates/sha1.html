@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>AI Log Analyzer</title>
+
+<style>
+body{
+    margin:0;
+    font-family:Segoe UI,Arial;
+    background:#0f172a;
+    color:#f1f5f9;
+}
+
+.container{
+    max-width:1200px;
+    margin:40px auto;
+    padding:20px;
+}
+
+h1{
+    text-align:center;
+    margin-bottom:25px;
+}
+
+.upload{
+    text-align:center;
+    margin-bottom:30px;
+}
+
+button{
+    padding:8px 16px;
+    background:#2563eb;
+    border:none;
+    color:white;
+    border-radius:6px;
+    cursor:pointer;
+}
+
+button:hover{background:#1d4ed8;}
+
+.card{
+    background:#1e293b;
+    padding:16px;
+    margin:12px 0;
+    border-radius:10px;
+    border-left:6px solid #ef4444;
+}
+
+.resolved{border-left:6px solid #10b981;}
+
+.badge{
+    padding:3px 8px;
+    border-radius:20px;
+    font-size:12px;
+}
+
+.active{background:#dc2626;}
+.done{background:#059669;}
+
+.file-block{
+    background:#020617;
+    padding:20px;
+    margin-bottom:40px;
+    border-radius:10px;
+}
+
+.chat-toggle{
+    position:fixed;
+    bottom:25px;
+    right:25px;
+    width:55px;
+    height:55px;
+    border-radius:50%;
+    background:#2563eb;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:24px;
+    cursor:pointer;
+}
+
+.chat-window{
+    position:fixed;
+    bottom:95px;
+    right:25px;
+    width:360px;
+    height:420px;
+    background:#1e293b;
+    display:none;
+    flex-direction:column;
+    border-radius:10px;
+}
+
+.chat-box{
+    flex:1;
+    overflow:auto;
+    padding:10px;
+}
+
+.chat-input{
+    display:flex;
+    padding:10px;
+}
+
+.chat-input input{
+    flex:1;
+    padding:6px;
+}
+
+.user{color:#60a5fa;}
+.ai{color:#34d399;}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<h1>AI Log Analyzer</h1>
+
+<div class="upload">
+<input type="file" id="fileInput" multiple>
+<button onclick="analyze()">Analyze Logs</button>
+</div>
+
+<div id="output"></div>
+
+</div>
+
+<div class="chat-toggle" onclick="toggleChat()">🤖</div>
+
+<div class="chat-window" id="chatWindow">
+<div class="chat-box" id="chatBox"></div>
+
+<div class="chat-input">
+<input id="chatInput" placeholder="Ask about logs...">
+<button onclick="sendChat()">Send</button>
+</div>
+</div>
+
+<script>
+
+function toggleChat(){
+    let w=document.getElementById("chatWindow");
+    w.style.display = w.style.display=="flex" ? "none":"flex";
+}
+
+function analyze(){
+
+    let files=document.getElementById("fileInput").files;
+    if(files.length==0){alert("Select files");return;}
+
+    let fd=new FormData();
+    for(let f of files){
+        fd.append("logfile",f);
+    }
+
+    document.getElementById("output").innerHTML="Analyzing... please wait";
+
+    fetch("/analyze",{method:"POST",body:fd})
+    .then(r=>r.json())
+    .then(show);
+}
+
+function show(data){
+
+    let html="";
+
+    data.files.forEach(file=>{
+
+        html+=`<div class="file-block">
+        <h3>📄 ${file.file}</h3>
+        Total Errors: ${file.total_errors}<br><br>`;
+
+        file.analysis.forEach(x=>{
+
+            html+=`
+            <div class="card ${x.status=="Resolved"?"resolved":""}">
+                <b>Type:</b> ${x.type}<br>
+                <b>Count:</b> ${x.count}<br>
+                <b>Status:</b>
+                <span class="badge ${x.status=="Active"?"active":"done"}">${x.status}</span>
+                <br><br>
+
+                <b>Sample:</b><br>${x.error_line}<br><br>
+            `;
+
+            if(x.status=="Active"){
+                html+=`
+                <b>Cause:</b> ${x.cause}<br>
+                <b>Fix:</b> ${x.fix}<br><br>
+
+                <button onclick="askAI(\`${x.error_line}\`)">Ask AI</button>
+                `;
+            }
+
+            html+=`</div>`;
+        });
+
+        html+=`</div>`;
+    });
+
+    document.getElementById("output").innerHTML=html;
+}
+
+function askAI(text){
+
+    toggleChat();
+    addMsg("You: Explain this error → "+text);
+
+    fetch("/ask_ai",{
+        method:"POST",
+        headers:{'Content-Type':'application/json'},
+        body:JSON.stringify({error:text})
+    })
+    .then(r=>r.json())
+    .then(d=>{
+        addMsg("AI: "+d.answer);
+    });
+}
+
+function sendChat(){
+
+    let q=document.getElementById("chatInput").value;
+    if(!q)return;
+
+    addMsg("You: "+q);
+    document.getElementById("chatInput").value="";
+
+    fetch("/chat",{
+        method:"POST",
+        headers:{'Content-Type':'application/json'},
+        body:JSON.stringify({message:q})
+    })
+    .then(r=>r.json())
+    .then(d=>{
+        addMsg("AI: "+d.reply);
+    });
+}
+
+function addMsg(t){
+    let box=document.getElementById("chatBox");
+    box.innerHTML+=`<div>${t}</div><br>`;
+    box.scrollTop=box.scrollHeight;
+}
+
+</script>
+
+</body>
+</html>
